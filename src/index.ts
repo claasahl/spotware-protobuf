@@ -69,8 +69,8 @@ function isType(data: IEnum | IType): data is IType {
 function a(messages: MessageType) {
   const enums: IEnum[] = [];
   const types: IType[] = [];
-  for (const key in all) {
-    const value = all[key];
+  for (const key in messages) {
+    const value = messages[key];
     if (isEnum(value)) {
       enums.push(value);
     } else if (isType(value)) {
@@ -81,17 +81,6 @@ function a(messages: MessageType) {
   }
   return { enums, types };
 }
-
-const commonMessages: MessageType = jsonCommonMessages.nested;
-const commonModelMessages: MessageType = jsonCommonModelMessages.nested;
-const messages: MessageType = jsonMessages.nested;
-const modelMessages: MessageType = jsonModelMessages.nested;
-const all: MessageType = {
-  ...commonMessages,
-  ...commonModelMessages,
-  ...messages,
-  ...modelMessages
-};
 
 export const rawTypes = {
   commonMessages: jsonCommonMessages.nested,
