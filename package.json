@@ -2,18 +2,22 @@
   "name": "@claasahl/spotware-protobuf",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0",
-    "prepare": "tsc",
-    "build": "tsc",
-    "preimport": "shx rm -rf ./assets/*.proto",
-    "import": "shx mkdir ./spotware-messages && cd ./spotware-messages && isogit clone --url=https://github.com/spotware/Open-API-2.0-protobuf-messages --singleBranch",
+    "test": "echo \"Error: no test specified\"",
+    "prepare": "npm run build",
+    "build": "npm run import && npm run gen:json && tsc",
+    "preimport": "shx rm -rf ./assets/*.proto && shx mkdir ./spotware-messages",
+    "import": "cd ./spotware-messages && isogit clone --url=https://github.com/spotware/Open-API-2.0-protobuf-messages --singleBranch",
     "postimport": "shx cp ./spotware-messages/*.proto ./assets && shx rm -rf ./spotware-messages",
-    "start": "ts-node src/hello-world.ts ./assets/*.proto",
-    "poststart": "prettier --write ./assets/**.json"
+    "gen:json": "ts-node src/hello-world.ts ./assets/*.proto",
+    "postgen:json": "prettier --write ./assets/**.json"
   },
-  "keywords": [],
+  "keywords": [
+    "spotware",
+    "ctrader",
+    "typescript",
+    "protobuf"
+  ],
   "author": "",
   "license": "ISC",
   "husky": {
