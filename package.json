@@ -1,7 +1,8 @@
 {
   "name": "@claasahl/spotware-protobuf",
   "version": "0.1.1",
-  "description": "",
+  "description": "Protocol Buffers and Data Models for Spotware Open API 2.0",
+  "main": "./build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "prepare": "npm run build",
@@ -18,8 +19,16 @@
     "typescript",
     "protobuf"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Claas Ahlrichs",
+    "email": "claasahl@gmail.com",
+    "url": "https://github.com/claasahl"
+  },
+  "repository": "github:claasahl/spotware-protobuf",
+  "bugs": {
+    "url": "https://github.com/claasahl/spotware-protobuf/issues"
+  },
+  "license": "MIT",
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
@@ -39,5 +48,9 @@
     "shx": "^0.3.2",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.4"
+  },
+  "engines": {
+    "node": ">= 10.5.0",
+    "npm": ">= 6.4.1"
   }
 }
