@@ -6,25 +6,35 @@ import path from "path";
 
 const optionDefinitions = [
   {
-    name: "input",
+    name: "inputDir",
     alias: "i",
+    type: String
+  },
+  {
+    name: "outputDir",
+    alias: "o",
+    type: String
+  },
+  {
+    name: "pattern",
+    alias: "p",
     type: String,
-    multiple: true,
-    defaultOption: true
+    defaultValue: "*.proto"
   }
 ];
 const options = commandLineArgs(optionDefinitions);
-const inputPatterns: string[] = options.input;
-(async (inputPatterns: string[]): Promise<void> => {
-  for (const inputPattern of inputPatterns) {
-    const files = await globby(inputPattern);
-    for (const file of files) {
-      const root = parseProtoFile(file);
-      const jsonFile = toJsonFilename(file);
-      writeJsonFile(jsonFile, root);
-    }
+const inputDir: string = options.inputDir;
+const outputDir: string = options.outputDir;
+const pattern: string = options.pattern;
+(async (input: string, output: string, pattern: string): Promise<void> => {
+  const inputPattern = path.join(input, pattern);
+  const files = await globby(inputPattern);
+  for (const file of files) {
+    const root = parseProtoFile(file);
+    const jsonFile = toJsonFilename(output, file);
+    writeJsonFile(jsonFile, root);
   }
-})(inputPatterns);
+})(inputDir, outputDir, pattern);
 
 function parseProtoFile(file: string): Root {
   const data = fs.readFileSync(file);
@@ -33,8 +43,7 @@ function parseProtoFile(file: string): Root {
   return root;
 }
 
-function toJsonFilename(file: string): string {
-  const parent = path.dirname(file);
+function toJsonFilename(parent: string, file: string): string {
   const basename = path.basename(file);
   const extname = path.extname(file);
   const jsonFile = basename.replace(extname, ".json");

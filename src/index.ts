@@ -1,7 +1,7 @@
-import jsonCommonMessages from "../assets/OpenApiCommonMessages.json";
-import jsonCommonModelMessages from "../assets/OpenApiCommonModelMessages.json";
-import jsonMessages from "../assets/OpenApiMessages.json";
-import jsonModelMessages from "../assets/OpenApiModelMessages.json";
+import jsonCommonMessages from "./OpenApiCommonMessages.json";
+import jsonCommonModelMessages from "./OpenApiCommonModelMessages.json";
+import jsonMessages from "./OpenApiMessages.json";
+import jsonModelMessages from "./OpenApiModelMessages.json";
 
 /** Message type descriptor. */
 export interface IType {
