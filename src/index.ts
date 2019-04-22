@@ -67,14 +67,14 @@ function isType(data: IEnum | IType): data is IType {
 }
 
 function a(messages: MessageType) {
-  const enums: IEnum[] = [];
-  const types: IType[] = [];
+  const enums = new Map<string, IEnum>();
+  const types = new Map<string, IType>();
   for (const key in messages) {
     const value = messages[key];
     if (isEnum(value)) {
-      enums.push(value);
+      enums.set(key, value);
     } else if (isType(value)) {
-      types.push(value);
+      types.set(key, value);
     } else {
       console.error("unexpected key/value pair", key, value);
     }
