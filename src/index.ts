@@ -59,7 +59,7 @@ interface MessageType {
 }
 
 function isEnum(data: IEnum | IType): data is IEnum {
-  return data.hasOwnProperty("value");
+  return data.hasOwnProperty("values");
 }
 
 function isType(data: IEnum | IType): data is IType {
