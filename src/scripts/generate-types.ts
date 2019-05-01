@@ -1,8 +1,12 @@
-import { types, IEnum } from "..";
+import { types, IEnum, IType } from "..";
 
 function generateComment(comment?: string | null) {
   if (comment) {
-    const lines = comment.split("\n").join("\n * ");
+    const lines = comment
+      .replace("**", "")
+      .replace("*/", "")
+      .split("\n")
+      .join("\n * ");
     process.stdout.write(`/**\n * ${lines}\n */\n`);
   }
 }
@@ -20,11 +24,53 @@ function generateEnum(enumData: IEnum, enumName: string) {
   process.stdout.write(`}\n\n`);
 }
 
-function generateEnums(enums: Map<string, IEnum>) {
-  enums.forEach(generateEnum);
+function generateInterface(typeData: IType, typeName: string) {
+  generateComment(typeData.comment);
+  process.stdout.write(`interface I${typeName} {\n`);
+  for (const name in typeData.fields) {
+    const field = typeData.fields[name];
+
+    generateComment(field.comment);
+    const isArray = field.rule === "repeated";
+    const isOptional = field.rule === "" || field.rule === undefined;
+    process.stdout.write(
+      `${name}${isOptional ? "?" : ""}: ${field.type}${
+        isOptional ? " | null" : ""
+      }${isArray ? "[]" : ""},\n`
+    );
+  }
+  process.stdout.write(`}\n\n`);
 }
 
-generateEnums(types.commonMessages.enums);
-generateEnums(types.commonModelMessages.enums);
-generateEnums(types.messages.enums);
-generateEnums(types.modelMessages.enums);
+function generateClass(typeData: IType, typeName: string) {
+  generateComment(typeData.comment);
+  process.stdout.write(`class ${typeName} {\n`);
+  process.stdout.write(
+    `public static fromBuffer(buffer: Buffer): I${typeName} {}\n`
+  );
+  process.stdout.write(
+    `public static toBuffer(message: I${typeName}): Buffer {}\n`
+  );
+  process.stdout.write(`}\n\n`);
+}
+
+function generateTypes(data: {
+  enums: Map<string, IEnum>;
+  types: Map<string, IType>;
+}) {
+  data.enums.forEach(generateEnum);
+  data.types.forEach(generateInterface);
+  data.types.forEach(generateClass);
+}
+
+process.stdout.write(`type bytes = Buffer;\n`);
+process.stdout.write(`type double = number;\n`);
+process.stdout.write(`type uint32 = number;\n`);
+process.stdout.write(`type int32 = number;\n`);
+process.stdout.write(`type uint64 = Long;\n`);
+process.stdout.write(`type int64 = Long;\n`);
+process.stdout.write(`type bool = boolean;\n`);
+generateTypes(types.commonMessages);
+generateTypes(types.commonModelMessages);
+generateTypes(types.messages);
+generateTypes(types.modelMessages);

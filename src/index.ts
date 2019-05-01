@@ -19,6 +19,8 @@ export interface IType {
 
   /** Whether a legacy group or not */
   group?: boolean;
+
+  comment?: string;
 }
 
 /** Oneof descriptor. */
@@ -43,6 +45,8 @@ export interface IField {
 
   /** Field options */
   options?: { [k: string]: any };
+
+  comment?: string;
 }
 
 /** Enum descriptor. */
