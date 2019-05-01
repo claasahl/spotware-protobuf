@@ -11,7 +11,9 @@
     "import": "cd ./spotware-messages && isogit clone --url=https://github.com/spotware/Open-API-2.0-protobuf-messages --singleBranch",
     "postimport": "shx cp ./spotware-messages/*.proto ./assets && shx rm -rf ./spotware-messages",
     "gen:json": "ts-node src/hello-world.ts -i ./assets -o ./src",
-    "postgen:json": "prettier --write ./src/*.json"
+    "postgen:json": "prettier --write ./src/*.json",
+    "gen:types": "ts-node ./src/scripts/generate-types.ts > ./src/types.ts",
+    "postgen:types": "prettier --write ./src/types.ts"
   },
   "keywords": [
     "spotware",

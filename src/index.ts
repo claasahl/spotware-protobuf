@@ -52,6 +52,9 @@ export interface IEnum {
 
   /** Enum options */
   options?: { [k: string]: any };
+
+  comment?: string;
+  comments?: { [k: string]: string | null };
 }
 
 interface MessageType {
