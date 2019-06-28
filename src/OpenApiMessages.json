@@ -98,6 +98,11 @@
           "type": "string",
           "id": 4,
           "comment": "The name of the ProtoErrorCode or the other custom ErrorCodes (e.g. ProtoCHErrorCode)."
+        },
+        "maintenanceEndTimestamp": {
+          "type": "int64",
+          "id": 5,
+          "comment": "The error description."
         }
       },
       "comment": "Generic response when an ERROR occurred."
@@ -115,7 +120,7 @@
           "comment": "The disconnection reason explained. For example: The application access was blocked by cTrader Administrator."
         }
       },
-      "comment": "The event that is sent when the connection with the client application is cancelled by the server. All the sessions for the traders' accounts will be terminated."
+      "comment": "Event that is sent when the connection with the client application is cancelled by the server. All the sessions for the traders' accounts will be terminated."
     },
     "ProtoOAAccountsTokenInvalidatedEvent": {
       "fields": {
@@ -347,7 +352,7 @@
           "comment": "The name of the ProtoErrorCode or the other custom ErrorCodes (e.g. ProtoCHErrorCode)."
         }
       },
-      "comment": "The event that is sent following the successful order acceptance or execution by the server. Acts as response to the ProtoOANewOrderReq, ProtoOACancelOrderReq, ProtoOAAmendOrderReq, ProtoOAAmendPositionSLTPReq, ProtoOAClosePositionReq requests. Also, the event is sent when a Deposit/Withdrawal took place."
+      "comment": "Event that is sent following the successful order acceptance or execution by the server. Acts as response to the ProtoOANewOrderReq, ProtoOACancelOrderReq, ProtoOAAmendOrderReq, ProtoOAAmendPositionSLTPReq, ProtoOAClosePositionReq requests. Also, the event is sent when a Deposit/Withdrawal took place."
     },
     "ProtoOACancelOrderReq": {
       "fields": {
@@ -1289,13 +1294,17 @@
           "id": 4,
           "comment": "Unique identifier of the Symbol in cTrader platform."
         },
-        "ask": { "type": "uint64", "id": 5, "comment": "Bid price." },
+        "ask": {
+          "type": "uint64",
+          "id": 5,
+          "comment": "Bid price. Specified in 1/100_000 of unit of a price. (e.g. 1.23 -> 123_000)"
+        },
         "trendbar": {
           "rule": "repeated",
           "type": "ProtoOATrendbar",
           "id": 6,
           "options": { "packed": false },
-          "comment": "Ask price."
+          "comment": "Ask price. Specified in 1/100_000 of unit of a price."
         }
       },
       "comment": "Event that is sent when a new spot event is generated on the server side. Requires subscription on the spot events, see ProtoOASubscribeSpotsReq."
