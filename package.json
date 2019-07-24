@@ -20,9 +20,18 @@
     "type": "git",
     "url": "git+https://github.com/claasahl/spotware-protobuf.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "spotware",
+    "ctrader",
+    "typescript",
+    "protobuf"
+  ],
+  "author": {
+    "name": "Claas Ahlrichs",
+    "email": "claasahl@gmail.com",
+    "url": "https://github.com/claasahl"
+  },
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/claasahl/spotware-protobuf/issues"
   },
