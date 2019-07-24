@@ -1,7 +1,7 @@
 {
-  "name": "spotware-protobuf",
+  "name": "@claasahl/spotware-protobuf",
   "version": "1.0.4",
-  "description": "",
+  "description": "This package bundles .proto files for 'Spotware Open API V2', including their respective JS/TS classes.",
   "main": "build/index.js",
   "scripts": {
     "preimport": "rimraf ./protobuf",
