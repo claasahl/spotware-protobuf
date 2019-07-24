@@ -3,6 +3,18 @@ import { EOL } from "os";
 import fs from "fs";
 import resolve from "resolve-protobuf-schema";
 
+// see compileRaw in compile.js
+// https://github.com/mapbox/pbf/blob/master/compile.js#L16
+
+// generate typescript based on .proto files
+// generated typescript should be close to generated javascript by pbf
+
+// pbf-ts OPTIONS
+// --no-interface
+// --no-class
+// --uint32=string
+// --single-file --multi-files???
+
 const enums: Set<string> = new Set();
 
 fs.writeFileSync(
