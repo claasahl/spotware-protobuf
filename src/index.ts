@@ -1,2 +1,2 @@
-// happy coding 👻
-console.log("hello world");
+export * from "./OpenApiCommonMessages";
+export * from "./OpenApiMessages";
