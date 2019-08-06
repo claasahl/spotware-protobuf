@@ -65,7 +65,15 @@ export enum ProtoOAPayloadType {
   PROTO_OA_SYMBOL_CATEGORY_RES = 2161,
   PROTO_OA_ACCOUNT_LOGOUT_REQ = 2162,
   PROTO_OA_ACCOUNT_LOGOUT_RES = 2163,
-  PROTO_OA_ACCOUNT_DISCONNECT_EVENT = 2164
+  PROTO_OA_ACCOUNT_DISCONNECT_EVENT = 2164,
+  PROTO_OA_SUBSCRIBE_LIVE_TRENDBAR_RES = 2165,
+  PROTO_OA_UNSUBSCRIBE_LIVE_TRENDBAR_RES = 2166,
+  PROTO_OA_MARGIN_CALL_LIST_REQ = 2167,
+  PROTO_OA_MARGIN_CALL_LIST_RES = 2168,
+  PROTO_OA_MARGIN_CALL_UPDATE_REQ = 2169,
+  PROTO_OA_MARGIN_CALL_UPDATE_RES = 2170,
+  PROTO_OA_MARGIN_CALL_UPDATE_EVENT = 2171,
+  PROTO_OA_MARGIN_CALL_TRIGGER_EVENT = 2172
 }
 
 export enum ProtoOADayOfWeek {
@@ -101,6 +109,11 @@ export enum ProtoOATradingMode {
   DISABLED_WITHOUT_PENDINGS_EXECUTION = 1,
   DISABLED_WITH_PENDINGS_EXECUTION = 2,
   CLOSE_ONLY_MODE = 3
+}
+
+export enum ProtoOASwapCalculationType {
+  POINTS = 0,
+  INTEREST = 1
 }
 
 export enum ProtoOAAccessRights {
@@ -248,6 +261,12 @@ export enum ProtoOAQuoteType {
 export enum ProtoOAClientPermissionScope {
   SCOPE_VIEW = 0,
   SCOPE_TRADE = 1
+}
+
+export enum ProtoOANotificationType {
+  MARGIN_LEVEL_THRESHOLD_1 = 61,
+  MARGIN_LEVEL_THRESHOLD_2 = 62,
+  MARGIN_LEVEL_THRESHOLD_3 = 63
 }
 
 export enum ProtoOAErrorCode {
@@ -2459,6 +2478,43 @@ export class ProtoOASubscribeLiveTrendbarReqUtils {
   }
 }
 
+// ProtoOASubscribeLiveTrendbarRes =============================
+
+export interface ProtoOASubscribeLiveTrendbarRes {
+  payloadType?: ProtoOAPayloadType;
+  ctidTraderAccountId: number;
+}
+
+export class ProtoOASubscribeLiveTrendbarResUtils {
+  static read(pbf: PBF, end?: number) {
+    return pbf.readFields(
+      ProtoOASubscribeLiveTrendbarResUtils._readField,
+      {
+        ctidTraderAccountId: 0
+      },
+      end
+    );
+  }
+
+  private static _readField(
+    tag: number,
+    obj?: ProtoOASubscribeLiveTrendbarRes,
+    pbf?: PBF
+  ) {
+    if (!obj || !pbf) {
+      return;
+    }
+    if (tag === 1) obj.payloadType = pbf.readVarint();
+    if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
+  }
+
+  static write(obj: ProtoOASubscribeLiveTrendbarRes, pbf: PBF = new PBF()) {
+    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
+    if (obj.ctidTraderAccountId)
+      pbf.writeVarintField(2, obj.ctidTraderAccountId);
+  }
+}
+
 // ProtoOAUnsubscribeLiveTrendbarReq ===========================
 
 export interface ProtoOAUnsubscribeLiveTrendbarReq {
@@ -2501,6 +2557,43 @@ export class ProtoOAUnsubscribeLiveTrendbarReqUtils {
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
     if (obj.period) pbf.writeVarintField(3, obj.period);
     if (obj.symbolId) pbf.writeVarintField(4, obj.symbolId);
+  }
+}
+
+// ProtoOAUnsubscribeLiveTrendbarRes ===========================
+
+export interface ProtoOAUnsubscribeLiveTrendbarRes {
+  payloadType?: ProtoOAPayloadType;
+  ctidTraderAccountId: number;
+}
+
+export class ProtoOAUnsubscribeLiveTrendbarResUtils {
+  static read(pbf: PBF, end?: number) {
+    return pbf.readFields(
+      ProtoOAUnsubscribeLiveTrendbarResUtils._readField,
+      {
+        ctidTraderAccountId: 0
+      },
+      end
+    );
+  }
+
+  private static _readField(
+    tag: number,
+    obj?: ProtoOAUnsubscribeLiveTrendbarRes,
+    pbf?: PBF
+  ) {
+    if (!obj || !pbf) {
+      return;
+    }
+    if (tag === 1) obj.payloadType = pbf.readVarint();
+    if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
+  }
+
+  static write(obj: ProtoOAUnsubscribeLiveTrendbarRes, pbf: PBF = new PBF()) {
+    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
+    if (obj.ctidTraderAccountId)
+      pbf.writeVarintField(2, obj.ctidTraderAccountId);
   }
 }
 
@@ -3200,6 +3293,259 @@ export class ProtoOAAccountDisconnectEventUtils {
   }
 }
 
+// ProtoOAMarginCallListReq ====================================
+
+export interface ProtoOAMarginCallListReq {
+  payloadType?: ProtoOAPayloadType;
+  ctidTraderAccountId: number;
+}
+
+export class ProtoOAMarginCallListReqUtils {
+  static read(pbf: PBF, end?: number) {
+    return pbf.readFields(
+      ProtoOAMarginCallListReqUtils._readField,
+      {
+        ctidTraderAccountId: 0
+      },
+      end
+    );
+  }
+
+  private static _readField(
+    tag: number,
+    obj?: ProtoOAMarginCallListReq,
+    pbf?: PBF
+  ) {
+    if (!obj || !pbf) {
+      return;
+    }
+    if (tag === 1) obj.payloadType = pbf.readVarint();
+    if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
+  }
+
+  static write(obj: ProtoOAMarginCallListReq, pbf: PBF = new PBF()) {
+    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
+    if (obj.ctidTraderAccountId)
+      pbf.writeVarintField(2, obj.ctidTraderAccountId);
+  }
+}
+
+// ProtoOAMarginCallListRes ====================================
+
+export interface ProtoOAMarginCallListRes {
+  payloadType?: ProtoOAPayloadType;
+  marginCall: ProtoOAMarginCall[];
+}
+
+export class ProtoOAMarginCallListResUtils {
+  static read(pbf: PBF, end?: number) {
+    return pbf.readFields(
+      ProtoOAMarginCallListResUtils._readField,
+      {
+        marginCall: []
+      },
+      end
+    );
+  }
+
+  private static _readField(
+    tag: number,
+    obj?: ProtoOAMarginCallListRes,
+    pbf?: PBF
+  ) {
+    if (!obj || !pbf) {
+      return;
+    }
+    if (tag === 1) obj.payloadType = pbf.readVarint();
+    if (tag === 2)
+      obj.marginCall.push(
+        ProtoOAMarginCallUtils.read(pbf, pbf.readVarint() + pbf.pos)
+      );
+  }
+
+  static write(obj: ProtoOAMarginCallListRes, pbf: PBF = new PBF()) {
+    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
+    if (obj.marginCall)
+      obj.marginCall.forEach(marginCall =>
+        pbf.writeMessage(2, ProtoOAMarginCallUtils.write, marginCall)
+      );
+  }
+}
+
+// ProtoOAMarginCallUpdateReq ==================================
+
+export interface ProtoOAMarginCallUpdateReq {
+  payloadType?: ProtoOAPayloadType;
+  ctidTraderAccountId: number;
+  marginCall: ProtoOAMarginCall;
+}
+
+export class ProtoOAMarginCallUpdateReqUtils {
+  static read(pbf: PBF, end?: number) {
+    return pbf.readFields(
+      ProtoOAMarginCallUpdateReqUtils._readField,
+      {
+        ctidTraderAccountId: 0,
+        marginCall: {
+          marginCallType: ProtoOANotificationType.MARGIN_LEVEL_THRESHOLD_1,
+          marginLevelThreshold: 0
+        }
+      },
+      end
+    );
+  }
+
+  private static _readField(
+    tag: number,
+    obj?: ProtoOAMarginCallUpdateReq,
+    pbf?: PBF
+  ) {
+    if (!obj || !pbf) {
+      return;
+    }
+    if (tag === 1) obj.payloadType = pbf.readVarint();
+    if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
+    if (tag === 3)
+      obj.marginCall = ProtoOAMarginCallUtils.read(
+        pbf,
+        pbf.readVarint() + pbf.pos
+      );
+  }
+
+  static write(obj: ProtoOAMarginCallUpdateReq, pbf: PBF = new PBF()) {
+    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
+    if (obj.ctidTraderAccountId)
+      pbf.writeVarintField(2, obj.ctidTraderAccountId);
+    if (obj.marginCall)
+      pbf.writeMessage(3, ProtoOAMarginCallUtils.write, obj.marginCall);
+  }
+}
+
+// ProtoOAMarginCallUpdateRes ==================================
+
+export interface ProtoOAMarginCallUpdateRes {
+  payloadType?: ProtoOAPayloadType;
+}
+
+export class ProtoOAMarginCallUpdateResUtils {
+  static read(pbf: PBF, end?: number) {
+    return pbf.readFields(ProtoOAMarginCallUpdateResUtils._readField, {}, end);
+  }
+
+  private static _readField(
+    tag: number,
+    obj?: ProtoOAMarginCallUpdateRes,
+    pbf?: PBF
+  ) {
+    if (!obj || !pbf) {
+      return;
+    }
+    if (tag === 1) obj.payloadType = pbf.readVarint();
+  }
+
+  static write(obj: ProtoOAMarginCallUpdateRes, pbf: PBF = new PBF()) {
+    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
+  }
+}
+
+// ProtoOAMarginCallUpdateEvent ================================
+
+export interface ProtoOAMarginCallUpdateEvent {
+  payloadType?: ProtoOAPayloadType;
+  ctidTraderAccountId: number;
+  marginCall: ProtoOAMarginCall;
+}
+
+export class ProtoOAMarginCallUpdateEventUtils {
+  static read(pbf: PBF, end?: number) {
+    return pbf.readFields(
+      ProtoOAMarginCallUpdateEventUtils._readField,
+      {
+        ctidTraderAccountId: 0,
+        marginCall: {
+          marginCallType: ProtoOANotificationType.MARGIN_LEVEL_THRESHOLD_1,
+          marginLevelThreshold: 0
+        }
+      },
+      end
+    );
+  }
+
+  private static _readField(
+    tag: number,
+    obj?: ProtoOAMarginCallUpdateEvent,
+    pbf?: PBF
+  ) {
+    if (!obj || !pbf) {
+      return;
+    }
+    if (tag === 1) obj.payloadType = pbf.readVarint();
+    if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
+    if (tag === 3)
+      obj.marginCall = ProtoOAMarginCallUtils.read(
+        pbf,
+        pbf.readVarint() + pbf.pos
+      );
+  }
+
+  static write(obj: ProtoOAMarginCallUpdateEvent, pbf: PBF = new PBF()) {
+    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
+    if (obj.ctidTraderAccountId)
+      pbf.writeVarintField(2, obj.ctidTraderAccountId);
+    if (obj.marginCall)
+      pbf.writeMessage(3, ProtoOAMarginCallUtils.write, obj.marginCall);
+  }
+}
+
+// ProtoOAMarginCallTriggerEvent ===============================
+
+export interface ProtoOAMarginCallTriggerEvent {
+  payloadType?: ProtoOAPayloadType;
+  ctidTraderAccountId: number;
+  marginCall: ProtoOAMarginCall;
+}
+
+export class ProtoOAMarginCallTriggerEventUtils {
+  static read(pbf: PBF, end?: number) {
+    return pbf.readFields(
+      ProtoOAMarginCallTriggerEventUtils._readField,
+      {
+        ctidTraderAccountId: 0,
+        marginCall: {
+          marginCallType: ProtoOANotificationType.MARGIN_LEVEL_THRESHOLD_1,
+          marginLevelThreshold: 0
+        }
+      },
+      end
+    );
+  }
+
+  private static _readField(
+    tag: number,
+    obj?: ProtoOAMarginCallTriggerEvent,
+    pbf?: PBF
+  ) {
+    if (!obj || !pbf) {
+      return;
+    }
+    if (tag === 1) obj.payloadType = pbf.readVarint();
+    if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
+    if (tag === 3)
+      obj.marginCall = ProtoOAMarginCallUtils.read(
+        pbf,
+        pbf.readVarint() + pbf.pos
+      );
+  }
+
+  static write(obj: ProtoOAMarginCallTriggerEvent, pbf: PBF = new PBF()) {
+    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
+    if (obj.ctidTraderAccountId)
+      pbf.writeVarintField(2, obj.ctidTraderAccountId);
+    if (obj.marginCall)
+      pbf.writeMessage(3, ProtoOAMarginCallUtils.write, obj.marginCall);
+  }
+}
+
 // ProtoOAAsset ================================================
 
 export interface ProtoOAAsset {
@@ -3267,6 +3613,7 @@ export interface ProtoOASymbol {
   scheduleTimeZone?: string;
   tradingMode?: ProtoOATradingMode;
   rolloverCommission3Days?: ProtoOADayOfWeek;
+  swapCalculationType?: ProtoOASwapCalculationType;
 }
 
 export class ProtoOASymbolUtils {
@@ -3319,6 +3666,7 @@ export class ProtoOASymbolUtils {
     if (tag === 26) obj.scheduleTimeZone = pbf.readString();
     if (tag === 27) obj.tradingMode = pbf.readVarint();
     if (tag === 28) obj.rolloverCommission3Days = pbf.readVarint();
+    if (tag === 29) obj.swapCalculationType = pbf.readVarint();
   }
 
   static write(obj: ProtoOASymbol, pbf: PBF = new PBF()) {
@@ -3358,6 +3706,8 @@ export class ProtoOASymbolUtils {
     if (obj.tradingMode) pbf.writeVarintField(27, obj.tradingMode);
     if (obj.rolloverCommission3Days)
       pbf.writeVarintField(28, obj.rolloverCommission3Days);
+    if (obj.swapCalculationType)
+      pbf.writeVarintField(29, obj.swapCalculationType);
   }
 }
 
@@ -4328,5 +4678,43 @@ export class ProtoOADepthQuoteUtils {
     if (obj.size) pbf.writeVarintField(3, obj.size);
     if (obj.bid) pbf.writeVarintField(4, obj.bid);
     if (obj.ask) pbf.writeVarintField(5, obj.ask);
+  }
+}
+
+// ProtoOAMarginCall ===========================================
+
+export interface ProtoOAMarginCall {
+  marginCallType: ProtoOANotificationType;
+  marginLevelThreshold: number;
+  utcLastUpdateTimestamp?: number;
+}
+
+export class ProtoOAMarginCallUtils {
+  static read(pbf: PBF, end?: number) {
+    return pbf.readFields(
+      ProtoOAMarginCallUtils._readField,
+      {
+        marginCallType: ProtoOANotificationType.MARGIN_LEVEL_THRESHOLD_1,
+        marginLevelThreshold: 0
+      },
+      end
+    );
+  }
+
+  private static _readField(tag: number, obj?: ProtoOAMarginCall, pbf?: PBF) {
+    if (!obj || !pbf) {
+      return;
+    }
+    if (tag === 1) obj.marginCallType = pbf.readVarint();
+    if (tag === 2) obj.marginLevelThreshold = pbf.readDouble();
+    if (tag === 3) obj.utcLastUpdateTimestamp = pbf.readVarint64();
+  }
+
+  static write(obj: ProtoOAMarginCall, pbf: PBF = new PBF()) {
+    if (obj.marginCallType) pbf.writeVarintField(1, obj.marginCallType);
+    if (obj.marginLevelThreshold)
+      pbf.writeDoubleField(2, obj.marginLevelThreshold);
+    if (obj.utcLastUpdateTimestamp)
+      pbf.writeVarintField(3, obj.utcLastUpdateTimestamp);
   }
 }
