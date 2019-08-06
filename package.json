@@ -1,6 +1,6 @@
 {
   "name": "@claasahl/spotware-protobuf",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "This package bundles .proto files for 'Spotware Open API V2', including their respective JS/TS classes.",
   "main": "build/index.js",
   "scripts": {
