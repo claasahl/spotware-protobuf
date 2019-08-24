@@ -4,8 +4,6 @@ on:
   push:
     branches: # Array of patterns that match refs/heads
       - master # Push events on master branch
-    tags: # Array of patterns that match refs/tags.
-      - v* # Push events to v1 tag
 
 jobs:
   deploy:
