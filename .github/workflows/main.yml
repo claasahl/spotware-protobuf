@@ -20,9 +20,6 @@ jobs:
       - run: echo "//registry.npmjs.org/:_authToken=${NPM_DEPLOY_TOKEN}" > ~/.npmrc
         env:
           NPM_DEPLOY_TOKEN: ${{ secrets.NPM_DEPLOY_TOKEN }}
-      - run: cat ~/.npmrc
       - run: npm install
       - run: npm test
       - run: npm publish --access public
-        env:
-          NPM_DEPLOY_TOKEN: ${{ secrets.NPM_DEPLOY_TOKEN }}
