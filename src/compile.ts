@@ -19,11 +19,11 @@ const enums: Set<string> = new Set();
 
 fs.writeFileSync(
   "./src/OpenApiCommonMessages.ts",
-  compile(resolve.sync("./protobuf/6.2 (Beta)/OpenApiCommonMessages.proto"))
+  compile(resolve.sync("./protobuf/6.4 (Beta)/OpenApiCommonMessages.proto"))
 );
 fs.writeFileSync(
   "./src/OpenApiMessages.ts",
-  compile(resolve.sync("./protobuf/6.2 (Beta)/OpenApiMessages.proto"))
+  compile(resolve.sync("./protobuf/6.4 (Beta)/OpenApiMessages.proto"))
 );
 
 function compile(schema: Schema): string {

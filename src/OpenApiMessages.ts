@@ -2389,6 +2389,7 @@ export interface ProtoOASpotEvent {
   bid?: number;
   ask?: number;
   trendbar: ProtoOATrendbar[];
+  sessionClose?: number;
 }
 
 export class ProtoOASpotEventUtils {
@@ -2417,6 +2418,7 @@ export class ProtoOASpotEventUtils {
       obj.trendbar.push(
         ProtoOATrendbarUtils.read(pbf, pbf.readVarint() + pbf.pos)
       );
+    if (tag === 7) obj.sessionClose = pbf.readVarint64();
   }
 
   static write(obj: ProtoOASpotEvent, pbf: PBF = new PBF()) {
@@ -2430,6 +2432,7 @@ export class ProtoOASpotEventUtils {
       obj.trendbar.forEach(trendbar =>
         pbf.writeMessage(6, ProtoOATrendbarUtils.write, trendbar)
       );
+    if (obj.sessionClose) pbf.writeVarintField(7, obj.sessionClose);
   }
 }
 
@@ -3614,6 +3617,7 @@ export interface ProtoOASymbol {
   tradingMode?: ProtoOATradingMode;
   rolloverCommission3Days?: ProtoOADayOfWeek;
   swapCalculationType?: ProtoOASwapCalculationType;
+  lotSize?: number;
 }
 
 export class ProtoOASymbolUtils {
@@ -3667,6 +3671,7 @@ export class ProtoOASymbolUtils {
     if (tag === 27) obj.tradingMode = pbf.readVarint();
     if (tag === 28) obj.rolloverCommission3Days = pbf.readVarint();
     if (tag === 29) obj.swapCalculationType = pbf.readVarint();
+    if (tag === 30) obj.lotSize = pbf.readVarint64();
   }
 
   static write(obj: ProtoOASymbol, pbf: PBF = new PBF()) {
@@ -3708,6 +3713,7 @@ export class ProtoOASymbolUtils {
       pbf.writeVarintField(28, obj.rolloverCommission3Days);
     if (obj.swapCalculationType)
       pbf.writeVarintField(29, obj.swapCalculationType);
+    if (obj.lotSize) pbf.writeVarintField(30, obj.lotSize);
   }
 }
 
