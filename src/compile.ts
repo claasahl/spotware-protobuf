@@ -1,7 +1,9 @@
 import { Schema, Message, Field, Enum } from "protocol-buffers-schema/types";
 import { EOL } from "os";
 import fs from "fs";
+import path from "path";
 import resolve from "resolve-protobuf-schema";
+import semver from "semver";
 
 // see compileRaw in compile.js
 // https://github.com/mapbox/pbf/blob/master/compile.js#L16
@@ -17,13 +19,44 @@ import resolve from "resolve-protobuf-schema";
 
 const enums: Set<string> = new Set();
 
+const dir = "./protobuf";
+const versions = fs.readdirSync(dir).filter(v => v.includes("Beta"));
+if (versions.length !== 1) {
+  throw new Error(
+    `Could not find latest 'Beta' version. ${versions.length} matching.`
+  );
+}
+const protoDir = path.join(dir, versions[0]);
+
+const pkg = JSON.parse(fs.readFileSync("./package.json").toString());
+const newVersion = semver.coerce(versions[0].split(" ")[0]);
+const oldVersion = semver.coerce(pkg.version);
+if (!newVersion || !oldVersion) {
+  throw new Error(
+    `encountered invalid version number (old: ${pkg.version}; new: ${
+      versions[0].split(" ")[0]
+    })`
+  );
+} else if (semver.gt(newVersion, oldVersion)) {
+  pkg.version = newVersion.raw;
+} else if (semver.satisfies(newVersion, `^${pkg.version}`)) {
+  pkg.version = semver.patch(pkg.version);
+} else {
+  throw new Error(
+    `lastest 'Beta' version has a lower major version number (old: ${
+      pkg.version
+    }; new: ${versions[0].split(" ")[0]})`
+  );
+}
+fs.writeFileSync("./package.json", JSON.stringify(pkg, null, 2));
+
 fs.writeFileSync(
   "./src/OpenApiCommonMessages.ts",
-  compile(resolve.sync("./protobuf/6.4 (Beta)/OpenApiCommonMessages.proto"))
+  compile(resolve.sync(path.join(protoDir, "OpenApiCommonMessages.proto")))
 );
 fs.writeFileSync(
   "./src/OpenApiMessages.ts",
-  compile(resolve.sync("./protobuf/6.4 (Beta)/OpenApiMessages.proto"))
+  compile(resolve.sync(path.join(protoDir, "OpenApiMessages.proto")))
 );
 
 function compile(schema: Schema): string {
