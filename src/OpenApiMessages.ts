@@ -73,7 +73,9 @@ export enum ProtoOAPayloadType {
   PROTO_OA_MARGIN_CALL_UPDATE_REQ = 2169,
   PROTO_OA_MARGIN_CALL_UPDATE_RES = 2170,
   PROTO_OA_MARGIN_CALL_UPDATE_EVENT = 2171,
-  PROTO_OA_MARGIN_CALL_TRIGGER_EVENT = 2172
+  PROTO_OA_MARGIN_CALL_TRIGGER_EVENT = 2172,
+  PROTO_OA_REFRESH_TOKEN_REQ = 2173,
+  PROTO_OA_REFRESH_TOKEN_RES = 2174
 }
 
 export enum ProtoOADayOfWeek {
@@ -309,6 +311,12 @@ export enum ProtoOAErrorCode {
   UNABLE_TO_CANCEL_ORDER = 134,
   UNABLE_TO_AMEND_ORDER = 135,
   SHORT_SELLING_NOT_ALLOWED = 136
+}
+
+export enum ProtoOALimitedRiskMarginCalculationStrategy {
+  ACCORDING_TO_LEVERAGE = 0,
+  ACCORDING_TO_GSL = 1,
+  ACCORDING_TO_GSL_AND_LEVERAGE = 2
 }
 
 // ProtoOAApplicationAuthReq ===================================
@@ -2222,6 +2230,90 @@ export class ProtoOAGetAccountListByAccessTokenResUtils {
   }
 }
 
+// ProtoOARefreshTokenReq ======================================
+
+export interface ProtoOARefreshTokenReq {
+  payloadType?: ProtoOAPayloadType;
+  refreshToken: string;
+}
+
+export class ProtoOARefreshTokenReqUtils {
+  static read(pbf: PBF, end?: number) {
+    return pbf.readFields(
+      ProtoOARefreshTokenReqUtils._readField,
+      {
+        refreshToken: ""
+      },
+      end
+    );
+  }
+
+  private static _readField(
+    tag: number,
+    obj?: ProtoOARefreshTokenReq,
+    pbf?: PBF
+  ) {
+    if (!obj || !pbf) {
+      return;
+    }
+    if (tag === 1) obj.payloadType = pbf.readVarint();
+    if (tag === 2) obj.refreshToken = pbf.readString();
+  }
+
+  static write(obj: ProtoOARefreshTokenReq, pbf: PBF = new PBF()) {
+    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
+    if (obj.refreshToken) pbf.writeStringField(2, obj.refreshToken);
+  }
+}
+
+// ProtoOARefreshTokenRes ======================================
+
+export interface ProtoOARefreshTokenRes {
+  payloadType?: ProtoOAPayloadType;
+  accessToken: string;
+  tokenType: string;
+  expiresIn: number;
+  refreshToken: string;
+}
+
+export class ProtoOARefreshTokenResUtils {
+  static read(pbf: PBF, end?: number) {
+    return pbf.readFields(
+      ProtoOARefreshTokenResUtils._readField,
+      {
+        accessToken: "",
+        tokenType: "",
+        expiresIn: 0,
+        refreshToken: ""
+      },
+      end
+    );
+  }
+
+  private static _readField(
+    tag: number,
+    obj?: ProtoOARefreshTokenRes,
+    pbf?: PBF
+  ) {
+    if (!obj || !pbf) {
+      return;
+    }
+    if (tag === 1) obj.payloadType = pbf.readVarint();
+    if (tag === 2) obj.accessToken = pbf.readString();
+    if (tag === 3) obj.tokenType = pbf.readString();
+    if (tag === 4) obj.expiresIn = pbf.readVarint64();
+    if (tag === 5) obj.refreshToken = pbf.readString();
+  }
+
+  static write(obj: ProtoOARefreshTokenRes, pbf: PBF = new PBF()) {
+    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
+    if (obj.accessToken) pbf.writeStringField(2, obj.accessToken);
+    if (obj.tokenType) pbf.writeStringField(3, obj.tokenType);
+    if (obj.expiresIn) pbf.writeVarintField(4, obj.expiresIn);
+    if (obj.refreshToken) pbf.writeStringField(5, obj.refreshToken);
+  }
+}
+
 // ProtoOASubscribeSpotsReq ====================================
 
 export interface ProtoOASubscribeSpotsReq {
@@ -3858,6 +3950,8 @@ export interface ProtoOATrader {
   accountType?: ProtoOAAccountType;
   brokerName?: string;
   registrationTimestamp?: number;
+  isLimitedRisk?: boolean;
+  limitedRiskMarginCalculationStrategy?: ProtoOALimitedRiskMarginCalculationStrategy;
 }
 
 export class ProtoOATraderUtils {
@@ -3894,6 +3988,8 @@ export class ProtoOATraderUtils {
     if (tag === 15) obj.accountType = pbf.readVarint();
     if (tag === 16) obj.brokerName = pbf.readString();
     if (tag === 17) obj.registrationTimestamp = pbf.readVarint64();
+    if (tag === 18) obj.isLimitedRisk = pbf.readBoolean();
+    if (tag === 19) obj.limitedRiskMarginCalculationStrategy = pbf.readVarint();
   }
 
   static write(obj: ProtoOATrader, pbf: PBF = new PBF()) {
@@ -3918,6 +4014,9 @@ export class ProtoOATraderUtils {
     if (obj.brokerName) pbf.writeStringField(16, obj.brokerName);
     if (obj.registrationTimestamp)
       pbf.writeVarintField(17, obj.registrationTimestamp);
+    if (obj.isLimitedRisk) pbf.writeBooleanField(18, obj.isLimitedRisk);
+    if (obj.limitedRiskMarginCalculationStrategy)
+      pbf.writeVarintField(19, obj.limitedRiskMarginCalculationStrategy);
   }
 }
 
