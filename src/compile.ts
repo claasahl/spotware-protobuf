@@ -37,10 +37,8 @@ if (!newVersion || !oldVersion) {
       versions[0].split(" ")[0]
     })`
   );
-} else if (semver.gt(newVersion, oldVersion)) {
+} else if (semver.gte(newVersion, oldVersion)) {
   pkg.version = newVersion.raw;
-} else if (semver.satisfies(newVersion, `^${pkg.version}`)) {
-  pkg.version = semver.patch(pkg.version);
 } else {
   throw new Error(
     `lastest 'Beta' version has a lower major version number (old: ${
