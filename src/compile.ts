@@ -40,7 +40,9 @@ if (!newVersion || !oldVersion) {
       versions[0].split(" ")[0]
     })`
   );
-} else if (semver.gte(newVersion, oldVersion)) {
+} else if (
+  semver.satisfies(newVersion, `${oldVersion.major}.${oldVersion.minor}`)
+) {
   pkg.version = newVersion.raw;
 } else {
   throw new Error(
