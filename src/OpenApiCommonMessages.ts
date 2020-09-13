@@ -3,7 +3,7 @@ import PBF from "pbf";
 export enum ProtoPayloadType {
   PROTO_MESSAGE = 5,
   ERROR_RES = 50,
-  HEARTBEAT_EVENT = 51
+  HEARTBEAT_EVENT = 51,
 }
 
 export enum ProtoErrorCode {
@@ -16,7 +16,7 @@ export enum ProtoErrorCode {
   FRAME_TOO_LONG = 8,
   MARKET_CLOSED = 9,
   CONCURRENT_MODIFICATION = 10,
-  BLOCKED_PAYLOAD_TYPE = 11
+  BLOCKED_PAYLOAD_TYPE = 11,
 }
 
 // ProtoMessage ================================================
@@ -32,7 +32,7 @@ export class ProtoMessageUtils {
     return pbf.readFields(
       ProtoMessageUtils._readField,
       {
-        payloadType: 0
+        payloadType: 0,
       },
       end
     );
@@ -68,7 +68,7 @@ export class ProtoErrorResUtils {
     return pbf.readFields(
       ProtoErrorResUtils._readField,
       {
-        errorCode: ""
+        errorCode: "",
       },
       end
     );

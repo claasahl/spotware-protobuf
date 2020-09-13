@@ -20,9 +20,9 @@ import semver from "semver";
 const enums: Set<string> = new Set();
 
 const dir = "./protobuf";
-const versions = fs.readdirSync(dir).filter(v => v.includes("Beta"));
+const versions = fs.readdirSync(dir).filter((v) => v.includes("Beta"));
 if (versions.length === 0) {
-  versions.push(...fs.readdirSync(dir).filter(v => v.includes("Current")));
+  versions.push(...fs.readdirSync(dir).filter((v) => v.includes("Current")));
 }
 if (versions.length !== 1) {
   throw new Error(
@@ -62,11 +62,11 @@ fs.writeFileSync(
 
 function compile(schema: Schema): string {
   const lines: string[] = ['import PBF from "pbf";', ""];
-  schema.enums.map(entry => entry.name).forEach(a => enums.add(a));
-  schema.enums.forEach(protoEnum =>
+  schema.enums.map((entry) => entry.name).forEach((a) => enums.add(a));
+  schema.enums.forEach((protoEnum) =>
     lines.push(compileEnum(protoEnum, { type: "global" }))
   );
-  schema.messages.map(compileMessage).forEach(code => lines.push(...code));
+  schema.messages.map(compileMessage).forEach((code) => lines.push(...code));
   return lines.join(EOL);
 }
 
@@ -99,7 +99,7 @@ function compileMessage(protoMessage: Message): string[] {
 function compileMessageInterface(protoMessage: Message): string[] {
   const lines: string[] = [];
   lines.push(`export interface ${protoMessage.name} {`);
-  protoMessage.fields.forEach(field =>
+  protoMessage.fields.forEach((field) =>
     lines.push(
       `  ${field.name}${field.required || field.repeated ? "" : "?"}: ${mapType(
         field
@@ -125,8 +125,8 @@ function compileReadMethod(protoMessage: Message): string[] {
   lines.push("    return pbf.readFields(");
   lines.push(`      ${protoMessage.name}Utils._readField,`, "      {");
   protoMessage.fields
-    .filter(field => field.required || field.repeated)
-    .forEach(field =>
+    .filter((field) => field.required || field.repeated)
+    .forEach((field) =>
       lines.push(`      ${field.name}: ${defaultValue(field)},`)
     );
   lines.push("      },", "      end", "    );");
@@ -138,7 +138,7 @@ function compileReadMethod(protoMessage: Message): string[] {
   lines.push("if(!obj || !pbf) {");
   lines.push("return;");
   lines.push("}");
-  protoMessage.fields.forEach(field =>
+  protoMessage.fields.forEach((field) =>
     lines.push(`if (tag === ${field.tag}) ${mapReadMethod(field)};`)
   );
   lines.push("}", "");
@@ -148,7 +148,7 @@ function compileReadMethod(protoMessage: Message): string[] {
 function compileWriteMethod(protoMessage: Message): string[] {
   const lines: string[] = [];
   lines.push(`static write(obj: ${protoMessage.name}, pbf: PBF = new PBF()) {`);
-  protoMessage.fields.forEach(field =>
+  protoMessage.fields.forEach((field) =>
     lines.push(`if (obj.${field.name}) ${mapWriteMethod(field)}`)
   );
   lines.push("}", "");
