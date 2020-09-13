@@ -90,9 +90,9 @@ export enum ProtoOADayOfWeek {
 }
 
 export enum ProtoOACommissionType {
-  USD_PER_MIL_USD = 1,
+  USD_PER_MILLION_USD = 1,
   USD_PER_LOT = 2,
-  PERCENTAGE = 3,
+  PERCENTAGE_OF_VALUE = 3,
   QUOTE_CCY_PER_LOT = 4
 }
 
@@ -114,8 +114,8 @@ export enum ProtoOATradingMode {
 }
 
 export enum ProtoOASwapCalculationType {
-  POINTS = 0,
-  INTEREST = 1
+  PIPS = 0,
+  PERCENTAGE = 1
 }
 
 export enum ProtoOAAccessRights {
@@ -1966,6 +1966,7 @@ export interface ProtoOAExpectedMarginRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   margin: ProtoOAExpectedMargin[];
+  moneyDigits?: number;
 }
 
 export class ProtoOAExpectedMarginResUtils {
@@ -1994,6 +1995,7 @@ export class ProtoOAExpectedMarginResUtils {
       obj.margin.push(
         ProtoOAExpectedMarginUtils.read(pbf, pbf.readVarint() + pbf.pos)
       );
+    if (tag === 4) obj.moneyDigits = pbf.readVarint();
   }
 
   static write(obj: ProtoOAExpectedMarginRes, pbf: PBF = new PBF()) {
@@ -2004,6 +2006,7 @@ export class ProtoOAExpectedMarginResUtils {
       obj.margin.forEach(margin =>
         pbf.writeMessage(3, ProtoOAExpectedMarginUtils.write, margin)
       );
+    if (obj.moneyDigits) pbf.writeVarintField(4, obj.moneyDigits);
   }
 }
 
@@ -2014,6 +2017,7 @@ export interface ProtoOAMarginChangedEvent {
   ctidTraderAccountId: number;
   positionId: number;
   usedMargin: number;
+  moneyDigits?: number;
 }
 
 export class ProtoOAMarginChangedEventUtils {
@@ -2041,6 +2045,7 @@ export class ProtoOAMarginChangedEventUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
     if (tag === 3) obj.positionId = pbf.readVarint64();
     if (tag === 4) obj.usedMargin = pbf.readVarint64();
+    if (tag === 5) obj.moneyDigits = pbf.readVarint();
   }
 
   static write(obj: ProtoOAMarginChangedEvent, pbf: PBF = new PBF()) {
@@ -2049,6 +2054,7 @@ export class ProtoOAMarginChangedEventUtils {
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
     if (obj.positionId) pbf.writeVarintField(3, obj.positionId);
     if (obj.usedMargin) pbf.writeVarintField(4, obj.usedMargin);
+    if (obj.moneyDigits) pbf.writeVarintField(5, obj.moneyDigits);
   }
 }
 
@@ -3656,6 +3662,7 @@ export interface ProtoOAAsset {
   assetId: number;
   name: string;
   displayName?: string;
+  digits?: number;
 }
 
 export class ProtoOAAssetUtils {
@@ -3677,12 +3684,14 @@ export class ProtoOAAssetUtils {
     if (tag === 1) obj.assetId = pbf.readVarint64();
     if (tag === 2) obj.name = pbf.readString();
     if (tag === 3) obj.displayName = pbf.readString();
+    if (tag === 4) obj.digits = pbf.readVarint();
   }
 
   static write(obj: ProtoOAAsset, pbf: PBF = new PBF()) {
     if (obj.assetId) pbf.writeVarintField(1, obj.assetId);
     if (obj.name) pbf.writeStringField(2, obj.name);
     if (obj.displayName) pbf.writeStringField(3, obj.displayName);
+    if (obj.digits) pbf.writeVarintField(4, obj.digits);
   }
 }
 
@@ -3702,7 +3711,7 @@ export interface ProtoOASymbol {
   stepVolume?: number;
   maxExposure?: number;
   schedule: ProtoOAInterval[];
-  commission: number;
+  commission?: number;
   commissionType?: ProtoOACommissionType;
   slDistance?: number;
   tpDistance?: number;
@@ -3719,6 +3728,8 @@ export interface ProtoOASymbol {
   rolloverCommission3Days?: ProtoOADayOfWeek;
   swapCalculationType?: ProtoOASwapCalculationType;
   lotSize?: number;
+  preciseTradingCommissionRate?: number;
+  preciseMinCommission?: number;
 }
 
 export class ProtoOASymbolUtils {
@@ -3729,8 +3740,7 @@ export class ProtoOASymbolUtils {
         symbolId: 0,
         digits: 0,
         pipPosition: 0,
-        schedule: [],
-        commission: 0
+        schedule: []
       },
       end
     );
@@ -3773,6 +3783,8 @@ export class ProtoOASymbolUtils {
     if (tag === 28) obj.rolloverCommission3Days = pbf.readVarint();
     if (tag === 29) obj.swapCalculationType = pbf.readVarint();
     if (tag === 30) obj.lotSize = pbf.readVarint64();
+    if (tag === 31) obj.preciseTradingCommissionRate = pbf.readVarint64();
+    if (tag === 32) obj.preciseMinCommission = pbf.readVarint64();
   }
 
   static write(obj: ProtoOASymbol, pbf: PBF = new PBF()) {
@@ -3815,6 +3827,10 @@ export class ProtoOASymbolUtils {
     if (obj.swapCalculationType)
       pbf.writeVarintField(29, obj.swapCalculationType);
     if (obj.lotSize) pbf.writeVarintField(30, obj.lotSize);
+    if (obj.preciseTradingCommissionRate)
+      pbf.writeVarintField(31, obj.preciseTradingCommissionRate);
+    if (obj.preciseMinCommission)
+      pbf.writeVarintField(32, obj.preciseMinCommission);
   }
 }
 
@@ -3961,6 +3977,7 @@ export interface ProtoOATrader {
   registrationTimestamp?: number;
   isLimitedRisk?: boolean;
   limitedRiskMarginCalculationStrategy?: ProtoOALimitedRiskMarginCalculationStrategy;
+  moneyDigits?: number;
 }
 
 export class ProtoOATraderUtils {
@@ -3999,6 +4016,7 @@ export class ProtoOATraderUtils {
     if (tag === 17) obj.registrationTimestamp = pbf.readVarint64();
     if (tag === 18) obj.isLimitedRisk = pbf.readBoolean();
     if (tag === 19) obj.limitedRiskMarginCalculationStrategy = pbf.readVarint();
+    if (tag === 20) obj.moneyDigits = pbf.readVarint();
   }
 
   static write(obj: ProtoOATrader, pbf: PBF = new PBF()) {
@@ -4026,6 +4044,7 @@ export class ProtoOATraderUtils {
     if (obj.isLimitedRisk) pbf.writeBooleanField(18, obj.isLimitedRisk);
     if (obj.limitedRiskMarginCalculationStrategy)
       pbf.writeVarintField(19, obj.limitedRiskMarginCalculationStrategy);
+    if (obj.moneyDigits) pbf.writeVarintField(20, obj.moneyDigits);
   }
 }
 
@@ -4046,6 +4065,7 @@ export interface ProtoOAPosition {
   guaranteedStopLoss?: boolean;
   usedMargin?: number;
   stopLossTriggerMethod?: ProtoOAOrderTriggerMethod;
+  moneyDigits?: number;
 }
 
 export class ProtoOAPositionUtils {
@@ -4084,6 +4104,7 @@ export class ProtoOAPositionUtils {
     if (tag === 12) obj.guaranteedStopLoss = pbf.readBoolean();
     if (tag === 13) obj.usedMargin = pbf.readVarint64();
     if (tag === 14) obj.stopLossTriggerMethod = pbf.readVarint();
+    if (tag === 15) obj.moneyDigits = pbf.readVarint();
   }
 
   static write(obj: ProtoOAPosition, pbf: PBF = new PBF()) {
@@ -4106,6 +4127,7 @@ export class ProtoOAPositionUtils {
     if (obj.usedMargin) pbf.writeVarintField(13, obj.usedMargin);
     if (obj.stopLossTriggerMethod)
       pbf.writeVarintField(14, obj.stopLossTriggerMethod);
+    if (obj.moneyDigits) pbf.writeVarintField(15, obj.moneyDigits);
   }
 }
 
@@ -4182,6 +4204,7 @@ export interface ProtoOAOrder {
   isStopOut?: boolean;
   trailingStopLoss?: boolean;
   stopTriggerMethod?: ProtoOAOrderTriggerMethod;
+  moneyDigits?: number;
 }
 
 export class ProtoOAOrderUtils {
@@ -4229,6 +4252,7 @@ export class ProtoOAOrderUtils {
     if (tag === 22) obj.isStopOut = pbf.readBoolean();
     if (tag === 23) obj.trailingStopLoss = pbf.readBoolean();
     if (tag === 24) obj.stopTriggerMethod = pbf.readVarint();
+    if (tag === 25) obj.moneyDigits = pbf.readVarint();
   }
 
   static write(obj: ProtoOAOrder, pbf: PBF = new PBF()) {
@@ -4259,6 +4283,7 @@ export class ProtoOAOrderUtils {
     if (obj.isStopOut) pbf.writeBooleanField(22, obj.isStopOut);
     if (obj.trailingStopLoss) pbf.writeBooleanField(23, obj.trailingStopLoss);
     if (obj.stopTriggerMethod) pbf.writeVarintField(24, obj.stopTriggerMethod);
+    if (obj.moneyDigits) pbf.writeVarintField(25, obj.moneyDigits);
   }
 }
 
@@ -4274,6 +4299,7 @@ export interface ProtoOABonusDepositWithdraw {
   changeBonusTimestamp: number;
   externalNote?: string;
   introducingBrokerId?: number;
+  moneyDigits?: number;
 }
 
 export class ProtoOABonusDepositWithdrawUtils {
@@ -4310,6 +4336,7 @@ export class ProtoOABonusDepositWithdrawUtils {
     if (tag === 7) obj.changeBonusTimestamp = pbf.readVarint64();
     if (tag === 8) obj.externalNote = pbf.readString();
     if (tag === 9) obj.introducingBrokerId = pbf.readVarint64();
+    if (tag === 10) obj.moneyDigits = pbf.readVarint();
   }
 
   static write(obj: ProtoOABonusDepositWithdraw, pbf: PBF = new PBF()) {
@@ -4324,6 +4351,7 @@ export class ProtoOABonusDepositWithdrawUtils {
     if (obj.externalNote) pbf.writeStringField(8, obj.externalNote);
     if (obj.introducingBrokerId)
       pbf.writeVarintField(9, obj.introducingBrokerId);
+    if (obj.moneyDigits) pbf.writeVarintField(10, obj.moneyDigits);
   }
 }
 
@@ -4338,6 +4366,7 @@ export interface ProtoOADepositWithdraw {
   externalNote?: string;
   balanceVersion?: number;
   equity?: number;
+  moneyDigits?: number;
 }
 
 export class ProtoOADepositWithdrawUtils {
@@ -4371,6 +4400,7 @@ export class ProtoOADepositWithdrawUtils {
     if (tag === 6) obj.externalNote = pbf.readString();
     if (tag === 7) obj.balanceVersion = pbf.readVarint64();
     if (tag === 8) obj.equity = pbf.readVarint64();
+    if (tag === 9) obj.moneyDigits = pbf.readVarint();
   }
 
   static write(obj: ProtoOADepositWithdraw, pbf: PBF = new PBF()) {
@@ -4383,6 +4413,7 @@ export class ProtoOADepositWithdrawUtils {
     if (obj.externalNote) pbf.writeStringField(6, obj.externalNote);
     if (obj.balanceVersion) pbf.writeVarintField(7, obj.balanceVersion);
     if (obj.equity) pbf.writeVarintField(8, obj.equity);
+    if (obj.moneyDigits) pbf.writeVarintField(9, obj.moneyDigits);
   }
 }
 
@@ -4405,6 +4436,7 @@ export interface ProtoOADeal {
   commission?: number;
   baseToUsdConversionRate?: number;
   closePositionDetail?: ProtoOAClosePositionDetail;
+  moneyDigits?: number;
 }
 
 export class ProtoOADealUtils {
@@ -4451,6 +4483,7 @@ export class ProtoOADealUtils {
         pbf,
         pbf.readVarint() + pbf.pos
       );
+    if (tag === 17) obj.moneyDigits = pbf.readVarint();
   }
 
   static write(obj: ProtoOADeal, pbf: PBF = new PBF()) {
@@ -4477,6 +4510,7 @@ export class ProtoOADealUtils {
         ProtoOAClosePositionDetailUtils.write,
         obj.closePositionDetail
       );
+    if (obj.moneyDigits) pbf.writeVarintField(17, obj.moneyDigits);
   }
 }
 
@@ -4491,6 +4525,7 @@ export interface ProtoOAClosePositionDetail {
   quoteToDepositConversionRate?: number;
   closedVolume?: number;
   balanceVersion?: number;
+  moneyDigits?: number;
 }
 
 export class ProtoOAClosePositionDetailUtils {
@@ -4524,6 +4559,7 @@ export class ProtoOAClosePositionDetailUtils {
     if (tag === 6) obj.quoteToDepositConversionRate = pbf.readDouble();
     if (tag === 7) obj.closedVolume = pbf.readVarint64();
     if (tag === 8) obj.balanceVersion = pbf.readVarint64();
+    if (tag === 9) obj.moneyDigits = pbf.readVarint();
   }
 
   static write(obj: ProtoOAClosePositionDetail, pbf: PBF = new PBF()) {
@@ -4536,6 +4572,7 @@ export class ProtoOAClosePositionDetailUtils {
       pbf.writeDoubleField(6, obj.quoteToDepositConversionRate);
     if (obj.closedVolume) pbf.writeVarintField(7, obj.closedVolume);
     if (obj.balanceVersion) pbf.writeVarintField(8, obj.balanceVersion);
+    if (obj.moneyDigits) pbf.writeVarintField(9, obj.moneyDigits);
   }
 }
 
