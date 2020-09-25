@@ -20,10 +20,7 @@ import semver from "semver";
 const enums: Set<string> = new Set();
 
 const dir = "./protobuf";
-const versions = fs.readdirSync(dir).filter((v) => v.includes("Beta"));
-if (versions.length === 0) {
-  versions.push(...fs.readdirSync(dir).filter((v) => v.includes("Current")));
-}
+const versions = fs.readdirSync(dir);
 if (versions.length !== 1) {
   throw new Error(
     `Could not find latest 'Beta'/'Current' version. ${versions.length} matching.`
