@@ -146,7 +146,11 @@ function compileWriteMethod(protoMessage: Message): string[] {
   const lines: string[] = [];
   lines.push(`static write(obj: ${protoMessage.name}, pbf: PBF = new PBF()) {`);
   protoMessage.fields.forEach((field) =>
-    lines.push(`if (obj.${field.name}) ${mapWriteMethod(field)}`)
+    lines.push(
+      `if (obj.${field.name} !== undefined && obj.${
+        field.name
+      } !== null) ${mapWriteMethod(field)}`
+    )
   );
   lines.push("}", "");
   return lines;

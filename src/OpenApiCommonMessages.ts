@@ -48,9 +48,12 @@ export class ProtoMessageUtils {
   }
 
   static write(obj: ProtoMessage, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.payload) pbf.writeBytesField(2, obj.payload);
-    if (obj.clientMsgId) pbf.writeStringField(3, obj.clientMsgId);
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (obj.payload !== undefined && obj.payload !== null)
+      pbf.writeBytesField(2, obj.payload);
+    if (obj.clientMsgId !== undefined && obj.clientMsgId !== null)
+      pbf.writeStringField(3, obj.clientMsgId);
   }
 }
 
@@ -85,10 +88,16 @@ export class ProtoErrorResUtils {
   }
 
   static write(obj: ProtoErrorRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.errorCode) pbf.writeStringField(2, obj.errorCode);
-    if (obj.description) pbf.writeStringField(3, obj.description);
-    if (obj.maintenanceEndTimestamp)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (obj.errorCode !== undefined && obj.errorCode !== null)
+      pbf.writeStringField(2, obj.errorCode);
+    if (obj.description !== undefined && obj.description !== null)
+      pbf.writeStringField(3, obj.description);
+    if (
+      obj.maintenanceEndTimestamp !== undefined &&
+      obj.maintenanceEndTimestamp !== null
+    )
       pbf.writeVarintField(4, obj.maintenanceEndTimestamp);
   }
 }
@@ -112,6 +121,7 @@ export class ProtoHeartbeatEventUtils {
   }
 
   static write(obj: ProtoHeartbeatEvent, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
   }
 }

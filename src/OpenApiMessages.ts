@@ -363,9 +363,12 @@ export class ProtoOAApplicationAuthReqUtils {
   }
 
   static write(obj: ProtoOAApplicationAuthReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.clientId) pbf.writeStringField(2, obj.clientId);
-    if (obj.clientSecret) pbf.writeStringField(3, obj.clientSecret);
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (obj.clientId !== undefined && obj.clientId !== null)
+      pbf.writeStringField(2, obj.clientId);
+    if (obj.clientSecret !== undefined && obj.clientSecret !== null)
+      pbf.writeStringField(3, obj.clientSecret);
   }
 }
 
@@ -392,7 +395,8 @@ export class ProtoOAApplicationAuthResUtils {
   }
 
   static write(obj: ProtoOAApplicationAuthRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
   }
 }
 
@@ -430,10 +434,15 @@ export class ProtoOAAccountAuthReqUtils {
   }
 
   static write(obj: ProtoOAAccountAuthReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.accessToken) pbf.writeStringField(3, obj.accessToken);
+    if (obj.accessToken !== undefined && obj.accessToken !== null)
+      pbf.writeStringField(3, obj.accessToken);
   }
 }
 
@@ -468,8 +477,12 @@ export class ProtoOAAccountAuthResUtils {
   }
 
   static write(obj: ProtoOAAccountAuthRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
   }
 }
@@ -507,12 +520,21 @@ export class ProtoOAErrorResUtils {
   }
 
   static write(obj: ProtoOAErrorRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.errorCode) pbf.writeStringField(3, obj.errorCode);
-    if (obj.description) pbf.writeStringField(4, obj.description);
-    if (obj.maintenanceEndTimestamp)
+    if (obj.errorCode !== undefined && obj.errorCode !== null)
+      pbf.writeStringField(3, obj.errorCode);
+    if (obj.description !== undefined && obj.description !== null)
+      pbf.writeStringField(4, obj.description);
+    if (
+      obj.maintenanceEndTimestamp !== undefined &&
+      obj.maintenanceEndTimestamp !== null
+    )
       pbf.writeVarintField(5, obj.maintenanceEndTimestamp);
   }
 }
@@ -546,8 +568,10 @@ export class ProtoOAClientDisconnectEventUtils {
   }
 
   static write(obj: ProtoOAClientDisconnectEvent, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.reason) pbf.writeStringField(2, obj.reason);
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (obj.reason !== undefined && obj.reason !== null)
+      pbf.writeStringField(2, obj.reason);
   }
 }
 
@@ -587,12 +611,17 @@ export class ProtoOAAccountsTokenInvalidatedEventUtils {
     obj: ProtoOAAccountsTokenInvalidatedEvent,
     pbf: PBF = new PBF()
   ) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountIds)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountIds !== undefined &&
+      obj.ctidTraderAccountIds !== null
+    )
       obj.ctidTraderAccountIds.forEach((ctidTraderAccountIds) =>
         pbf.writeVarintField(2, ctidTraderAccountIds)
       );
-    if (obj.reason) pbf.writeStringField(3, obj.reason);
+    if (obj.reason !== undefined && obj.reason !== null)
+      pbf.writeStringField(3, obj.reason);
   }
 }
 
@@ -615,7 +644,8 @@ export class ProtoOAVersionReqUtils {
   }
 
   static write(obj: ProtoOAVersionReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
   }
 }
 
@@ -646,8 +676,10 @@ export class ProtoOAVersionResUtils {
   }
 
   static write(obj: ProtoOAVersionRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.version) pbf.writeStringField(2, obj.version);
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (obj.version !== undefined && obj.version !== null)
+      pbf.writeStringField(2, obj.version);
   }
 }
 
@@ -724,33 +756,58 @@ export class ProtoOANewOrderReqUtils {
   }
 
   static write(obj: ProtoOANewOrderReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.symbolId) pbf.writeVarintField(3, obj.symbolId);
-    if (obj.orderType) pbf.writeVarintField(4, obj.orderType);
-    if (obj.tradeSide) pbf.writeVarintField(5, obj.tradeSide);
-    if (obj.volume) pbf.writeVarintField(6, obj.volume);
-    if (obj.limitPrice) pbf.writeDoubleField(7, obj.limitPrice);
-    if (obj.stopPrice) pbf.writeDoubleField(8, obj.stopPrice);
-    if (obj.timeInForce) pbf.writeVarintField(9, obj.timeInForce);
-    if (obj.expirationTimestamp)
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
+      pbf.writeVarintField(3, obj.symbolId);
+    if (obj.orderType !== undefined && obj.orderType !== null)
+      pbf.writeVarintField(4, obj.orderType);
+    if (obj.tradeSide !== undefined && obj.tradeSide !== null)
+      pbf.writeVarintField(5, obj.tradeSide);
+    if (obj.volume !== undefined && obj.volume !== null)
+      pbf.writeVarintField(6, obj.volume);
+    if (obj.limitPrice !== undefined && obj.limitPrice !== null)
+      pbf.writeDoubleField(7, obj.limitPrice);
+    if (obj.stopPrice !== undefined && obj.stopPrice !== null)
+      pbf.writeDoubleField(8, obj.stopPrice);
+    if (obj.timeInForce !== undefined && obj.timeInForce !== null)
+      pbf.writeVarintField(9, obj.timeInForce);
+    if (
+      obj.expirationTimestamp !== undefined &&
+      obj.expirationTimestamp !== null
+    )
       pbf.writeVarintField(10, obj.expirationTimestamp);
-    if (obj.stopLoss) pbf.writeDoubleField(11, obj.stopLoss);
-    if (obj.takeProfit) pbf.writeDoubleField(12, obj.takeProfit);
-    if (obj.comment) pbf.writeStringField(13, obj.comment);
-    if (obj.baseSlippagePrice) pbf.writeDoubleField(14, obj.baseSlippagePrice);
-    if (obj.slippageInPoints) pbf.writeVarintField(15, obj.slippageInPoints);
-    if (obj.label) pbf.writeStringField(16, obj.label);
-    if (obj.positionId) pbf.writeVarintField(17, obj.positionId);
-    if (obj.clientOrderId) pbf.writeStringField(18, obj.clientOrderId);
-    if (obj.relativeStopLoss) pbf.writeVarintField(19, obj.relativeStopLoss);
-    if (obj.relativeTakeProfit)
+    if (obj.stopLoss !== undefined && obj.stopLoss !== null)
+      pbf.writeDoubleField(11, obj.stopLoss);
+    if (obj.takeProfit !== undefined && obj.takeProfit !== null)
+      pbf.writeDoubleField(12, obj.takeProfit);
+    if (obj.comment !== undefined && obj.comment !== null)
+      pbf.writeStringField(13, obj.comment);
+    if (obj.baseSlippagePrice !== undefined && obj.baseSlippagePrice !== null)
+      pbf.writeDoubleField(14, obj.baseSlippagePrice);
+    if (obj.slippageInPoints !== undefined && obj.slippageInPoints !== null)
+      pbf.writeVarintField(15, obj.slippageInPoints);
+    if (obj.label !== undefined && obj.label !== null)
+      pbf.writeStringField(16, obj.label);
+    if (obj.positionId !== undefined && obj.positionId !== null)
+      pbf.writeVarintField(17, obj.positionId);
+    if (obj.clientOrderId !== undefined && obj.clientOrderId !== null)
+      pbf.writeStringField(18, obj.clientOrderId);
+    if (obj.relativeStopLoss !== undefined && obj.relativeStopLoss !== null)
+      pbf.writeVarintField(19, obj.relativeStopLoss);
+    if (obj.relativeTakeProfit !== undefined && obj.relativeTakeProfit !== null)
       pbf.writeVarintField(20, obj.relativeTakeProfit);
-    if (obj.guaranteedStopLoss)
+    if (obj.guaranteedStopLoss !== undefined && obj.guaranteedStopLoss !== null)
       pbf.writeBooleanField(21, obj.guaranteedStopLoss);
-    if (obj.trailingStopLoss) pbf.writeBooleanField(22, obj.trailingStopLoss);
-    if (obj.stopTriggerMethod) pbf.writeVarintField(23, obj.stopTriggerMethod);
+    if (obj.trailingStopLoss !== undefined && obj.trailingStopLoss !== null)
+      pbf.writeBooleanField(22, obj.trailingStopLoss);
+    if (obj.stopTriggerMethod !== undefined && obj.stopTriggerMethod !== null)
+      pbf.writeVarintField(23, obj.stopTriggerMethod);
   }
 }
 
@@ -813,28 +870,40 @@ export class ProtoOAExecutionEventUtils {
   }
 
   static write(obj: ProtoOAExecutionEvent, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.executionType) pbf.writeVarintField(3, obj.executionType);
-    if (obj.position)
+    if (obj.executionType !== undefined && obj.executionType !== null)
+      pbf.writeVarintField(3, obj.executionType);
+    if (obj.position !== undefined && obj.position !== null)
       pbf.writeMessage(4, ProtoOAPositionUtils.write, obj.position);
-    if (obj.order) pbf.writeMessage(5, ProtoOAOrderUtils.write, obj.order);
-    if (obj.deal) pbf.writeMessage(6, ProtoOADealUtils.write, obj.deal);
-    if (obj.bonusDepositWithdraw)
+    if (obj.order !== undefined && obj.order !== null)
+      pbf.writeMessage(5, ProtoOAOrderUtils.write, obj.order);
+    if (obj.deal !== undefined && obj.deal !== null)
+      pbf.writeMessage(6, ProtoOADealUtils.write, obj.deal);
+    if (
+      obj.bonusDepositWithdraw !== undefined &&
+      obj.bonusDepositWithdraw !== null
+    )
       pbf.writeMessage(
         7,
         ProtoOABonusDepositWithdrawUtils.write,
         obj.bonusDepositWithdraw
       );
-    if (obj.depositWithdraw)
+    if (obj.depositWithdraw !== undefined && obj.depositWithdraw !== null)
       pbf.writeMessage(
         8,
         ProtoOADepositWithdrawUtils.write,
         obj.depositWithdraw
       );
-    if (obj.errorCode) pbf.writeStringField(9, obj.errorCode);
-    if (obj.isServerEvent) pbf.writeBooleanField(10, obj.isServerEvent);
+    if (obj.errorCode !== undefined && obj.errorCode !== null)
+      pbf.writeStringField(9, obj.errorCode);
+    if (obj.isServerEvent !== undefined && obj.isServerEvent !== null)
+      pbf.writeBooleanField(10, obj.isServerEvent);
   }
 }
 
@@ -872,10 +941,15 @@ export class ProtoOACancelOrderReqUtils {
   }
 
   static write(obj: ProtoOACancelOrderReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.orderId) pbf.writeVarintField(3, obj.orderId);
+    if (obj.orderId !== undefined && obj.orderId !== null)
+      pbf.writeVarintField(3, obj.orderId);
   }
 }
 
@@ -937,25 +1011,42 @@ export class ProtoOAAmendOrderReqUtils {
   }
 
   static write(obj: ProtoOAAmendOrderReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.orderId) pbf.writeVarintField(3, obj.orderId);
-    if (obj.volume) pbf.writeVarintField(4, obj.volume);
-    if (obj.limitPrice) pbf.writeDoubleField(5, obj.limitPrice);
-    if (obj.stopPrice) pbf.writeDoubleField(6, obj.stopPrice);
-    if (obj.expirationTimestamp)
+    if (obj.orderId !== undefined && obj.orderId !== null)
+      pbf.writeVarintField(3, obj.orderId);
+    if (obj.volume !== undefined && obj.volume !== null)
+      pbf.writeVarintField(4, obj.volume);
+    if (obj.limitPrice !== undefined && obj.limitPrice !== null)
+      pbf.writeDoubleField(5, obj.limitPrice);
+    if (obj.stopPrice !== undefined && obj.stopPrice !== null)
+      pbf.writeDoubleField(6, obj.stopPrice);
+    if (
+      obj.expirationTimestamp !== undefined &&
+      obj.expirationTimestamp !== null
+    )
       pbf.writeVarintField(7, obj.expirationTimestamp);
-    if (obj.stopLoss) pbf.writeDoubleField(8, obj.stopLoss);
-    if (obj.takeProfit) pbf.writeDoubleField(9, obj.takeProfit);
-    if (obj.slippageInPoints) pbf.writeVarintField(10, obj.slippageInPoints);
-    if (obj.relativeStopLoss) pbf.writeVarintField(11, obj.relativeStopLoss);
-    if (obj.relativeTakeProfit)
+    if (obj.stopLoss !== undefined && obj.stopLoss !== null)
+      pbf.writeDoubleField(8, obj.stopLoss);
+    if (obj.takeProfit !== undefined && obj.takeProfit !== null)
+      pbf.writeDoubleField(9, obj.takeProfit);
+    if (obj.slippageInPoints !== undefined && obj.slippageInPoints !== null)
+      pbf.writeVarintField(10, obj.slippageInPoints);
+    if (obj.relativeStopLoss !== undefined && obj.relativeStopLoss !== null)
+      pbf.writeVarintField(11, obj.relativeStopLoss);
+    if (obj.relativeTakeProfit !== undefined && obj.relativeTakeProfit !== null)
       pbf.writeVarintField(12, obj.relativeTakeProfit);
-    if (obj.guaranteedStopLoss)
+    if (obj.guaranteedStopLoss !== undefined && obj.guaranteedStopLoss !== null)
       pbf.writeBooleanField(13, obj.guaranteedStopLoss);
-    if (obj.trailingStopLoss) pbf.writeBooleanField(14, obj.trailingStopLoss);
-    if (obj.stopTriggerMethod) pbf.writeVarintField(15, obj.stopTriggerMethod);
+    if (obj.trailingStopLoss !== undefined && obj.trailingStopLoss !== null)
+      pbf.writeBooleanField(14, obj.trailingStopLoss);
+    if (obj.stopTriggerMethod !== undefined && obj.stopTriggerMethod !== null)
+      pbf.writeVarintField(15, obj.stopTriggerMethod);
   }
 }
 
@@ -1003,16 +1094,27 @@ export class ProtoOAAmendPositionSLTPReqUtils {
   }
 
   static write(obj: ProtoOAAmendPositionSLTPReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.positionId) pbf.writeVarintField(3, obj.positionId);
-    if (obj.stopLoss) pbf.writeDoubleField(4, obj.stopLoss);
-    if (obj.takeProfit) pbf.writeDoubleField(5, obj.takeProfit);
-    if (obj.guaranteedStopLoss)
+    if (obj.positionId !== undefined && obj.positionId !== null)
+      pbf.writeVarintField(3, obj.positionId);
+    if (obj.stopLoss !== undefined && obj.stopLoss !== null)
+      pbf.writeDoubleField(4, obj.stopLoss);
+    if (obj.takeProfit !== undefined && obj.takeProfit !== null)
+      pbf.writeDoubleField(5, obj.takeProfit);
+    if (obj.guaranteedStopLoss !== undefined && obj.guaranteedStopLoss !== null)
       pbf.writeBooleanField(7, obj.guaranteedStopLoss);
-    if (obj.trailingStopLoss) pbf.writeBooleanField(8, obj.trailingStopLoss);
-    if (obj.stopLossTriggerMethod)
+    if (obj.trailingStopLoss !== undefined && obj.trailingStopLoss !== null)
+      pbf.writeBooleanField(8, obj.trailingStopLoss);
+    if (
+      obj.stopLossTriggerMethod !== undefined &&
+      obj.stopLossTriggerMethod !== null
+    )
       pbf.writeVarintField(9, obj.stopLossTriggerMethod);
   }
 }
@@ -1054,11 +1156,17 @@ export class ProtoOAClosePositionReqUtils {
   }
 
   static write(obj: ProtoOAClosePositionReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.positionId) pbf.writeVarintField(3, obj.positionId);
-    if (obj.volume) pbf.writeVarintField(4, obj.volume);
+    if (obj.positionId !== undefined && obj.positionId !== null)
+      pbf.writeVarintField(3, obj.positionId);
+    if (obj.volume !== undefined && obj.volume !== null)
+      pbf.writeVarintField(4, obj.volume);
   }
 }
 
@@ -1105,13 +1213,23 @@ export class ProtoOATrailingSLChangedEventUtils {
   }
 
   static write(obj: ProtoOATrailingSLChangedEvent, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.positionId) pbf.writeVarintField(3, obj.positionId);
-    if (obj.orderId) pbf.writeVarintField(4, obj.orderId);
-    if (obj.stopPrice) pbf.writeDoubleField(5, obj.stopPrice);
-    if (obj.utcLastUpdateTimestamp)
+    if (obj.positionId !== undefined && obj.positionId !== null)
+      pbf.writeVarintField(3, obj.positionId);
+    if (obj.orderId !== undefined && obj.orderId !== null)
+      pbf.writeVarintField(4, obj.orderId);
+    if (obj.stopPrice !== undefined && obj.stopPrice !== null)
+      pbf.writeDoubleField(5, obj.stopPrice);
+    if (
+      obj.utcLastUpdateTimestamp !== undefined &&
+      obj.utcLastUpdateTimestamp !== null
+    )
       pbf.writeVarintField(6, obj.utcLastUpdateTimestamp);
   }
 }
@@ -1143,8 +1261,12 @@ export class ProtoOAAssetListReqUtils {
   }
 
   static write(obj: ProtoOAAssetListReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
   }
 }
@@ -1180,10 +1302,14 @@ export class ProtoOAAssetListResUtils {
   }
 
   static write(obj: ProtoOAAssetListRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.asset)
+    if (obj.asset !== undefined && obj.asset !== null)
       obj.asset.forEach((asset) =>
         pbf.writeMessage(3, ProtoOAAssetUtils.write, asset)
       );
@@ -1223,10 +1349,17 @@ export class ProtoOASymbolsListReqUtils {
   }
 
   static write(obj: ProtoOASymbolsListReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.includeArchivedSymbols)
+    if (
+      obj.includeArchivedSymbols !== undefined &&
+      obj.includeArchivedSymbols !== null
+    )
       pbf.writeBooleanField(3, obj.includeArchivedSymbols);
   }
 }
@@ -1274,14 +1407,18 @@ export class ProtoOASymbolsListResUtils {
   }
 
   static write(obj: ProtoOASymbolsListRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.symbol)
+    if (obj.symbol !== undefined && obj.symbol !== null)
       obj.symbol.forEach((symbol) =>
         pbf.writeMessage(3, ProtoOALightSymbolUtils.write, symbol)
       );
-    if (obj.archivedSymbol)
+    if (obj.archivedSymbol !== undefined && obj.archivedSymbol !== null)
       obj.archivedSymbol.forEach((archivedSymbol) =>
         pbf.writeMessage(4, ProtoOAArchivedSymbolUtils.write, archivedSymbol)
       );
@@ -1322,10 +1459,14 @@ export class ProtoOASymbolByIdReqUtils {
   }
 
   static write(obj: ProtoOASymbolByIdReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.symbolId)
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
       obj.symbolId.forEach((symbolId) => pbf.writeVarintField(3, symbolId));
   }
 }
@@ -1371,14 +1512,18 @@ export class ProtoOASymbolByIdResUtils {
   }
 
   static write(obj: ProtoOASymbolByIdRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.symbol)
+    if (obj.symbol !== undefined && obj.symbol !== null)
       obj.symbol.forEach((symbol) =>
         pbf.writeMessage(3, ProtoOASymbolUtils.write, symbol)
       );
-    if (obj.archivedSymbol)
+    if (obj.archivedSymbol !== undefined && obj.archivedSymbol !== null)
       obj.archivedSymbol.forEach((archivedSymbol) =>
         pbf.writeMessage(4, ProtoOAArchivedSymbolUtils.write, archivedSymbol)
       );
@@ -1422,11 +1567,17 @@ export class ProtoOASymbolsForConversionReqUtils {
   }
 
   static write(obj: ProtoOASymbolsForConversionReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.firstAssetId) pbf.writeVarintField(3, obj.firstAssetId);
-    if (obj.lastAssetId) pbf.writeVarintField(4, obj.lastAssetId);
+    if (obj.firstAssetId !== undefined && obj.firstAssetId !== null)
+      pbf.writeVarintField(3, obj.firstAssetId);
+    if (obj.lastAssetId !== undefined && obj.lastAssetId !== null)
+      pbf.writeVarintField(4, obj.lastAssetId);
   }
 }
 
@@ -1467,10 +1618,14 @@ export class ProtoOASymbolsForConversionResUtils {
   }
 
   static write(obj: ProtoOASymbolsForConversionRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.symbol)
+    if (obj.symbol !== undefined && obj.symbol !== null)
       obj.symbol.forEach((symbol) =>
         pbf.writeMessage(3, ProtoOALightSymbolUtils.write, symbol)
       );
@@ -1511,10 +1666,14 @@ export class ProtoOASymbolChangedEventUtils {
   }
 
   static write(obj: ProtoOASymbolChangedEvent, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.symbolId)
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
       obj.symbolId.forEach((symbolId) => pbf.writeVarintField(3, symbolId));
   }
 }
@@ -1550,8 +1709,12 @@ export class ProtoOAAssetClassListReqUtils {
   }
 
   static write(obj: ProtoOAAssetClassListReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
   }
 }
@@ -1593,10 +1756,14 @@ export class ProtoOAAssetClassListResUtils {
   }
 
   static write(obj: ProtoOAAssetClassListRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.assetClass)
+    if (obj.assetClass !== undefined && obj.assetClass !== null)
       obj.assetClass.forEach((assetClass) =>
         pbf.writeMessage(3, ProtoOAAssetClassUtils.write, assetClass)
       );
@@ -1630,8 +1797,12 @@ export class ProtoOATraderReqUtils {
   }
 
   static write(obj: ProtoOATraderReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
   }
 }
@@ -1667,10 +1838,15 @@ export class ProtoOATraderResUtils {
   }
 
   static write(obj: ProtoOATraderRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.trader) pbf.writeMessage(3, ProtoOATraderUtils.write, obj.trader);
+    if (obj.trader !== undefined && obj.trader !== null)
+      pbf.writeMessage(3, ProtoOATraderUtils.write, obj.trader);
   }
 }
 
@@ -1709,10 +1885,15 @@ export class ProtoOATraderUpdatedEventUtils {
   }
 
   static write(obj: ProtoOATraderUpdatedEvent, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.trader) pbf.writeMessage(3, ProtoOATraderUtils.write, obj.trader);
+    if (obj.trader !== undefined && obj.trader !== null)
+      pbf.writeMessage(3, ProtoOATraderUtils.write, obj.trader);
   }
 }
 
@@ -1743,8 +1924,12 @@ export class ProtoOAReconcileReqUtils {
   }
 
   static write(obj: ProtoOAReconcileReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
   }
 }
@@ -1786,14 +1971,18 @@ export class ProtoOAReconcileResUtils {
   }
 
   static write(obj: ProtoOAReconcileRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.position)
+    if (obj.position !== undefined && obj.position !== null)
       obj.position.forEach((position) =>
         pbf.writeMessage(3, ProtoOAPositionUtils.write, position)
       );
-    if (obj.order)
+    if (obj.order !== undefined && obj.order !== null)
       obj.order.forEach((order) =>
         pbf.writeMessage(4, ProtoOAOrderUtils.write, order)
       );
@@ -1840,13 +2029,21 @@ export class ProtoOAOrderErrorEventUtils {
   }
 
   static write(obj: ProtoOAOrderErrorEvent, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(5, obj.ctidTraderAccountId);
-    if (obj.errorCode) pbf.writeStringField(2, obj.errorCode);
-    if (obj.orderId) pbf.writeVarintField(3, obj.orderId);
-    if (obj.positionId) pbf.writeVarintField(6, obj.positionId);
-    if (obj.description) pbf.writeStringField(7, obj.description);
+    if (obj.errorCode !== undefined && obj.errorCode !== null)
+      pbf.writeStringField(2, obj.errorCode);
+    if (obj.orderId !== undefined && obj.orderId !== null)
+      pbf.writeVarintField(3, obj.orderId);
+    if (obj.positionId !== undefined && obj.positionId !== null)
+      pbf.writeVarintField(6, obj.positionId);
+    if (obj.description !== undefined && obj.description !== null)
+      pbf.writeStringField(7, obj.description);
   }
 }
 
@@ -1885,12 +2082,19 @@ export class ProtoOADealListReqUtils {
   }
 
   static write(obj: ProtoOADealListReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.fromTimestamp) pbf.writeVarintField(3, obj.fromTimestamp);
-    if (obj.toTimestamp) pbf.writeVarintField(4, obj.toTimestamp);
-    if (obj.maxRows) pbf.writeVarintField(5, obj.maxRows);
+    if (obj.fromTimestamp !== undefined && obj.fromTimestamp !== null)
+      pbf.writeVarintField(3, obj.fromTimestamp);
+    if (obj.toTimestamp !== undefined && obj.toTimestamp !== null)
+      pbf.writeVarintField(4, obj.toTimestamp);
+    if (obj.maxRows !== undefined && obj.maxRows !== null)
+      pbf.writeVarintField(5, obj.maxRows);
   }
 }
 
@@ -1928,14 +2132,19 @@ export class ProtoOADealListResUtils {
   }
 
   static write(obj: ProtoOADealListRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.deal)
+    if (obj.deal !== undefined && obj.deal !== null)
       obj.deal.forEach((deal) =>
         pbf.writeMessage(3, ProtoOADealUtils.write, deal)
       );
-    if (obj.hasMore) pbf.writeBooleanField(4, obj.hasMore);
+    if (obj.hasMore !== undefined && obj.hasMore !== null)
+      pbf.writeBooleanField(4, obj.hasMore);
   }
 }
 
@@ -1976,11 +2185,16 @@ export class ProtoOAExpectedMarginReqUtils {
   }
 
   static write(obj: ProtoOAExpectedMarginReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.symbolId) pbf.writeVarintField(3, obj.symbolId);
-    if (obj.volume)
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
+      pbf.writeVarintField(3, obj.symbolId);
+    if (obj.volume !== undefined && obj.volume !== null)
       obj.volume.forEach((volume) => pbf.writeVarintField(4, volume));
   }
 }
@@ -2024,14 +2238,19 @@ export class ProtoOAExpectedMarginResUtils {
   }
 
   static write(obj: ProtoOAExpectedMarginRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.margin)
+    if (obj.margin !== undefined && obj.margin !== null)
       obj.margin.forEach((margin) =>
         pbf.writeMessage(3, ProtoOAExpectedMarginUtils.write, margin)
       );
-    if (obj.moneyDigits) pbf.writeVarintField(4, obj.moneyDigits);
+    if (obj.moneyDigits !== undefined && obj.moneyDigits !== null)
+      pbf.writeVarintField(4, obj.moneyDigits);
   }
 }
 
@@ -2074,12 +2293,19 @@ export class ProtoOAMarginChangedEventUtils {
   }
 
   static write(obj: ProtoOAMarginChangedEvent, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.positionId) pbf.writeVarintField(3, obj.positionId);
-    if (obj.usedMargin) pbf.writeVarintField(4, obj.usedMargin);
-    if (obj.moneyDigits) pbf.writeVarintField(5, obj.moneyDigits);
+    if (obj.positionId !== undefined && obj.positionId !== null)
+      pbf.writeVarintField(3, obj.positionId);
+    if (obj.usedMargin !== undefined && obj.usedMargin !== null)
+      pbf.writeVarintField(4, obj.usedMargin);
+    if (obj.moneyDigits !== undefined && obj.moneyDigits !== null)
+      pbf.writeVarintField(5, obj.moneyDigits);
   }
 }
 
@@ -2120,11 +2346,17 @@ export class ProtoOACashFlowHistoryListReqUtils {
   }
 
   static write(obj: ProtoOACashFlowHistoryListReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.fromTimestamp) pbf.writeVarintField(3, obj.fromTimestamp);
-    if (obj.toTimestamp) pbf.writeVarintField(4, obj.toTimestamp);
+    if (obj.fromTimestamp !== undefined && obj.fromTimestamp !== null)
+      pbf.writeVarintField(3, obj.fromTimestamp);
+    if (obj.toTimestamp !== undefined && obj.toTimestamp !== null)
+      pbf.writeVarintField(4, obj.toTimestamp);
   }
 }
 
@@ -2165,10 +2397,14 @@ export class ProtoOACashFlowHistoryListResUtils {
   }
 
   static write(obj: ProtoOACashFlowHistoryListRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.depositWithdraw)
+    if (obj.depositWithdraw !== undefined && obj.depositWithdraw !== null)
       obj.depositWithdraw.forEach((depositWithdraw) =>
         pbf.writeMessage(3, ProtoOADepositWithdrawUtils.write, depositWithdraw)
       );
@@ -2209,8 +2445,10 @@ export class ProtoOAGetAccountListByAccessTokenReqUtils {
     obj: ProtoOAGetAccountListByAccessTokenReq,
     pbf: PBF = new PBF()
   ) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.accessToken) pbf.writeStringField(2, obj.accessToken);
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (obj.accessToken !== undefined && obj.accessToken !== null)
+      pbf.writeStringField(2, obj.accessToken);
   }
 }
 
@@ -2256,10 +2494,13 @@ export class ProtoOAGetAccountListByAccessTokenResUtils {
     obj: ProtoOAGetAccountListByAccessTokenRes,
     pbf: PBF = new PBF()
   ) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.accessToken) pbf.writeStringField(2, obj.accessToken);
-    if (obj.permissionScope) pbf.writeVarintField(3, obj.permissionScope);
-    if (obj.ctidTraderAccount)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (obj.accessToken !== undefined && obj.accessToken !== null)
+      pbf.writeStringField(2, obj.accessToken);
+    if (obj.permissionScope !== undefined && obj.permissionScope !== null)
+      pbf.writeVarintField(3, obj.permissionScope);
+    if (obj.ctidTraderAccount !== undefined && obj.ctidTraderAccount !== null)
       obj.ctidTraderAccount.forEach((ctidTraderAccount) =>
         pbf.writeMessage(
           4,
@@ -2301,8 +2542,10 @@ export class ProtoOARefreshTokenReqUtils {
   }
 
   static write(obj: ProtoOARefreshTokenReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.refreshToken) pbf.writeStringField(2, obj.refreshToken);
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (obj.refreshToken !== undefined && obj.refreshToken !== null)
+      pbf.writeStringField(2, obj.refreshToken);
   }
 }
 
@@ -2346,11 +2589,16 @@ export class ProtoOARefreshTokenResUtils {
   }
 
   static write(obj: ProtoOARefreshTokenRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.accessToken) pbf.writeStringField(2, obj.accessToken);
-    if (obj.tokenType) pbf.writeStringField(3, obj.tokenType);
-    if (obj.expiresIn) pbf.writeVarintField(4, obj.expiresIn);
-    if (obj.refreshToken) pbf.writeStringField(5, obj.refreshToken);
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (obj.accessToken !== undefined && obj.accessToken !== null)
+      pbf.writeStringField(2, obj.accessToken);
+    if (obj.tokenType !== undefined && obj.tokenType !== null)
+      pbf.writeStringField(3, obj.tokenType);
+    if (obj.expiresIn !== undefined && obj.expiresIn !== null)
+      pbf.writeVarintField(4, obj.expiresIn);
+    if (obj.refreshToken !== undefined && obj.refreshToken !== null)
+      pbf.writeStringField(5, obj.refreshToken);
   }
 }
 
@@ -2388,10 +2636,14 @@ export class ProtoOASubscribeSpotsReqUtils {
   }
 
   static write(obj: ProtoOASubscribeSpotsReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.symbolId)
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
       obj.symbolId.forEach((symbolId) => pbf.writeVarintField(3, symbolId));
   }
 }
@@ -2427,8 +2679,12 @@ export class ProtoOASubscribeSpotsResUtils {
   }
 
   static write(obj: ProtoOASubscribeSpotsRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
   }
 }
@@ -2467,10 +2723,14 @@ export class ProtoOAUnsubscribeSpotsReqUtils {
   }
 
   static write(obj: ProtoOAUnsubscribeSpotsReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.symbolId)
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
       obj.symbolId.forEach((symbolId) => pbf.writeVarintField(3, symbolId));
   }
 }
@@ -2506,8 +2766,12 @@ export class ProtoOAUnsubscribeSpotsResUtils {
   }
 
   static write(obj: ProtoOAUnsubscribeSpotsRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
   }
 }
@@ -2554,17 +2818,25 @@ export class ProtoOASpotEventUtils {
   }
 
   static write(obj: ProtoOASpotEvent, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.symbolId) pbf.writeVarintField(3, obj.symbolId);
-    if (obj.bid) pbf.writeVarintField(4, obj.bid);
-    if (obj.ask) pbf.writeVarintField(5, obj.ask);
-    if (obj.trendbar)
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
+      pbf.writeVarintField(3, obj.symbolId);
+    if (obj.bid !== undefined && obj.bid !== null)
+      pbf.writeVarintField(4, obj.bid);
+    if (obj.ask !== undefined && obj.ask !== null)
+      pbf.writeVarintField(5, obj.ask);
+    if (obj.trendbar !== undefined && obj.trendbar !== null)
       obj.trendbar.forEach((trendbar) =>
         pbf.writeMessage(6, ProtoOATrendbarUtils.write, trendbar)
       );
-    if (obj.sessionClose) pbf.writeVarintField(7, obj.sessionClose);
+    if (obj.sessionClose !== undefined && obj.sessionClose !== null)
+      pbf.writeVarintField(7, obj.sessionClose);
   }
 }
 
@@ -2605,11 +2877,17 @@ export class ProtoOASubscribeLiveTrendbarReqUtils {
   }
 
   static write(obj: ProtoOASubscribeLiveTrendbarReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.period) pbf.writeVarintField(3, obj.period);
-    if (obj.symbolId) pbf.writeVarintField(4, obj.symbolId);
+    if (obj.period !== undefined && obj.period !== null)
+      pbf.writeVarintField(3, obj.period);
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
+      pbf.writeVarintField(4, obj.symbolId);
   }
 }
 
@@ -2644,8 +2922,12 @@ export class ProtoOASubscribeLiveTrendbarResUtils {
   }
 
   static write(obj: ProtoOASubscribeLiveTrendbarRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
   }
 }
@@ -2687,11 +2969,17 @@ export class ProtoOAUnsubscribeLiveTrendbarReqUtils {
   }
 
   static write(obj: ProtoOAUnsubscribeLiveTrendbarReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.period) pbf.writeVarintField(3, obj.period);
-    if (obj.symbolId) pbf.writeVarintField(4, obj.symbolId);
+    if (obj.period !== undefined && obj.period !== null)
+      pbf.writeVarintField(3, obj.period);
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
+      pbf.writeVarintField(4, obj.symbolId);
   }
 }
 
@@ -2726,8 +3014,12 @@ export class ProtoOAUnsubscribeLiveTrendbarResUtils {
   }
 
   static write(obj: ProtoOAUnsubscribeLiveTrendbarRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
   }
 }
@@ -2775,13 +3067,21 @@ export class ProtoOAGetTrendbarsReqUtils {
   }
 
   static write(obj: ProtoOAGetTrendbarsReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.fromTimestamp) pbf.writeVarintField(3, obj.fromTimestamp);
-    if (obj.toTimestamp) pbf.writeVarintField(4, obj.toTimestamp);
-    if (obj.period) pbf.writeVarintField(5, obj.period);
-    if (obj.symbolId) pbf.writeVarintField(6, obj.symbolId);
+    if (obj.fromTimestamp !== undefined && obj.fromTimestamp !== null)
+      pbf.writeVarintField(3, obj.fromTimestamp);
+    if (obj.toTimestamp !== undefined && obj.toTimestamp !== null)
+      pbf.writeVarintField(4, obj.toTimestamp);
+    if (obj.period !== undefined && obj.period !== null)
+      pbf.writeVarintField(5, obj.period);
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
+      pbf.writeVarintField(6, obj.symbolId);
   }
 }
 
@@ -2830,16 +3130,23 @@ export class ProtoOAGetTrendbarsResUtils {
   }
 
   static write(obj: ProtoOAGetTrendbarsRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.period) pbf.writeVarintField(3, obj.period);
-    if (obj.timestamp) pbf.writeVarintField(4, obj.timestamp);
-    if (obj.trendbar)
+    if (obj.period !== undefined && obj.period !== null)
+      pbf.writeVarintField(3, obj.period);
+    if (obj.timestamp !== undefined && obj.timestamp !== null)
+      pbf.writeVarintField(4, obj.timestamp);
+    if (obj.trendbar !== undefined && obj.trendbar !== null)
       obj.trendbar.forEach((trendbar) =>
         pbf.writeMessage(5, ProtoOATrendbarUtils.write, trendbar)
       );
-    if (obj.symbolId) pbf.writeVarintField(6, obj.symbolId);
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
+      pbf.writeVarintField(6, obj.symbolId);
   }
 }
 
@@ -2886,13 +3193,21 @@ export class ProtoOAGetTickDataReqUtils {
   }
 
   static write(obj: ProtoOAGetTickDataReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.symbolId) pbf.writeVarintField(3, obj.symbolId);
-    if (obj.type) pbf.writeVarintField(4, obj.type);
-    if (obj.fromTimestamp) pbf.writeVarintField(5, obj.fromTimestamp);
-    if (obj.toTimestamp) pbf.writeVarintField(6, obj.toTimestamp);
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
+      pbf.writeVarintField(3, obj.symbolId);
+    if (obj.type !== undefined && obj.type !== null)
+      pbf.writeVarintField(4, obj.type);
+    if (obj.fromTimestamp !== undefined && obj.fromTimestamp !== null)
+      pbf.writeVarintField(5, obj.fromTimestamp);
+    if (obj.toTimestamp !== undefined && obj.toTimestamp !== null)
+      pbf.writeVarintField(6, obj.toTimestamp);
   }
 }
 
@@ -2936,14 +3251,19 @@ export class ProtoOAGetTickDataResUtils {
   }
 
   static write(obj: ProtoOAGetTickDataRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.tickData)
+    if (obj.tickData !== undefined && obj.tickData !== null)
       obj.tickData.forEach((tickData) =>
         pbf.writeMessage(3, ProtoOATickDataUtils.write, tickData)
       );
-    if (obj.hasMore) pbf.writeBooleanField(4, obj.hasMore);
+    if (obj.hasMore !== undefined && obj.hasMore !== null)
+      pbf.writeBooleanField(4, obj.hasMore);
   }
 }
 
@@ -2978,8 +3298,10 @@ export class ProtoOAGetCtidProfileByTokenReqUtils {
   }
 
   static write(obj: ProtoOAGetCtidProfileByTokenReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.accessToken) pbf.writeStringField(2, obj.accessToken);
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (obj.accessToken !== undefined && obj.accessToken !== null)
+      pbf.writeStringField(2, obj.accessToken);
   }
 }
 
@@ -3018,8 +3340,9 @@ export class ProtoOAGetCtidProfileByTokenResUtils {
   }
 
   static write(obj: ProtoOAGetCtidProfileByTokenRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.profile)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (obj.profile !== undefined && obj.profile !== null)
       pbf.writeMessage(2, ProtoOACtidProfileUtils.write, obj.profile);
   }
 }
@@ -3063,15 +3386,21 @@ export class ProtoOADepthEventUtils {
   }
 
   static write(obj: ProtoOADepthEvent, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.symbolId) pbf.writeVarintField(3, obj.symbolId);
-    if (obj.newQuotes)
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
+      pbf.writeVarintField(3, obj.symbolId);
+    if (obj.newQuotes !== undefined && obj.newQuotes !== null)
       obj.newQuotes.forEach((newQuotes) =>
         pbf.writeMessage(4, ProtoOADepthQuoteUtils.write, newQuotes)
       );
-    if (obj.deletedQuotes) pbf.writePackedVarint(5, obj.deletedQuotes);
+    if (obj.deletedQuotes !== undefined && obj.deletedQuotes !== null)
+      pbf.writePackedVarint(5, obj.deletedQuotes);
   }
 }
 
@@ -3109,10 +3438,14 @@ export class ProtoOASubscribeDepthQuotesReqUtils {
   }
 
   static write(obj: ProtoOASubscribeDepthQuotesReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.symbolId)
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
       obj.symbolId.forEach((symbolId) => pbf.writeVarintField(3, symbolId));
   }
 }
@@ -3148,8 +3481,12 @@ export class ProtoOASubscribeDepthQuotesResUtils {
   }
 
   static write(obj: ProtoOASubscribeDepthQuotesRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
   }
 }
@@ -3188,10 +3525,14 @@ export class ProtoOAUnsubscribeDepthQuotesReqUtils {
   }
 
   static write(obj: ProtoOAUnsubscribeDepthQuotesReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.symbolId)
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
       obj.symbolId.forEach((symbolId) => pbf.writeVarintField(3, symbolId));
   }
 }
@@ -3227,8 +3568,12 @@ export class ProtoOAUnsubscribeDepthQuotesResUtils {
   }
 
   static write(obj: ProtoOAUnsubscribeDepthQuotesRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
   }
 }
@@ -3264,8 +3609,12 @@ export class ProtoOASymbolCategoryListReqUtils {
   }
 
   static write(obj: ProtoOASymbolCategoryListReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
   }
 }
@@ -3307,10 +3656,14 @@ export class ProtoOASymbolCategoryListResUtils {
   }
 
   static write(obj: ProtoOASymbolCategoryListRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.symbolCategory)
+    if (obj.symbolCategory !== undefined && obj.symbolCategory !== null)
       obj.symbolCategory.forEach((symbolCategory) =>
         pbf.writeMessage(3, ProtoOASymbolCategoryUtils.write, symbolCategory)
       );
@@ -3348,8 +3701,12 @@ export class ProtoOAAccountLogoutReqUtils {
   }
 
   static write(obj: ProtoOAAccountLogoutReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
   }
 }
@@ -3385,8 +3742,12 @@ export class ProtoOAAccountLogoutResUtils {
   }
 
   static write(obj: ProtoOAAccountLogoutRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
   }
 }
@@ -3422,8 +3783,12 @@ export class ProtoOAAccountDisconnectEventUtils {
   }
 
   static write(obj: ProtoOAAccountDisconnectEvent, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
   }
 }
@@ -3459,8 +3824,12 @@ export class ProtoOAMarginCallListReqUtils {
   }
 
   static write(obj: ProtoOAMarginCallListReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
   }
 }
@@ -3499,8 +3868,9 @@ export class ProtoOAMarginCallListResUtils {
   }
 
   static write(obj: ProtoOAMarginCallListRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.marginCall)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (obj.marginCall !== undefined && obj.marginCall !== null)
       obj.marginCall.forEach((marginCall) =>
         pbf.writeMessage(2, ProtoOAMarginCallUtils.write, marginCall)
       );
@@ -3548,10 +3918,14 @@ export class ProtoOAMarginCallUpdateReqUtils {
   }
 
   static write(obj: ProtoOAMarginCallUpdateReq, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.marginCall)
+    if (obj.marginCall !== undefined && obj.marginCall !== null)
       pbf.writeMessage(3, ProtoOAMarginCallUtils.write, obj.marginCall);
   }
 }
@@ -3579,7 +3953,8 @@ export class ProtoOAMarginCallUpdateResUtils {
   }
 
   static write(obj: ProtoOAMarginCallUpdateRes, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
   }
 }
 
@@ -3624,10 +3999,14 @@ export class ProtoOAMarginCallUpdateEventUtils {
   }
 
   static write(obj: ProtoOAMarginCallUpdateEvent, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.marginCall)
+    if (obj.marginCall !== undefined && obj.marginCall !== null)
       pbf.writeMessage(3, ProtoOAMarginCallUtils.write, obj.marginCall);
   }
 }
@@ -3673,10 +4052,14 @@ export class ProtoOAMarginCallTriggerEventUtils {
   }
 
   static write(obj: ProtoOAMarginCallTriggerEvent, pbf: PBF = new PBF()) {
-    if (obj.payloadType) pbf.writeVarintField(1, obj.payloadType);
-    if (obj.ctidTraderAccountId)
+    if (obj.payloadType !== undefined && obj.payloadType !== null)
+      pbf.writeVarintField(1, obj.payloadType);
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(2, obj.ctidTraderAccountId);
-    if (obj.marginCall)
+    if (obj.marginCall !== undefined && obj.marginCall !== null)
       pbf.writeMessage(3, ProtoOAMarginCallUtils.write, obj.marginCall);
   }
 }
@@ -3713,10 +4096,14 @@ export class ProtoOAAssetUtils {
   }
 
   static write(obj: ProtoOAAsset, pbf: PBF = new PBF()) {
-    if (obj.assetId) pbf.writeVarintField(1, obj.assetId);
-    if (obj.name) pbf.writeStringField(2, obj.name);
-    if (obj.displayName) pbf.writeStringField(3, obj.displayName);
-    if (obj.digits) pbf.writeVarintField(4, obj.digits);
+    if (obj.assetId !== undefined && obj.assetId !== null)
+      pbf.writeVarintField(1, obj.assetId);
+    if (obj.name !== undefined && obj.name !== null)
+      pbf.writeStringField(2, obj.name);
+    if (obj.displayName !== undefined && obj.displayName !== null)
+      pbf.writeStringField(3, obj.displayName);
+    if (obj.digits !== undefined && obj.digits !== null)
+      pbf.writeVarintField(4, obj.digits);
   }
 }
 
@@ -3819,50 +4206,85 @@ export class ProtoOASymbolUtils {
   }
 
   static write(obj: ProtoOASymbol, pbf: PBF = new PBF()) {
-    if (obj.symbolId) pbf.writeVarintField(1, obj.symbolId);
-    if (obj.digits) pbf.writeVarintField(2, obj.digits);
-    if (obj.pipPosition) pbf.writeVarintField(3, obj.pipPosition);
-    if (obj.enableShortSelling)
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
+      pbf.writeVarintField(1, obj.symbolId);
+    if (obj.digits !== undefined && obj.digits !== null)
+      pbf.writeVarintField(2, obj.digits);
+    if (obj.pipPosition !== undefined && obj.pipPosition !== null)
+      pbf.writeVarintField(3, obj.pipPosition);
+    if (obj.enableShortSelling !== undefined && obj.enableShortSelling !== null)
       pbf.writeBooleanField(4, obj.enableShortSelling);
-    if (obj.guaranteedStopLoss)
+    if (obj.guaranteedStopLoss !== undefined && obj.guaranteedStopLoss !== null)
       pbf.writeBooleanField(5, obj.guaranteedStopLoss);
-    if (obj.swapRollover3Days) pbf.writeVarintField(6, obj.swapRollover3Days);
-    if (obj.swapLong) pbf.writeDoubleField(7, obj.swapLong);
-    if (obj.swapShort) pbf.writeDoubleField(8, obj.swapShort);
-    if (obj.maxVolume) pbf.writeVarintField(9, obj.maxVolume);
-    if (obj.minVolume) pbf.writeVarintField(10, obj.minVolume);
-    if (obj.stepVolume) pbf.writeVarintField(11, obj.stepVolume);
-    if (obj.maxExposure) pbf.writeVarintField(12, obj.maxExposure);
-    if (obj.schedule)
+    if (obj.swapRollover3Days !== undefined && obj.swapRollover3Days !== null)
+      pbf.writeVarintField(6, obj.swapRollover3Days);
+    if (obj.swapLong !== undefined && obj.swapLong !== null)
+      pbf.writeDoubleField(7, obj.swapLong);
+    if (obj.swapShort !== undefined && obj.swapShort !== null)
+      pbf.writeDoubleField(8, obj.swapShort);
+    if (obj.maxVolume !== undefined && obj.maxVolume !== null)
+      pbf.writeVarintField(9, obj.maxVolume);
+    if (obj.minVolume !== undefined && obj.minVolume !== null)
+      pbf.writeVarintField(10, obj.minVolume);
+    if (obj.stepVolume !== undefined && obj.stepVolume !== null)
+      pbf.writeVarintField(11, obj.stepVolume);
+    if (obj.maxExposure !== undefined && obj.maxExposure !== null)
+      pbf.writeVarintField(12, obj.maxExposure);
+    if (obj.schedule !== undefined && obj.schedule !== null)
       obj.schedule.forEach((schedule) =>
         pbf.writeMessage(13, ProtoOAIntervalUtils.write, schedule)
       );
-    if (obj.commission) pbf.writeVarintField(14, obj.commission);
-    if (obj.commissionType) pbf.writeVarintField(15, obj.commissionType);
-    if (obj.slDistance) pbf.writeVarintField(16, obj.slDistance);
-    if (obj.tpDistance) pbf.writeVarintField(17, obj.tpDistance);
-    if (obj.gslDistance) pbf.writeVarintField(18, obj.gslDistance);
-    if (obj.gslCharge) pbf.writeVarintField(19, obj.gslCharge);
-    if (obj.distanceSetIn) pbf.writeVarintField(20, obj.distanceSetIn);
-    if (obj.minCommission) pbf.writeVarintField(21, obj.minCommission);
-    if (obj.minCommissionType) pbf.writeVarintField(22, obj.minCommissionType);
-    if (obj.minCommissionAsset)
+    if (obj.commission !== undefined && obj.commission !== null)
+      pbf.writeVarintField(14, obj.commission);
+    if (obj.commissionType !== undefined && obj.commissionType !== null)
+      pbf.writeVarintField(15, obj.commissionType);
+    if (obj.slDistance !== undefined && obj.slDistance !== null)
+      pbf.writeVarintField(16, obj.slDistance);
+    if (obj.tpDistance !== undefined && obj.tpDistance !== null)
+      pbf.writeVarintField(17, obj.tpDistance);
+    if (obj.gslDistance !== undefined && obj.gslDistance !== null)
+      pbf.writeVarintField(18, obj.gslDistance);
+    if (obj.gslCharge !== undefined && obj.gslCharge !== null)
+      pbf.writeVarintField(19, obj.gslCharge);
+    if (obj.distanceSetIn !== undefined && obj.distanceSetIn !== null)
+      pbf.writeVarintField(20, obj.distanceSetIn);
+    if (obj.minCommission !== undefined && obj.minCommission !== null)
+      pbf.writeVarintField(21, obj.minCommission);
+    if (obj.minCommissionType !== undefined && obj.minCommissionType !== null)
+      pbf.writeVarintField(22, obj.minCommissionType);
+    if (obj.minCommissionAsset !== undefined && obj.minCommissionAsset !== null)
       pbf.writeStringField(23, obj.minCommissionAsset);
-    if (obj.rolloverCommission)
+    if (obj.rolloverCommission !== undefined && obj.rolloverCommission !== null)
       pbf.writeVarintField(24, obj.rolloverCommission);
-    if (obj.skipRolloverDays) pbf.writeVarintField(25, obj.skipRolloverDays);
-    if (obj.scheduleTimeZone) pbf.writeStringField(26, obj.scheduleTimeZone);
-    if (obj.tradingMode) pbf.writeVarintField(27, obj.tradingMode);
-    if (obj.rolloverCommission3Days)
+    if (obj.skipRolloverDays !== undefined && obj.skipRolloverDays !== null)
+      pbf.writeVarintField(25, obj.skipRolloverDays);
+    if (obj.scheduleTimeZone !== undefined && obj.scheduleTimeZone !== null)
+      pbf.writeStringField(26, obj.scheduleTimeZone);
+    if (obj.tradingMode !== undefined && obj.tradingMode !== null)
+      pbf.writeVarintField(27, obj.tradingMode);
+    if (
+      obj.rolloverCommission3Days !== undefined &&
+      obj.rolloverCommission3Days !== null
+    )
       pbf.writeVarintField(28, obj.rolloverCommission3Days);
-    if (obj.swapCalculationType)
+    if (
+      obj.swapCalculationType !== undefined &&
+      obj.swapCalculationType !== null
+    )
       pbf.writeVarintField(29, obj.swapCalculationType);
-    if (obj.lotSize) pbf.writeVarintField(30, obj.lotSize);
-    if (obj.preciseTradingCommissionRate)
+    if (obj.lotSize !== undefined && obj.lotSize !== null)
+      pbf.writeVarintField(30, obj.lotSize);
+    if (
+      obj.preciseTradingCommissionRate !== undefined &&
+      obj.preciseTradingCommissionRate !== null
+    )
       pbf.writeVarintField(31, obj.preciseTradingCommissionRate);
-    if (obj.preciseMinCommission)
+    if (
+      obj.preciseMinCommission !== undefined &&
+      obj.preciseMinCommission !== null
+    )
       pbf.writeVarintField(32, obj.preciseMinCommission);
-    if (obj.holiday)
+    if (obj.holiday !== undefined && obj.holiday !== null)
       obj.holiday.forEach((holiday) =>
         pbf.writeMessage(33, ProtoOAHolidayUtils.write, holiday)
       );
@@ -3906,13 +4328,20 @@ export class ProtoOALightSymbolUtils {
   }
 
   static write(obj: ProtoOALightSymbol, pbf: PBF = new PBF()) {
-    if (obj.symbolId) pbf.writeVarintField(1, obj.symbolId);
-    if (obj.symbolName) pbf.writeStringField(2, obj.symbolName);
-    if (obj.enabled) pbf.writeBooleanField(3, obj.enabled);
-    if (obj.baseAssetId) pbf.writeVarintField(4, obj.baseAssetId);
-    if (obj.quoteAssetId) pbf.writeVarintField(5, obj.quoteAssetId);
-    if (obj.symbolCategoryId) pbf.writeVarintField(6, obj.symbolCategoryId);
-    if (obj.description) pbf.writeStringField(7, obj.description);
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
+      pbf.writeVarintField(1, obj.symbolId);
+    if (obj.symbolName !== undefined && obj.symbolName !== null)
+      pbf.writeStringField(2, obj.symbolName);
+    if (obj.enabled !== undefined && obj.enabled !== null)
+      pbf.writeBooleanField(3, obj.enabled);
+    if (obj.baseAssetId !== undefined && obj.baseAssetId !== null)
+      pbf.writeVarintField(4, obj.baseAssetId);
+    if (obj.quoteAssetId !== undefined && obj.quoteAssetId !== null)
+      pbf.writeVarintField(5, obj.quoteAssetId);
+    if (obj.symbolCategoryId !== undefined && obj.symbolCategoryId !== null)
+      pbf.writeVarintField(6, obj.symbolCategoryId);
+    if (obj.description !== undefined && obj.description !== null)
+      pbf.writeStringField(7, obj.description);
   }
 }
 
@@ -3953,11 +4382,17 @@ export class ProtoOAArchivedSymbolUtils {
   }
 
   static write(obj: ProtoOAArchivedSymbol, pbf: PBF = new PBF()) {
-    if (obj.symbolId) pbf.writeVarintField(1, obj.symbolId);
-    if (obj.name) pbf.writeStringField(2, obj.name);
-    if (obj.utcLastUpdateTimestamp)
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
+      pbf.writeVarintField(1, obj.symbolId);
+    if (obj.name !== undefined && obj.name !== null)
+      pbf.writeStringField(2, obj.name);
+    if (
+      obj.utcLastUpdateTimestamp !== undefined &&
+      obj.utcLastUpdateTimestamp !== null
+    )
       pbf.writeVarintField(3, obj.utcLastUpdateTimestamp);
-    if (obj.description) pbf.writeStringField(4, obj.description);
+    if (obj.description !== undefined && obj.description !== null)
+      pbf.writeStringField(4, obj.description);
   }
 }
 
@@ -3996,9 +4431,12 @@ export class ProtoOASymbolCategoryUtils {
   }
 
   static write(obj: ProtoOASymbolCategory, pbf: PBF = new PBF()) {
-    if (obj.id) pbf.writeVarintField(1, obj.id);
-    if (obj.assetClassId) pbf.writeVarintField(2, obj.assetClassId);
-    if (obj.name) pbf.writeStringField(3, obj.name);
+    if (obj.id !== undefined && obj.id !== null)
+      pbf.writeVarintField(1, obj.id);
+    if (obj.assetClassId !== undefined && obj.assetClassId !== null)
+      pbf.writeVarintField(2, obj.assetClassId);
+    if (obj.name !== undefined && obj.name !== null)
+      pbf.writeStringField(3, obj.name);
   }
 }
 
@@ -4030,8 +4468,10 @@ export class ProtoOAIntervalUtils {
   }
 
   static write(obj: ProtoOAInterval, pbf: PBF = new PBF()) {
-    if (obj.startSecond) pbf.writeVarintField(3, obj.startSecond);
-    if (obj.endSecond) pbf.writeVarintField(4, obj.endSecond);
+    if (obj.startSecond !== undefined && obj.startSecond !== null)
+      pbf.writeVarintField(3, obj.startSecond);
+    if (obj.endSecond !== undefined && obj.endSecond !== null)
+      pbf.writeVarintField(4, obj.endSecond);
   }
 }
 
@@ -4100,31 +4540,61 @@ export class ProtoOATraderUtils {
   }
 
   static write(obj: ProtoOATrader, pbf: PBF = new PBF()) {
-    if (obj.ctidTraderAccountId)
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(1, obj.ctidTraderAccountId);
-    if (obj.balance) pbf.writeVarintField(2, obj.balance);
-    if (obj.balanceVersion) pbf.writeVarintField(3, obj.balanceVersion);
-    if (obj.managerBonus) pbf.writeVarintField(4, obj.managerBonus);
-    if (obj.ibBonus) pbf.writeVarintField(5, obj.ibBonus);
-    if (obj.nonWithdrawableBonus)
+    if (obj.balance !== undefined && obj.balance !== null)
+      pbf.writeVarintField(2, obj.balance);
+    if (obj.balanceVersion !== undefined && obj.balanceVersion !== null)
+      pbf.writeVarintField(3, obj.balanceVersion);
+    if (obj.managerBonus !== undefined && obj.managerBonus !== null)
+      pbf.writeVarintField(4, obj.managerBonus);
+    if (obj.ibBonus !== undefined && obj.ibBonus !== null)
+      pbf.writeVarintField(5, obj.ibBonus);
+    if (
+      obj.nonWithdrawableBonus !== undefined &&
+      obj.nonWithdrawableBonus !== null
+    )
       pbf.writeVarintField(6, obj.nonWithdrawableBonus);
-    if (obj.accessRights) pbf.writeVarintField(7, obj.accessRights);
-    if (obj.depositAssetId) pbf.writeVarintField(8, obj.depositAssetId);
-    if (obj.swapFree) pbf.writeBooleanField(9, obj.swapFree);
-    if (obj.leverageInCents) pbf.writeVarintField(10, obj.leverageInCents);
-    if (obj.totalMarginCalculationType)
+    if (obj.accessRights !== undefined && obj.accessRights !== null)
+      pbf.writeVarintField(7, obj.accessRights);
+    if (obj.depositAssetId !== undefined && obj.depositAssetId !== null)
+      pbf.writeVarintField(8, obj.depositAssetId);
+    if (obj.swapFree !== undefined && obj.swapFree !== null)
+      pbf.writeBooleanField(9, obj.swapFree);
+    if (obj.leverageInCents !== undefined && obj.leverageInCents !== null)
+      pbf.writeVarintField(10, obj.leverageInCents);
+    if (
+      obj.totalMarginCalculationType !== undefined &&
+      obj.totalMarginCalculationType !== null
+    )
       pbf.writeVarintField(11, obj.totalMarginCalculationType);
-    if (obj.maxLeverage) pbf.writeVarintField(12, obj.maxLeverage);
-    if (obj.frenchRisk) pbf.writeBooleanField(13, obj.frenchRisk);
-    if (obj.traderLogin) pbf.writeVarintField(14, obj.traderLogin);
-    if (obj.accountType) pbf.writeVarintField(15, obj.accountType);
-    if (obj.brokerName) pbf.writeStringField(16, obj.brokerName);
-    if (obj.registrationTimestamp)
+    if (obj.maxLeverage !== undefined && obj.maxLeverage !== null)
+      pbf.writeVarintField(12, obj.maxLeverage);
+    if (obj.frenchRisk !== undefined && obj.frenchRisk !== null)
+      pbf.writeBooleanField(13, obj.frenchRisk);
+    if (obj.traderLogin !== undefined && obj.traderLogin !== null)
+      pbf.writeVarintField(14, obj.traderLogin);
+    if (obj.accountType !== undefined && obj.accountType !== null)
+      pbf.writeVarintField(15, obj.accountType);
+    if (obj.brokerName !== undefined && obj.brokerName !== null)
+      pbf.writeStringField(16, obj.brokerName);
+    if (
+      obj.registrationTimestamp !== undefined &&
+      obj.registrationTimestamp !== null
+    )
       pbf.writeVarintField(17, obj.registrationTimestamp);
-    if (obj.isLimitedRisk) pbf.writeBooleanField(18, obj.isLimitedRisk);
-    if (obj.limitedRiskMarginCalculationStrategy)
+    if (obj.isLimitedRisk !== undefined && obj.isLimitedRisk !== null)
+      pbf.writeBooleanField(18, obj.isLimitedRisk);
+    if (
+      obj.limitedRiskMarginCalculationStrategy !== undefined &&
+      obj.limitedRiskMarginCalculationStrategy !== null
+    )
       pbf.writeVarintField(19, obj.limitedRiskMarginCalculationStrategy);
-    if (obj.moneyDigits) pbf.writeVarintField(20, obj.moneyDigits);
+    if (obj.moneyDigits !== undefined && obj.moneyDigits !== null)
+      pbf.writeVarintField(20, obj.moneyDigits);
   }
 }
 
@@ -4188,26 +4658,45 @@ export class ProtoOAPositionUtils {
   }
 
   static write(obj: ProtoOAPosition, pbf: PBF = new PBF()) {
-    if (obj.positionId) pbf.writeVarintField(1, obj.positionId);
-    if (obj.tradeData)
+    if (obj.positionId !== undefined && obj.positionId !== null)
+      pbf.writeVarintField(1, obj.positionId);
+    if (obj.tradeData !== undefined && obj.tradeData !== null)
       pbf.writeMessage(2, ProtoOATradeDataUtils.write, obj.tradeData);
-    if (obj.positionStatus) pbf.writeVarintField(3, obj.positionStatus);
-    if (obj.swap) pbf.writeVarintField(4, obj.swap);
-    if (obj.price) pbf.writeDoubleField(5, obj.price);
-    if (obj.stopLoss) pbf.writeDoubleField(6, obj.stopLoss);
-    if (obj.takeProfit) pbf.writeDoubleField(7, obj.takeProfit);
-    if (obj.utcLastUpdateTimestamp)
+    if (obj.positionStatus !== undefined && obj.positionStatus !== null)
+      pbf.writeVarintField(3, obj.positionStatus);
+    if (obj.swap !== undefined && obj.swap !== null)
+      pbf.writeVarintField(4, obj.swap);
+    if (obj.price !== undefined && obj.price !== null)
+      pbf.writeDoubleField(5, obj.price);
+    if (obj.stopLoss !== undefined && obj.stopLoss !== null)
+      pbf.writeDoubleField(6, obj.stopLoss);
+    if (obj.takeProfit !== undefined && obj.takeProfit !== null)
+      pbf.writeDoubleField(7, obj.takeProfit);
+    if (
+      obj.utcLastUpdateTimestamp !== undefined &&
+      obj.utcLastUpdateTimestamp !== null
+    )
       pbf.writeVarintField(8, obj.utcLastUpdateTimestamp);
-    if (obj.commission) pbf.writeVarintField(9, obj.commission);
-    if (obj.marginRate) pbf.writeDoubleField(10, obj.marginRate);
-    if (obj.mirroringCommission)
+    if (obj.commission !== undefined && obj.commission !== null)
+      pbf.writeVarintField(9, obj.commission);
+    if (obj.marginRate !== undefined && obj.marginRate !== null)
+      pbf.writeDoubleField(10, obj.marginRate);
+    if (
+      obj.mirroringCommission !== undefined &&
+      obj.mirroringCommission !== null
+    )
       pbf.writeVarintField(11, obj.mirroringCommission);
-    if (obj.guaranteedStopLoss)
+    if (obj.guaranteedStopLoss !== undefined && obj.guaranteedStopLoss !== null)
       pbf.writeBooleanField(12, obj.guaranteedStopLoss);
-    if (obj.usedMargin) pbf.writeVarintField(13, obj.usedMargin);
-    if (obj.stopLossTriggerMethod)
+    if (obj.usedMargin !== undefined && obj.usedMargin !== null)
+      pbf.writeVarintField(13, obj.usedMargin);
+    if (
+      obj.stopLossTriggerMethod !== undefined &&
+      obj.stopLossTriggerMethod !== null
+    )
       pbf.writeVarintField(14, obj.stopLossTriggerMethod);
-    if (obj.moneyDigits) pbf.writeVarintField(15, obj.moneyDigits);
+    if (obj.moneyDigits !== undefined && obj.moneyDigits !== null)
+      pbf.writeVarintField(15, obj.moneyDigits);
   }
 }
 
@@ -4250,14 +4739,20 @@ export class ProtoOATradeDataUtils {
   }
 
   static write(obj: ProtoOATradeData, pbf: PBF = new PBF()) {
-    if (obj.symbolId) pbf.writeVarintField(1, obj.symbolId);
-    if (obj.volume) pbf.writeVarintField(2, obj.volume);
-    if (obj.tradeSide) pbf.writeVarintField(3, obj.tradeSide);
-    if (obj.openTimestamp) pbf.writeVarintField(4, obj.openTimestamp);
-    if (obj.label) pbf.writeStringField(5, obj.label);
-    if (obj.guaranteedStopLoss)
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
+      pbf.writeVarintField(1, obj.symbolId);
+    if (obj.volume !== undefined && obj.volume !== null)
+      pbf.writeVarintField(2, obj.volume);
+    if (obj.tradeSide !== undefined && obj.tradeSide !== null)
+      pbf.writeVarintField(3, obj.tradeSide);
+    if (obj.openTimestamp !== undefined && obj.openTimestamp !== null)
+      pbf.writeVarintField(4, obj.openTimestamp);
+    if (obj.label !== undefined && obj.label !== null)
+      pbf.writeStringField(5, obj.label);
+    if (obj.guaranteedStopLoss !== undefined && obj.guaranteedStopLoss !== null)
       pbf.writeBooleanField(6, obj.guaranteedStopLoss);
-    if (obj.comment) pbf.writeStringField(7, obj.comment);
+    if (obj.comment !== undefined && obj.comment !== null)
+      pbf.writeStringField(7, obj.comment);
   }
 }
 
@@ -4337,33 +4832,58 @@ export class ProtoOAOrderUtils {
   }
 
   static write(obj: ProtoOAOrder, pbf: PBF = new PBF()) {
-    if (obj.orderId) pbf.writeVarintField(1, obj.orderId);
-    if (obj.tradeData)
+    if (obj.orderId !== undefined && obj.orderId !== null)
+      pbf.writeVarintField(1, obj.orderId);
+    if (obj.tradeData !== undefined && obj.tradeData !== null)
       pbf.writeMessage(2, ProtoOATradeDataUtils.write, obj.tradeData);
-    if (obj.orderType) pbf.writeVarintField(3, obj.orderType);
-    if (obj.orderStatus) pbf.writeVarintField(4, obj.orderStatus);
-    if (obj.expirationTimestamp)
+    if (obj.orderType !== undefined && obj.orderType !== null)
+      pbf.writeVarintField(3, obj.orderType);
+    if (obj.orderStatus !== undefined && obj.orderStatus !== null)
+      pbf.writeVarintField(4, obj.orderStatus);
+    if (
+      obj.expirationTimestamp !== undefined &&
+      obj.expirationTimestamp !== null
+    )
       pbf.writeVarintField(6, obj.expirationTimestamp);
-    if (obj.executionPrice) pbf.writeDoubleField(7, obj.executionPrice);
-    if (obj.executedVolume) pbf.writeVarintField(8, obj.executedVolume);
-    if (obj.utcLastUpdateTimestamp)
+    if (obj.executionPrice !== undefined && obj.executionPrice !== null)
+      pbf.writeDoubleField(7, obj.executionPrice);
+    if (obj.executedVolume !== undefined && obj.executedVolume !== null)
+      pbf.writeVarintField(8, obj.executedVolume);
+    if (
+      obj.utcLastUpdateTimestamp !== undefined &&
+      obj.utcLastUpdateTimestamp !== null
+    )
       pbf.writeVarintField(9, obj.utcLastUpdateTimestamp);
-    if (obj.baseSlippagePrice) pbf.writeDoubleField(10, obj.baseSlippagePrice);
-    if (obj.slippageInPoints) pbf.writeVarintField(11, obj.slippageInPoints);
-    if (obj.closingOrder) pbf.writeBooleanField(12, obj.closingOrder);
-    if (obj.limitPrice) pbf.writeDoubleField(13, obj.limitPrice);
-    if (obj.stopPrice) pbf.writeDoubleField(14, obj.stopPrice);
-    if (obj.stopLoss) pbf.writeDoubleField(15, obj.stopLoss);
-    if (obj.takeProfit) pbf.writeDoubleField(16, obj.takeProfit);
-    if (obj.clientOrderId) pbf.writeStringField(17, obj.clientOrderId);
-    if (obj.timeInForce) pbf.writeVarintField(18, obj.timeInForce);
-    if (obj.positionId) pbf.writeVarintField(19, obj.positionId);
-    if (obj.relativeStopLoss) pbf.writeVarintField(20, obj.relativeStopLoss);
-    if (obj.relativeTakeProfit)
+    if (obj.baseSlippagePrice !== undefined && obj.baseSlippagePrice !== null)
+      pbf.writeDoubleField(10, obj.baseSlippagePrice);
+    if (obj.slippageInPoints !== undefined && obj.slippageInPoints !== null)
+      pbf.writeVarintField(11, obj.slippageInPoints);
+    if (obj.closingOrder !== undefined && obj.closingOrder !== null)
+      pbf.writeBooleanField(12, obj.closingOrder);
+    if (obj.limitPrice !== undefined && obj.limitPrice !== null)
+      pbf.writeDoubleField(13, obj.limitPrice);
+    if (obj.stopPrice !== undefined && obj.stopPrice !== null)
+      pbf.writeDoubleField(14, obj.stopPrice);
+    if (obj.stopLoss !== undefined && obj.stopLoss !== null)
+      pbf.writeDoubleField(15, obj.stopLoss);
+    if (obj.takeProfit !== undefined && obj.takeProfit !== null)
+      pbf.writeDoubleField(16, obj.takeProfit);
+    if (obj.clientOrderId !== undefined && obj.clientOrderId !== null)
+      pbf.writeStringField(17, obj.clientOrderId);
+    if (obj.timeInForce !== undefined && obj.timeInForce !== null)
+      pbf.writeVarintField(18, obj.timeInForce);
+    if (obj.positionId !== undefined && obj.positionId !== null)
+      pbf.writeVarintField(19, obj.positionId);
+    if (obj.relativeStopLoss !== undefined && obj.relativeStopLoss !== null)
+      pbf.writeVarintField(20, obj.relativeStopLoss);
+    if (obj.relativeTakeProfit !== undefined && obj.relativeTakeProfit !== null)
       pbf.writeVarintField(21, obj.relativeTakeProfit);
-    if (obj.isStopOut) pbf.writeBooleanField(22, obj.isStopOut);
-    if (obj.trailingStopLoss) pbf.writeBooleanField(23, obj.trailingStopLoss);
-    if (obj.stopTriggerMethod) pbf.writeVarintField(24, obj.stopTriggerMethod);
+    if (obj.isStopOut !== undefined && obj.isStopOut !== null)
+      pbf.writeBooleanField(22, obj.isStopOut);
+    if (obj.trailingStopLoss !== undefined && obj.trailingStopLoss !== null)
+      pbf.writeBooleanField(23, obj.trailingStopLoss);
+    if (obj.stopTriggerMethod !== undefined && obj.stopTriggerMethod !== null)
+      pbf.writeVarintField(24, obj.stopTriggerMethod);
   }
 }
 
@@ -4420,18 +4940,32 @@ export class ProtoOABonusDepositWithdrawUtils {
   }
 
   static write(obj: ProtoOABonusDepositWithdraw, pbf: PBF = new PBF()) {
-    if (obj.operationType) pbf.writeVarintField(1, obj.operationType);
-    if (obj.bonusHistoryId) pbf.writeVarintField(2, obj.bonusHistoryId);
-    if (obj.managerBonus) pbf.writeVarintField(3, obj.managerBonus);
-    if (obj.managerDelta) pbf.writeVarintField(4, obj.managerDelta);
-    if (obj.ibBonus) pbf.writeVarintField(5, obj.ibBonus);
-    if (obj.ibDelta) pbf.writeVarintField(6, obj.ibDelta);
-    if (obj.changeBonusTimestamp)
+    if (obj.operationType !== undefined && obj.operationType !== null)
+      pbf.writeVarintField(1, obj.operationType);
+    if (obj.bonusHistoryId !== undefined && obj.bonusHistoryId !== null)
+      pbf.writeVarintField(2, obj.bonusHistoryId);
+    if (obj.managerBonus !== undefined && obj.managerBonus !== null)
+      pbf.writeVarintField(3, obj.managerBonus);
+    if (obj.managerDelta !== undefined && obj.managerDelta !== null)
+      pbf.writeVarintField(4, obj.managerDelta);
+    if (obj.ibBonus !== undefined && obj.ibBonus !== null)
+      pbf.writeVarintField(5, obj.ibBonus);
+    if (obj.ibDelta !== undefined && obj.ibDelta !== null)
+      pbf.writeVarintField(6, obj.ibDelta);
+    if (
+      obj.changeBonusTimestamp !== undefined &&
+      obj.changeBonusTimestamp !== null
+    )
       pbf.writeVarintField(7, obj.changeBonusTimestamp);
-    if (obj.externalNote) pbf.writeStringField(8, obj.externalNote);
-    if (obj.introducingBrokerId)
+    if (obj.externalNote !== undefined && obj.externalNote !== null)
+      pbf.writeStringField(8, obj.externalNote);
+    if (
+      obj.introducingBrokerId !== undefined &&
+      obj.introducingBrokerId !== null
+    )
       pbf.writeVarintField(9, obj.introducingBrokerId);
-    if (obj.moneyDigits) pbf.writeVarintField(10, obj.moneyDigits);
+    if (obj.moneyDigits !== undefined && obj.moneyDigits !== null)
+      pbf.writeVarintField(10, obj.moneyDigits);
   }
 }
 
@@ -4484,16 +5018,27 @@ export class ProtoOADepositWithdrawUtils {
   }
 
   static write(obj: ProtoOADepositWithdraw, pbf: PBF = new PBF()) {
-    if (obj.operationType) pbf.writeVarintField(1, obj.operationType);
-    if (obj.balanceHistoryId) pbf.writeVarintField(2, obj.balanceHistoryId);
-    if (obj.balance) pbf.writeVarintField(3, obj.balance);
-    if (obj.delta) pbf.writeVarintField(4, obj.delta);
-    if (obj.changeBalanceTimestamp)
+    if (obj.operationType !== undefined && obj.operationType !== null)
+      pbf.writeVarintField(1, obj.operationType);
+    if (obj.balanceHistoryId !== undefined && obj.balanceHistoryId !== null)
+      pbf.writeVarintField(2, obj.balanceHistoryId);
+    if (obj.balance !== undefined && obj.balance !== null)
+      pbf.writeVarintField(3, obj.balance);
+    if (obj.delta !== undefined && obj.delta !== null)
+      pbf.writeVarintField(4, obj.delta);
+    if (
+      obj.changeBalanceTimestamp !== undefined &&
+      obj.changeBalanceTimestamp !== null
+    )
       pbf.writeVarintField(5, obj.changeBalanceTimestamp);
-    if (obj.externalNote) pbf.writeStringField(6, obj.externalNote);
-    if (obj.balanceVersion) pbf.writeVarintField(7, obj.balanceVersion);
-    if (obj.equity) pbf.writeVarintField(8, obj.equity);
-    if (obj.moneyDigits) pbf.writeVarintField(9, obj.moneyDigits);
+    if (obj.externalNote !== undefined && obj.externalNote !== null)
+      pbf.writeStringField(6, obj.externalNote);
+    if (obj.balanceVersion !== undefined && obj.balanceVersion !== null)
+      pbf.writeVarintField(7, obj.balanceVersion);
+    if (obj.equity !== undefined && obj.equity !== null)
+      pbf.writeVarintField(8, obj.equity);
+    if (obj.moneyDigits !== undefined && obj.moneyDigits !== null)
+      pbf.writeVarintField(9, obj.moneyDigits);
   }
 }
 
@@ -4567,30 +5112,53 @@ export class ProtoOADealUtils {
   }
 
   static write(obj: ProtoOADeal, pbf: PBF = new PBF()) {
-    if (obj.dealId) pbf.writeVarintField(1, obj.dealId);
-    if (obj.orderId) pbf.writeVarintField(2, obj.orderId);
-    if (obj.positionId) pbf.writeVarintField(3, obj.positionId);
-    if (obj.volume) pbf.writeVarintField(4, obj.volume);
-    if (obj.filledVolume) pbf.writeVarintField(5, obj.filledVolume);
-    if (obj.symbolId) pbf.writeVarintField(6, obj.symbolId);
-    if (obj.createTimestamp) pbf.writeVarintField(7, obj.createTimestamp);
-    if (obj.executionTimestamp) pbf.writeVarintField(8, obj.executionTimestamp);
-    if (obj.utcLastUpdateTimestamp)
+    if (obj.dealId !== undefined && obj.dealId !== null)
+      pbf.writeVarintField(1, obj.dealId);
+    if (obj.orderId !== undefined && obj.orderId !== null)
+      pbf.writeVarintField(2, obj.orderId);
+    if (obj.positionId !== undefined && obj.positionId !== null)
+      pbf.writeVarintField(3, obj.positionId);
+    if (obj.volume !== undefined && obj.volume !== null)
+      pbf.writeVarintField(4, obj.volume);
+    if (obj.filledVolume !== undefined && obj.filledVolume !== null)
+      pbf.writeVarintField(5, obj.filledVolume);
+    if (obj.symbolId !== undefined && obj.symbolId !== null)
+      pbf.writeVarintField(6, obj.symbolId);
+    if (obj.createTimestamp !== undefined && obj.createTimestamp !== null)
+      pbf.writeVarintField(7, obj.createTimestamp);
+    if (obj.executionTimestamp !== undefined && obj.executionTimestamp !== null)
+      pbf.writeVarintField(8, obj.executionTimestamp);
+    if (
+      obj.utcLastUpdateTimestamp !== undefined &&
+      obj.utcLastUpdateTimestamp !== null
+    )
       pbf.writeVarintField(9, obj.utcLastUpdateTimestamp);
-    if (obj.executionPrice) pbf.writeDoubleField(10, obj.executionPrice);
-    if (obj.tradeSide) pbf.writeVarintField(11, obj.tradeSide);
-    if (obj.dealStatus) pbf.writeVarintField(12, obj.dealStatus);
-    if (obj.marginRate) pbf.writeDoubleField(13, obj.marginRate);
-    if (obj.commission) pbf.writeVarintField(14, obj.commission);
-    if (obj.baseToUsdConversionRate)
+    if (obj.executionPrice !== undefined && obj.executionPrice !== null)
+      pbf.writeDoubleField(10, obj.executionPrice);
+    if (obj.tradeSide !== undefined && obj.tradeSide !== null)
+      pbf.writeVarintField(11, obj.tradeSide);
+    if (obj.dealStatus !== undefined && obj.dealStatus !== null)
+      pbf.writeVarintField(12, obj.dealStatus);
+    if (obj.marginRate !== undefined && obj.marginRate !== null)
+      pbf.writeDoubleField(13, obj.marginRate);
+    if (obj.commission !== undefined && obj.commission !== null)
+      pbf.writeVarintField(14, obj.commission);
+    if (
+      obj.baseToUsdConversionRate !== undefined &&
+      obj.baseToUsdConversionRate !== null
+    )
       pbf.writeDoubleField(15, obj.baseToUsdConversionRate);
-    if (obj.closePositionDetail)
+    if (
+      obj.closePositionDetail !== undefined &&
+      obj.closePositionDetail !== null
+    )
       pbf.writeMessage(
         16,
         ProtoOAClosePositionDetailUtils.write,
         obj.closePositionDetail
       );
-    if (obj.moneyDigits) pbf.writeVarintField(17, obj.moneyDigits);
+    if (obj.moneyDigits !== undefined && obj.moneyDigits !== null)
+      pbf.writeVarintField(17, obj.moneyDigits);
   }
 }
 
@@ -4643,16 +5211,27 @@ export class ProtoOAClosePositionDetailUtils {
   }
 
   static write(obj: ProtoOAClosePositionDetail, pbf: PBF = new PBF()) {
-    if (obj.entryPrice) pbf.writeDoubleField(1, obj.entryPrice);
-    if (obj.grossProfit) pbf.writeVarintField(2, obj.grossProfit);
-    if (obj.swap) pbf.writeVarintField(3, obj.swap);
-    if (obj.commission) pbf.writeVarintField(4, obj.commission);
-    if (obj.balance) pbf.writeVarintField(5, obj.balance);
-    if (obj.quoteToDepositConversionRate)
+    if (obj.entryPrice !== undefined && obj.entryPrice !== null)
+      pbf.writeDoubleField(1, obj.entryPrice);
+    if (obj.grossProfit !== undefined && obj.grossProfit !== null)
+      pbf.writeVarintField(2, obj.grossProfit);
+    if (obj.swap !== undefined && obj.swap !== null)
+      pbf.writeVarintField(3, obj.swap);
+    if (obj.commission !== undefined && obj.commission !== null)
+      pbf.writeVarintField(4, obj.commission);
+    if (obj.balance !== undefined && obj.balance !== null)
+      pbf.writeVarintField(5, obj.balance);
+    if (
+      obj.quoteToDepositConversionRate !== undefined &&
+      obj.quoteToDepositConversionRate !== null
+    )
       pbf.writeDoubleField(6, obj.quoteToDepositConversionRate);
-    if (obj.closedVolume) pbf.writeVarintField(7, obj.closedVolume);
-    if (obj.balanceVersion) pbf.writeVarintField(8, obj.balanceVersion);
-    if (obj.moneyDigits) pbf.writeVarintField(9, obj.moneyDigits);
+    if (obj.closedVolume !== undefined && obj.closedVolume !== null)
+      pbf.writeVarintField(7, obj.closedVolume);
+    if (obj.balanceVersion !== undefined && obj.balanceVersion !== null)
+      pbf.writeVarintField(8, obj.balanceVersion);
+    if (obj.moneyDigits !== undefined && obj.moneyDigits !== null)
+      pbf.writeVarintField(9, obj.moneyDigits);
   }
 }
 
@@ -4693,13 +5272,22 @@ export class ProtoOATrendbarUtils {
   }
 
   static write(obj: ProtoOATrendbar, pbf: PBF = new PBF()) {
-    if (obj.volume) pbf.writeVarintField(3, obj.volume);
-    if (obj.period) pbf.writeVarintField(4, obj.period);
-    if (obj.low) pbf.writeVarintField(5, obj.low);
-    if (obj.deltaOpen) pbf.writeVarintField(6, obj.deltaOpen);
-    if (obj.deltaClose) pbf.writeVarintField(7, obj.deltaClose);
-    if (obj.deltaHigh) pbf.writeVarintField(8, obj.deltaHigh);
-    if (obj.utcTimestampInMinutes)
+    if (obj.volume !== undefined && obj.volume !== null)
+      pbf.writeVarintField(3, obj.volume);
+    if (obj.period !== undefined && obj.period !== null)
+      pbf.writeVarintField(4, obj.period);
+    if (obj.low !== undefined && obj.low !== null)
+      pbf.writeVarintField(5, obj.low);
+    if (obj.deltaOpen !== undefined && obj.deltaOpen !== null)
+      pbf.writeVarintField(6, obj.deltaOpen);
+    if (obj.deltaClose !== undefined && obj.deltaClose !== null)
+      pbf.writeVarintField(7, obj.deltaClose);
+    if (obj.deltaHigh !== undefined && obj.deltaHigh !== null)
+      pbf.writeVarintField(8, obj.deltaHigh);
+    if (
+      obj.utcTimestampInMinutes !== undefined &&
+      obj.utcTimestampInMinutes !== null
+    )
       pbf.writeVarintField(9, obj.utcTimestampInMinutes);
   }
 }
@@ -4739,9 +5327,12 @@ export class ProtoOAExpectedMarginUtils {
   }
 
   static write(obj: ProtoOAExpectedMargin, pbf: PBF = new PBF()) {
-    if (obj.volume) pbf.writeVarintField(1, obj.volume);
-    if (obj.buyMargin) pbf.writeVarintField(2, obj.buyMargin);
-    if (obj.sellMargin) pbf.writeVarintField(3, obj.sellMargin);
+    if (obj.volume !== undefined && obj.volume !== null)
+      pbf.writeVarintField(1, obj.volume);
+    if (obj.buyMargin !== undefined && obj.buyMargin !== null)
+      pbf.writeVarintField(2, obj.buyMargin);
+    if (obj.sellMargin !== undefined && obj.sellMargin !== null)
+      pbf.writeVarintField(3, obj.sellMargin);
   }
 }
 
@@ -4773,8 +5364,10 @@ export class ProtoOATickDataUtils {
   }
 
   static write(obj: ProtoOATickData, pbf: PBF = new PBF()) {
-    if (obj.timestamp) pbf.writeVarintField(1, obj.timestamp);
-    if (obj.tick) pbf.writeVarintField(2, obj.tick);
+    if (obj.timestamp !== undefined && obj.timestamp !== null)
+      pbf.writeVarintField(1, obj.timestamp);
+    if (obj.tick !== undefined && obj.tick !== null)
+      pbf.writeVarintField(2, obj.tick);
   }
 }
 
@@ -4803,7 +5396,8 @@ export class ProtoOACtidProfileUtils {
   }
 
   static write(obj: ProtoOACtidProfile, pbf: PBF = new PBF()) {
-    if (obj.userId) pbf.writeVarintField(1, obj.userId);
+    if (obj.userId !== undefined && obj.userId !== null)
+      pbf.writeVarintField(1, obj.userId);
   }
 }
 
@@ -4840,10 +5434,15 @@ export class ProtoOACtidTraderAccountUtils {
   }
 
   static write(obj: ProtoOACtidTraderAccount, pbf: PBF = new PBF()) {
-    if (obj.ctidTraderAccountId)
+    if (
+      obj.ctidTraderAccountId !== undefined &&
+      obj.ctidTraderAccountId !== null
+    )
       pbf.writeVarintField(1, obj.ctidTraderAccountId);
-    if (obj.isLive) pbf.writeBooleanField(2, obj.isLive);
-    if (obj.traderLogin) pbf.writeVarintField(3, obj.traderLogin);
+    if (obj.isLive !== undefined && obj.isLive !== null)
+      pbf.writeBooleanField(2, obj.isLive);
+    if (obj.traderLogin !== undefined && obj.traderLogin !== null)
+      pbf.writeVarintField(3, obj.traderLogin);
   }
 }
 
@@ -4868,8 +5467,10 @@ export class ProtoOAAssetClassUtils {
   }
 
   static write(obj: ProtoOAAssetClass, pbf: PBF = new PBF()) {
-    if (obj.id) pbf.writeVarintField(1, obj.id);
-    if (obj.name) pbf.writeStringField(2, obj.name);
+    if (obj.id !== undefined && obj.id !== null)
+      pbf.writeVarintField(1, obj.id);
+    if (obj.name !== undefined && obj.name !== null)
+      pbf.writeStringField(2, obj.name);
   }
 }
 
@@ -4905,10 +5506,14 @@ export class ProtoOADepthQuoteUtils {
   }
 
   static write(obj: ProtoOADepthQuote, pbf: PBF = new PBF()) {
-    if (obj.id) pbf.writeVarintField(1, obj.id);
-    if (obj.size) pbf.writeVarintField(3, obj.size);
-    if (obj.bid) pbf.writeVarintField(4, obj.bid);
-    if (obj.ask) pbf.writeVarintField(5, obj.ask);
+    if (obj.id !== undefined && obj.id !== null)
+      pbf.writeVarintField(1, obj.id);
+    if (obj.size !== undefined && obj.size !== null)
+      pbf.writeVarintField(3, obj.size);
+    if (obj.bid !== undefined && obj.bid !== null)
+      pbf.writeVarintField(4, obj.bid);
+    if (obj.ask !== undefined && obj.ask !== null)
+      pbf.writeVarintField(5, obj.ask);
   }
 }
 
@@ -4942,10 +5547,17 @@ export class ProtoOAMarginCallUtils {
   }
 
   static write(obj: ProtoOAMarginCall, pbf: PBF = new PBF()) {
-    if (obj.marginCallType) pbf.writeVarintField(1, obj.marginCallType);
-    if (obj.marginLevelThreshold)
+    if (obj.marginCallType !== undefined && obj.marginCallType !== null)
+      pbf.writeVarintField(1, obj.marginCallType);
+    if (
+      obj.marginLevelThreshold !== undefined &&
+      obj.marginLevelThreshold !== null
+    )
       pbf.writeDoubleField(2, obj.marginLevelThreshold);
-    if (obj.utcLastUpdateTimestamp)
+    if (
+      obj.utcLastUpdateTimestamp !== undefined &&
+      obj.utcLastUpdateTimestamp !== null
+    )
       pbf.writeVarintField(3, obj.utcLastUpdateTimestamp);
   }
 }
@@ -4993,13 +5605,21 @@ export class ProtoOAHolidayUtils {
   }
 
   static write(obj: ProtoOAHoliday, pbf: PBF = new PBF()) {
-    if (obj.holidayId) pbf.writeVarintField(1, obj.holidayId);
-    if (obj.name) pbf.writeStringField(2, obj.name);
-    if (obj.description) pbf.writeStringField(3, obj.description);
-    if (obj.scheduleTimeZone) pbf.writeStringField(4, obj.scheduleTimeZone);
-    if (obj.holidayDate) pbf.writeVarintField(5, obj.holidayDate);
-    if (obj.isRecurring) pbf.writeBooleanField(6, obj.isRecurring);
-    if (obj.startSecond) pbf.writeVarintField(7, obj.startSecond);
-    if (obj.endSecond) pbf.writeVarintField(8, obj.endSecond);
+    if (obj.holidayId !== undefined && obj.holidayId !== null)
+      pbf.writeVarintField(1, obj.holidayId);
+    if (obj.name !== undefined && obj.name !== null)
+      pbf.writeStringField(2, obj.name);
+    if (obj.description !== undefined && obj.description !== null)
+      pbf.writeStringField(3, obj.description);
+    if (obj.scheduleTimeZone !== undefined && obj.scheduleTimeZone !== null)
+      pbf.writeStringField(4, obj.scheduleTimeZone);
+    if (obj.holidayDate !== undefined && obj.holidayDate !== null)
+      pbf.writeVarintField(5, obj.holidayDate);
+    if (obj.isRecurring !== undefined && obj.isRecurring !== null)
+      pbf.writeBooleanField(6, obj.isRecurring);
+    if (obj.startSecond !== undefined && obj.startSecond !== null)
+      pbf.writeVarintField(7, obj.startSecond);
+    if (obj.endSecond !== undefined && obj.endSecond !== null)
+      pbf.writeVarintField(8, obj.endSecond);
   }
 }
