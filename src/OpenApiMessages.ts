@@ -5407,6 +5407,8 @@ export interface ProtoOACtidTraderAccount {
   ctidTraderAccountId: number;
   isLive?: boolean;
   traderLogin?: number;
+  lastClosingDealTimestamp?: number;
+  lastBalanceUpdateTimestamp?: number;
 }
 
 export class ProtoOACtidTraderAccountUtils {
@@ -5431,6 +5433,8 @@ export class ProtoOACtidTraderAccountUtils {
     if (tag === 1) obj.ctidTraderAccountId = pbf.readVarint64();
     if (tag === 2) obj.isLive = pbf.readBoolean();
     if (tag === 3) obj.traderLogin = pbf.readVarint64();
+    if (tag === 4) obj.lastClosingDealTimestamp = pbf.readVarint64();
+    if (tag === 5) obj.lastBalanceUpdateTimestamp = pbf.readVarint64();
   }
 
   static write(obj: ProtoOACtidTraderAccount, pbf: PBF = new PBF()) {
@@ -5443,6 +5447,16 @@ export class ProtoOACtidTraderAccountUtils {
       pbf.writeBooleanField(2, obj.isLive);
     if (obj.traderLogin !== undefined && obj.traderLogin !== null)
       pbf.writeVarintField(3, obj.traderLogin);
+    if (
+      obj.lastClosingDealTimestamp !== undefined &&
+      obj.lastClosingDealTimestamp !== null
+    )
+      pbf.writeVarintField(4, obj.lastClosingDealTimestamp);
+    if (
+      obj.lastBalanceUpdateTimestamp !== undefined &&
+      obj.lastBalanceUpdateTimestamp !== null
+    )
+      pbf.writeVarintField(5, obj.lastBalanceUpdateTimestamp);
   }
 }
 
