@@ -40,7 +40,7 @@
     "@types/pbf": "^3.0.2",
     "@types/protocol-buffers-schema": "^3.4.0",
     "@types/resolve-protobuf-schema": "^2.1.0",
-    "@types/semver": "^7.3.5",
+    "@types/semver": "^7.3.6",
     "create-typescript-project-dependencies": "^14.0.6",
     "isomorphic-git": "^0.56.0",
     "rimraf": "^2.7.1"
