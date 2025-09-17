@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "preimport": "rimraf ./protobuf",
-    "import": "isogit clone --url=https://github.com/spotware/Open-API-2.0-protobuf-messages.git --dir=./protobuf --singleBranch",
+    "import": "isogit clone --url=https://github.com/spotware/openapi-proto-messages --dir=./protobuf --singleBranch",
     "postimport": "rimraf ./protobuf/.git",
     "compile": "ts-node src/compile.ts",
     "postcompile": "npx prettier --write ./src/**",
