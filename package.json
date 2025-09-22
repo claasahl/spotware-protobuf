@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "import": "bash ./scripts/import.sh",
+    "postimport": "cd protobuf && ls -1 *.proto | cut -d'.' -f1 | xargs -I{} sh -c 'npx pbf \"{}\" > \"../src/utils/{}.ts\"'",
     "compile": "ts-node src/compile.ts",
     "postcompile": "npx prettier --write ./src/**",
     "precommit": "pretty-quick --staged",
