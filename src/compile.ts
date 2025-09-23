@@ -3,7 +3,6 @@ import { EOL } from "os";
 import fs from "fs";
 import path from "path";
 import resolve from "resolve-protobuf-schema";
-import semver from "semver";
 
 // see compileRaw in compile.js
 // https://github.com/mapbox/pbf/blob/master/compile.js#L16
@@ -18,35 +17,7 @@ import semver from "semver";
 // --single-file --multi-files???
 
 const enums: Set<string> = new Set();
-
-const dir = "./protobuf";
-const versions = fs.readdirSync(dir);
-if (versions.length !== 1) {
-  throw new Error(
-    `Could not find latest 'Beta'/'Current' version. ${versions.length} matching.`
-  );
-}
-const protoDir = path.join(dir, versions[0]);
-
-const pkg = JSON.parse(fs.readFileSync("./package.json").toString());
-const newVersion = semver.coerce(versions[0].split(" ")[0]);
-const oldVersion = semver.coerce(pkg.version);
-if (!newVersion || !oldVersion) {
-  throw new Error(
-    `encountered invalid version number (old: ${pkg.version}; new: ${
-      versions[0].split(" ")[0]
-    })`
-  );
-} else if (semver.gte(newVersion, oldVersion)) {
-  pkg.version = newVersion.raw;
-} else {
-  throw new Error(
-    `lastest 'Beta' version has a lower major version number (old: ${
-      pkg.version
-    }; new: ${versions[0].split(" ")[0]})`
-  );
-}
-fs.writeFileSync("./package.json", JSON.stringify(pkg, null, 2));
+const protoDir = "./protobuf";
 
 fs.writeFileSync(
   "./src/OpenApiCommonMessages.ts",
@@ -327,6 +298,15 @@ function defaultValue(field: Field): string {
       return "ProtoOANotificationType.MARGIN_LEVEL_THRESHOLD_1";
     case "ProtoOAMarginCall":
       return "{marginCallType: ProtoOANotificationType.MARGIN_LEVEL_THRESHOLD_1, marginLevelThreshold: 0}";
+    case "ProtoOADynamicLeverage":
+      return "{leverageId: 0, tiers: []}";
+    case "ProtoOAOrder":
+      return `{
+        orderId: 0,
+        tradeData: {symbolId: 0, volume: 0, tradeSide: ProtoOATradeSide.BUY},
+        orderType: ProtoOAOrderType.MARKET,
+        orderStatus: ProtoOAOrderStatus.ORDER_STATUS_ACCEPTED,
+      }`;
     default:
       return `no default value for '${field.type}'`;
   }
