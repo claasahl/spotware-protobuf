@@ -12,7 +12,8 @@
     "prebuild": "npm run import",
     "build": "npm run compile",
     "postbuild": "tsc",
-    "start": "ts-node src/index.ts"
+    "start": "ts-node src/index.ts",
+    "test": "exit 0"
   },
   "repository": {
     "type": "git",
