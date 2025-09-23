@@ -1,4 +1,9 @@
-import { Schema, Message, Field, Enum } from "protocol-buffers-schema/types";
+import type {
+  Schema,
+  Message,
+  Field,
+  Enum,
+} from "protocol-buffers-schema/types";
 import { EOL } from "os";
 import fs from "fs";
 import path from "path";
