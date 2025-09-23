@@ -4271,10 +4271,7 @@ export class ProtoOAGetDynamicLeverageByIDResUtils {
       ProtoOAGetDynamicLeverageByIDResUtils._readField,
       {
         ctidTraderAccountId: 0,
-        leverage: {
-          leverageId: 0,
-          tiers: [],
-        },
+        leverage: { leverageId: 0, tiers: [] },
       },
       end
     );

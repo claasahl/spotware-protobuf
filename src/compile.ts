@@ -298,6 +298,15 @@ function defaultValue(field: Field): string {
       return "ProtoOANotificationType.MARGIN_LEVEL_THRESHOLD_1";
     case "ProtoOAMarginCall":
       return "{marginCallType: ProtoOANotificationType.MARGIN_LEVEL_THRESHOLD_1, marginLevelThreshold: 0}";
+    case "ProtoOADynamicLeverage":
+      return "{leverageId: 0, tiers: []}";
+    case "ProtoOAOrder":
+      return `{
+        orderId: 0,
+        tradeData: {symbolId: 0, volume: 0, tradeSide: ProtoOATradeSide.BUY},
+        orderType: ProtoOAOrderType.MARKET,
+        orderStatus: ProtoOAOrderStatus.ORDER_STATUS_ACCEPTED,
+      }`;
     default:
       return `no default value for '${field.type}'`;
   }
