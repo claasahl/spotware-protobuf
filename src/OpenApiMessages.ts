@@ -1,6 +1,6 @@
 import PBF from "pbf";
 
-export enum ProtoOAPayloadType {
+export enum ProtoOaPayloadType {
   PROTO_OA_APPLICATION_AUTH_REQ = 2100,
   PROTO_OA_APPLICATION_AUTH_RES = 2101,
   PROTO_OA_ACCOUNT_AUTH_REQ = 2102,
@@ -361,7 +361,7 @@ export enum ProtoOAStopOutStrategy {
 // ProtoOaApplicationAuthReq ===================================
 
 export interface ProtoOaApplicationAuthReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   clientId: string;
   clientSecret: string;
 }
@@ -404,7 +404,7 @@ export class ProtoOaApplicationAuthReqUtils {
 // ProtoOaApplicationAuthRes ===================================
 
 export interface ProtoOaApplicationAuthRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
 }
 
 export class ProtoOaApplicationAuthResUtils {
@@ -432,7 +432,7 @@ export class ProtoOaApplicationAuthResUtils {
 // ProtoOaAccountAuthReq =======================================
 
 export interface ProtoOaAccountAuthReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   accessToken: string;
 }
@@ -478,7 +478,7 @@ export class ProtoOaAccountAuthReqUtils {
 // ProtoOaAccountAuthRes =======================================
 
 export interface ProtoOaAccountAuthRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -519,7 +519,7 @@ export class ProtoOaAccountAuthResUtils {
 // ProtoOaErrorRes =============================================
 
 export interface ProtoOaErrorRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId?: number;
   errorCode: string;
   description?: string;
@@ -575,7 +575,7 @@ export class ProtoOaErrorResUtils {
 // ProtoOaClientDisconnectEvent ================================
 
 export interface ProtoOaClientDisconnectEvent {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   reason?: string;
 }
 
@@ -611,7 +611,7 @@ export class ProtoOaClientDisconnectEventUtils {
 // ProtoOaAccountsTokenInvalidatedEvent ========================
 
 export interface ProtoOaAccountsTokenInvalidatedEvent {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountIds: number[];
   reason?: string;
 }
@@ -661,7 +661,7 @@ export class ProtoOaAccountsTokenInvalidatedEventUtils {
 // ProtoOaVersionReq ===========================================
 
 export interface ProtoOaVersionReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
 }
 
 export class ProtoOaVersionReqUtils {
@@ -685,7 +685,7 @@ export class ProtoOaVersionReqUtils {
 // ProtoOaVersionRes ===========================================
 
 export interface ProtoOaVersionRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   version: string;
 }
 
@@ -719,7 +719,7 @@ export class ProtoOaVersionResUtils {
 // ProtoOaNewOrderReq ==========================================
 
 export interface ProtoOaNewOrderReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   symbolId: number;
   orderType: ProtoOAOrderType;
@@ -847,7 +847,7 @@ export class ProtoOaNewOrderReqUtils {
 // ProtoOaExecutionEvent =======================================
 
 export interface ProtoOaExecutionEvent {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   executionType: ProtoOAExecutionType;
   position?: ProtoOAPosition;
@@ -943,7 +943,7 @@ export class ProtoOaExecutionEventUtils {
 // ProtoOaCancelOrderReq =======================================
 
 export interface ProtoOaCancelOrderReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   orderId: number;
 }
@@ -989,7 +989,7 @@ export class ProtoOaCancelOrderReqUtils {
 // ProtoOaAmendOrderReq ========================================
 
 export interface ProtoOaAmendOrderReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   orderId: number;
   volume?: number;
@@ -1086,7 +1086,7 @@ export class ProtoOaAmendOrderReqUtils {
 // ProtoOaAmendPositionSltpReq =================================
 
 export interface ProtoOaAmendPositionSltpReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   positionId: number;
   stopLoss?: number;
@@ -1155,7 +1155,7 @@ export class ProtoOaAmendPositionSltpReqUtils {
 // ProtoOaClosePositionReq =====================================
 
 export interface ProtoOaClosePositionReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   positionId: number;
   volume: number;
@@ -1206,7 +1206,7 @@ export class ProtoOaClosePositionReqUtils {
 // ProtoOaTrailingSlChangedEvent ===============================
 
 export interface ProtoOaTrailingSlChangedEvent {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   positionId: number;
   orderId: number;
@@ -1270,7 +1270,7 @@ export class ProtoOaTrailingSlChangedEventUtils {
 // ProtoOaAssetListReq =========================================
 
 export interface ProtoOaAssetListReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -1307,7 +1307,7 @@ export class ProtoOaAssetListReqUtils {
 // ProtoOaAssetListRes =========================================
 
 export interface ProtoOaAssetListRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   asset: ProtoOAAsset[];
 }
@@ -1352,7 +1352,7 @@ export class ProtoOaAssetListResUtils {
 // ProtoOaSymbolsListReq =======================================
 
 export interface ProtoOaSymbolsListReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   includeArchivedSymbols?: boolean;
 }
@@ -1400,7 +1400,7 @@ export class ProtoOaSymbolsListReqUtils {
 // ProtoOaSymbolsListRes =======================================
 
 export interface ProtoOaSymbolsListRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   symbol: ProtoOALightSymbol[];
   archivedSymbol: ProtoOAArchivedSymbol[];
@@ -1461,7 +1461,7 @@ export class ProtoOaSymbolsListResUtils {
 // ProtoOaSymbolByIdReq ========================================
 
 export interface ProtoOaSymbolByIdReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   symbolId: number[];
 }
@@ -1507,7 +1507,7 @@ export class ProtoOaSymbolByIdReqUtils {
 // ProtoOaSymbolByIdRes ========================================
 
 export interface ProtoOaSymbolByIdRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   symbol: ProtoOASymbol[];
   archivedSymbol: ProtoOAArchivedSymbol[];
@@ -1566,7 +1566,7 @@ export class ProtoOaSymbolByIdResUtils {
 // ProtoOaSymbolsForConversionReq ==============================
 
 export interface ProtoOaSymbolsForConversionReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   firstAssetId: number;
   lastAssetId: number;
@@ -1617,7 +1617,7 @@ export class ProtoOaSymbolsForConversionReqUtils {
 // ProtoOaSymbolsForConversionRes ==============================
 
 export interface ProtoOaSymbolsForConversionRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   symbol: ProtoOALightSymbol[];
 }
@@ -1668,7 +1668,7 @@ export class ProtoOaSymbolsForConversionResUtils {
 // ProtoOaSymbolChangedEvent ===================================
 
 export interface ProtoOaSymbolChangedEvent {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   symbolId: number[];
 }
@@ -1714,7 +1714,7 @@ export class ProtoOaSymbolChangedEventUtils {
 // ProtoOaAssetClassListReq ====================================
 
 export interface ProtoOaAssetClassListReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -1755,7 +1755,7 @@ export class ProtoOaAssetClassListReqUtils {
 // ProtoOaAssetClassListRes ====================================
 
 export interface ProtoOaAssetClassListRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   assetClass: ProtoOAAssetClass[];
 }
@@ -1806,7 +1806,7 @@ export class ProtoOaAssetClassListResUtils {
 // ProtoOaTraderReq ============================================
 
 export interface ProtoOaTraderReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -1843,7 +1843,7 @@ export class ProtoOaTraderReqUtils {
 // ProtoOaTraderRes ============================================
 
 export interface ProtoOaTraderRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   trader: ProtoOATrader;
 }
@@ -1886,7 +1886,7 @@ export class ProtoOaTraderResUtils {
 // ProtoOaTraderUpdateEvent ====================================
 
 export interface ProtoOaTraderUpdateEvent {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   trader: ProtoOATrader;
 }
@@ -1933,7 +1933,7 @@ export class ProtoOaTraderUpdateEventUtils {
 // ProtoOaReconcileReq =========================================
 
 export interface ProtoOaReconcileReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   returnProtectionOrders?: boolean;
 }
@@ -1977,7 +1977,7 @@ export class ProtoOaReconcileReqUtils {
 // ProtoOaReconcileRes =========================================
 
 export interface ProtoOaReconcileRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   position: ProtoOAPosition[];
   order: ProtoOAOrder[];
@@ -2032,7 +2032,7 @@ export class ProtoOaReconcileResUtils {
 // ProtoOaOrderErrorEvent ======================================
 
 export interface ProtoOaOrderErrorEvent {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   errorCode: string;
   orderId?: number;
@@ -2090,7 +2090,7 @@ export class ProtoOaOrderErrorEventUtils {
 // ProtoOaDealListReq ==========================================
 
 export interface ProtoOaDealListReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   fromTimestamp?: number;
   toTimestamp?: number;
@@ -2139,7 +2139,7 @@ export class ProtoOaDealListReqUtils {
 // ProtoOaDealListRes ==========================================
 
 export interface ProtoOaDealListRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   deal: ProtoOADeal[];
   hasMore: boolean;
@@ -2189,7 +2189,7 @@ export class ProtoOaDealListResUtils {
 // ProtoOaOrderListReq =========================================
 
 export interface ProtoOaOrderListReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   fromTimestamp?: number;
   toTimestamp?: number;
@@ -2234,7 +2234,7 @@ export class ProtoOaOrderListReqUtils {
 // ProtoOaOrderListRes =========================================
 
 export interface ProtoOaOrderListRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   order: ProtoOAOrder[];
   hasMore: boolean;
@@ -2284,7 +2284,7 @@ export class ProtoOaOrderListResUtils {
 // ProtoOaExpectedMarginReq ====================================
 
 export interface ProtoOaExpectedMarginReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   symbolId: number;
   volume: number[];
@@ -2335,7 +2335,7 @@ export class ProtoOaExpectedMarginReqUtils {
 // ProtoOaExpectedMarginRes ====================================
 
 export interface ProtoOaExpectedMarginRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   margin: ProtoOAExpectedMargin[];
   moneyDigits?: number;
@@ -2390,7 +2390,7 @@ export class ProtoOaExpectedMarginResUtils {
 // ProtoOaMarginChangedEvent ===================================
 
 export interface ProtoOaMarginChangedEvent {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   positionId: number;
   usedMargin: number;
@@ -2445,7 +2445,7 @@ export class ProtoOaMarginChangedEventUtils {
 // ProtoOaCashFlowHistoryListReq ===============================
 
 export interface ProtoOaCashFlowHistoryListReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   fromTimestamp: number;
   toTimestamp: number;
@@ -2496,7 +2496,7 @@ export class ProtoOaCashFlowHistoryListReqUtils {
 // ProtoOaCashFlowHistoryListRes ===============================
 
 export interface ProtoOaCashFlowHistoryListRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   depositWithdraw: ProtoOADepositWithdraw[];
 }
@@ -2547,7 +2547,7 @@ export class ProtoOaCashFlowHistoryListResUtils {
 // ProtoOaGetAccountsByAccessTokenReq ==========================
 
 export interface ProtoOaGetAccountsByAccessTokenReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   accessToken: string;
 }
 
@@ -2585,7 +2585,7 @@ export class ProtoOaGetAccountsByAccessTokenReqUtils {
 // ProtoOaGetAccountsByAccessTokenRes ==========================
 
 export interface ProtoOaGetAccountsByAccessTokenRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   accessToken: string;
   permissionScope?: ProtoOAClientPermissionScope;
   ctidTraderAccount: ProtoOACtidTraderAccount[];
@@ -2641,7 +2641,7 @@ export class ProtoOaGetAccountsByAccessTokenResUtils {
 // ProtoOaRefreshTokenReq ======================================
 
 export interface ProtoOaRefreshTokenReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   refreshToken: string;
 }
 
@@ -2679,7 +2679,7 @@ export class ProtoOaRefreshTokenReqUtils {
 // ProtoOaRefreshTokenRes ======================================
 
 export interface ProtoOaRefreshTokenRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   accessToken: string;
   tokenType: string;
   expiresIn: number;
@@ -2732,7 +2732,7 @@ export class ProtoOaRefreshTokenResUtils {
 // ProtoOaSubscribeSpotsReq ====================================
 
 export interface ProtoOaSubscribeSpotsReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   symbolId: number[];
   subscribeToSpotTimestamp?: boolean;
@@ -2785,7 +2785,7 @@ export class ProtoOaSubscribeSpotsReqUtils {
 // ProtoOaSubscribeSpotsRes ====================================
 
 export interface ProtoOaSubscribeSpotsRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -2826,7 +2826,7 @@ export class ProtoOaSubscribeSpotsResUtils {
 // ProtoOaUnsubscribeSpotsReq ==================================
 
 export interface ProtoOaUnsubscribeSpotsReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   symbolId: number[];
 }
@@ -2872,7 +2872,7 @@ export class ProtoOaUnsubscribeSpotsReqUtils {
 // ProtoOaUnsubscribeSpotsRes ==================================
 
 export interface ProtoOaUnsubscribeSpotsRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -2913,7 +2913,7 @@ export class ProtoOaUnsubscribeSpotsResUtils {
 // ProtoOaSpotEvent ============================================
 
 export interface ProtoOaSpotEvent {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   symbolId: number;
   bid?: number;
@@ -2981,7 +2981,7 @@ export class ProtoOaSpotEventUtils {
 // ProtoOaSubscribeLiveTrendbarReq =============================
 
 export interface ProtoOaSubscribeLiveTrendbarReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   period: ProtoOATrendbarPeriod;
   symbolId: number;
@@ -3032,7 +3032,7 @@ export class ProtoOaSubscribeLiveTrendbarReqUtils {
 // ProtoOaSubscribeLiveTrendbarRes =============================
 
 export interface ProtoOaSubscribeLiveTrendbarRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -3073,7 +3073,7 @@ export class ProtoOaSubscribeLiveTrendbarResUtils {
 // ProtoOaUnsubscribeLiveTrendbarReq ===========================
 
 export interface ProtoOaUnsubscribeLiveTrendbarReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   period: ProtoOATrendbarPeriod;
   symbolId: number;
@@ -3124,7 +3124,7 @@ export class ProtoOaUnsubscribeLiveTrendbarReqUtils {
 // ProtoOaUnsubscribeLiveTrendbarRes ===========================
 
 export interface ProtoOaUnsubscribeLiveTrendbarRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -3165,7 +3165,7 @@ export class ProtoOaUnsubscribeLiveTrendbarResUtils {
 // ProtoOaGetTrendbarsReq ======================================
 
 export interface ProtoOaGetTrendbarsReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   fromTimestamp?: number;
   toTimestamp?: number;
@@ -3228,7 +3228,7 @@ export class ProtoOaGetTrendbarsReqUtils {
 // ProtoOaGetTrendbarsRes ======================================
 
 export interface ProtoOaGetTrendbarsRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   period: ProtoOATrendbarPeriod;
   timestamp?: number;
@@ -3296,7 +3296,7 @@ export class ProtoOaGetTrendbarsResUtils {
 // ProtoOaGetTickdataReq =======================================
 
 export interface ProtoOaGetTickdataReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   symbolId: number;
   type: ProtoOAQuoteType;
@@ -3355,7 +3355,7 @@ export class ProtoOaGetTickdataReqUtils {
 // ProtoOaGetTickdataRes =======================================
 
 export interface ProtoOaGetTickdataRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   tickData: ProtoOATickData[];
   hasMore: boolean;
@@ -3411,7 +3411,7 @@ export class ProtoOaGetTickdataResUtils {
 // ProtoOaGetCtidProfileByTokenReq =============================
 
 export interface ProtoOaGetCtidProfileByTokenReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   accessToken: string;
 }
 
@@ -3449,7 +3449,7 @@ export class ProtoOaGetCtidProfileByTokenReqUtils {
 // ProtoOaGetCtidProfileByTokenRes =============================
 
 export interface ProtoOaGetCtidProfileByTokenRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   profile: ProtoOACtidProfile;
 }
 
@@ -3491,7 +3491,7 @@ export class ProtoOaGetCtidProfileByTokenResUtils {
 // ProtoOaDepthEvent ===========================================
 
 export interface ProtoOaDepthEvent {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   symbolId: number;
   newQuotes: ProtoOADepthQuote[];
@@ -3548,7 +3548,7 @@ export class ProtoOaDepthEventUtils {
 // ProtoOaSubscribeDepthQuotesReq ==============================
 
 export interface ProtoOaSubscribeDepthQuotesReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   symbolId: number[];
 }
@@ -3594,7 +3594,7 @@ export class ProtoOaSubscribeDepthQuotesReqUtils {
 // ProtoOaSubscribeDepthQuotesRes ==============================
 
 export interface ProtoOaSubscribeDepthQuotesRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -3635,7 +3635,7 @@ export class ProtoOaSubscribeDepthQuotesResUtils {
 // ProtoOaUnsubscribeDepthQuotesReq ============================
 
 export interface ProtoOaUnsubscribeDepthQuotesReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   symbolId: number[];
 }
@@ -3681,7 +3681,7 @@ export class ProtoOaUnsubscribeDepthQuotesReqUtils {
 // ProtoOaUnsubscribeDepthQuotesRes ============================
 
 export interface ProtoOaUnsubscribeDepthQuotesRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -3722,7 +3722,7 @@ export class ProtoOaUnsubscribeDepthQuotesResUtils {
 // ProtoOaSymbolCategoryReq ====================================
 
 export interface ProtoOaSymbolCategoryReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -3763,7 +3763,7 @@ export class ProtoOaSymbolCategoryReqUtils {
 // ProtoOaSymbolCategoryRes ====================================
 
 export interface ProtoOaSymbolCategoryRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   symbolCategory: ProtoOASymbolCategory[];
 }
@@ -3814,7 +3814,7 @@ export class ProtoOaSymbolCategoryResUtils {
 // ProtoOaAccountLogoutReq =====================================
 
 export interface ProtoOaAccountLogoutReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -3855,7 +3855,7 @@ export class ProtoOaAccountLogoutReqUtils {
 // ProtoOaAccountLogoutRes =====================================
 
 export interface ProtoOaAccountLogoutRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -3896,7 +3896,7 @@ export class ProtoOaAccountLogoutResUtils {
 // ProtoOaAccountDisconnectEvent ===============================
 
 export interface ProtoOaAccountDisconnectEvent {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -3937,7 +3937,7 @@ export class ProtoOaAccountDisconnectEventUtils {
 // ProtoOaMarginCallListReq ====================================
 
 export interface ProtoOaMarginCallListReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -3978,7 +3978,7 @@ export class ProtoOaMarginCallListReqUtils {
 // ProtoOaMarginCallListRes ====================================
 
 export interface ProtoOaMarginCallListRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   marginCall: ProtoOAMarginCall[];
 }
 
@@ -4021,7 +4021,7 @@ export class ProtoOaMarginCallListResUtils {
 // ProtoOaMarginCallUpdateReq ==================================
 
 export interface ProtoOaMarginCallUpdateReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   marginCall: ProtoOAMarginCall;
 }
@@ -4074,7 +4074,7 @@ export class ProtoOaMarginCallUpdateReqUtils {
 // ProtoOaMarginCallUpdateRes ==================================
 
 export interface ProtoOaMarginCallUpdateRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
 }
 
 export class ProtoOaMarginCallUpdateResUtils {
@@ -4102,7 +4102,7 @@ export class ProtoOaMarginCallUpdateResUtils {
 // ProtoOaMarginCallUpdateEvent ================================
 
 export interface ProtoOaMarginCallUpdateEvent {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   marginCall: ProtoOAMarginCall;
 }
@@ -4155,7 +4155,7 @@ export class ProtoOaMarginCallUpdateEventUtils {
 // ProtoOaMarginCallTriggerEvent ===============================
 
 export interface ProtoOaMarginCallTriggerEvent {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   marginCall: ProtoOAMarginCall;
 }
@@ -4208,7 +4208,7 @@ export class ProtoOaMarginCallTriggerEventUtils {
 // ProtoOaGetDynamicLeverageReq ================================
 
 export interface ProtoOaGetDynamicLeverageReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   leverageId: number;
 }
@@ -4254,7 +4254,7 @@ export class ProtoOaGetDynamicLeverageReqUtils {
 // ProtoOaGetDynamicLeverageRes ================================
 
 export interface ProtoOaGetDynamicLeverageRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   leverage: ProtoOADynamicLeverage;
 }
@@ -4304,7 +4304,7 @@ export class ProtoOaGetDynamicLeverageResUtils {
 // ProtoOaDealListByPositionIdReq ==============================
 
 export interface ProtoOaDealListByPositionIdReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   positionId: number;
   fromTimestamp?: number;
@@ -4358,7 +4358,7 @@ export class ProtoOaDealListByPositionIdReqUtils {
 // ProtoOaDealListByPositionIdRes ==============================
 
 export interface ProtoOaDealListByPositionIdRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   deal: ProtoOADeal[];
   hasMore: boolean;
@@ -4412,7 +4412,7 @@ export class ProtoOaDealListByPositionIdResUtils {
 // ProtoOaOrderDetailsReq ======================================
 
 export interface ProtoOaOrderDetailsReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   orderId: number;
 }
@@ -4458,7 +4458,7 @@ export class ProtoOaOrderDetailsReqUtils {
 // ProtoOaOrderDetailsRes ======================================
 
 export interface ProtoOaOrderDetailsRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   order: ProtoOAOrder;
   deal: ProtoOADeal[];
@@ -4522,7 +4522,7 @@ export class ProtoOaOrderDetailsResUtils {
 // ProtoOaOrderListByPositionIdReq =============================
 
 export interface ProtoOaOrderListByPositionIdReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   positionId: number;
   fromTimestamp?: number;
@@ -4576,7 +4576,7 @@ export class ProtoOaOrderListByPositionIdReqUtils {
 // ProtoOaOrderListByPositionIdRes =============================
 
 export interface ProtoOaOrderListByPositionIdRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   order: ProtoOAOrder[];
   hasMore: boolean;
@@ -4630,7 +4630,7 @@ export class ProtoOaOrderListByPositionIdResUtils {
 // ProtoOaDealOffsetListReq ====================================
 
 export interface ProtoOaDealOffsetListReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   dealId: number;
 }
@@ -4676,7 +4676,7 @@ export class ProtoOaDealOffsetListReqUtils {
 // ProtoOaDealOffsetListRes ====================================
 
 export interface ProtoOaDealOffsetListRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   offsetBy: ProtoOADealOffset[];
   offsetting: ProtoOADealOffset[];
@@ -4737,7 +4737,7 @@ export class ProtoOaDealOffsetListResUtils {
 // ProtoOaGetPositionUnrealizedPnlReq ==========================
 
 export interface ProtoOaGetPositionUnrealizedPnlReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -4778,7 +4778,7 @@ export class ProtoOaGetPositionUnrealizedPnlReqUtils {
 // ProtoOaGetPositionUnrealizedPnlRes ==========================
 
 export interface ProtoOaGetPositionUnrealizedPnlRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   positionUnrealizedPnL: ProtoOAPositionUnrealizedPnL[];
   moneyDigits: number;
@@ -4841,7 +4841,7 @@ export class ProtoOaGetPositionUnrealizedPnlResUtils {
 // ProtoOaV1PnlChangeEvent =====================================
 
 export interface ProtoOaV1PnlChangeEvent {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
   grossUnrealizedPnL: number;
   netUnrealizedPnL: number;
@@ -4897,7 +4897,7 @@ export class ProtoOaV1PnlChangeEventUtils {
 // ProtoOaV1PnlChangeSubscribeReq ==============================
 
 export interface ProtoOaV1PnlChangeSubscribeReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -4938,7 +4938,7 @@ export class ProtoOaV1PnlChangeSubscribeReqUtils {
 // ProtoOaV1PnlChangeSubscribeRes ==============================
 
 export interface ProtoOaV1PnlChangeSubscribeRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -4979,7 +4979,7 @@ export class ProtoOaV1PnlChangeSubscribeResUtils {
 // ProtoOaV1PnlChangeUnSubscribeReq ============================
 
 export interface ProtoOaV1PnlChangeUnSubscribeReq {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
@@ -5020,7 +5020,7 @@ export class ProtoOaV1PnlChangeUnSubscribeReqUtils {
 // ProtoOaV1PnlChangeUnSubscribeRes ============================
 
 export interface ProtoOaV1PnlChangeUnSubscribeRes {
-  payloadType?: ProtoOAPayloadType;
+  payloadType?: ProtoOaPayloadType;
   ctidTraderAccountId: number;
 }
 
