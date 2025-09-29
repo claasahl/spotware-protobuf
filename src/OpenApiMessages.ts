@@ -358,18 +358,18 @@ export enum ProtoOAStopOutStrategy {
   MOST_LOSING_FIRST = 1,
 }
 
-// ProtoOAApplicationAuthReq ===================================
+// ProtoOaApplicationAuthReq ===================================
 
-export interface ProtoOAApplicationAuthReq {
+export interface ProtoOaApplicationAuthReq {
   payloadType?: ProtoOAPayloadType;
   clientId: string;
   clientSecret: string;
 }
 
-export class ProtoOAApplicationAuthReqUtils {
+export class ProtoOaApplicationAuthReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAApplicationAuthReqUtils._readField,
+      ProtoOaApplicationAuthReqUtils._readField,
       {
         clientId: "",
         clientSecret: "",
@@ -380,7 +380,7 @@ export class ProtoOAApplicationAuthReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAApplicationAuthReq,
+    obj?: ProtoOaApplicationAuthReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -391,7 +391,7 @@ export class ProtoOAApplicationAuthReqUtils {
     if (tag === 3) obj.clientSecret = pbf.readString();
   }
 
-  static write(obj: ProtoOAApplicationAuthReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaApplicationAuthReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (obj.clientId !== undefined && obj.clientId !== null)
@@ -401,20 +401,20 @@ export class ProtoOAApplicationAuthReqUtils {
   }
 }
 
-// ProtoOAApplicationAuthRes ===================================
+// ProtoOaApplicationAuthRes ===================================
 
-export interface ProtoOAApplicationAuthRes {
+export interface ProtoOaApplicationAuthRes {
   payloadType?: ProtoOAPayloadType;
 }
 
-export class ProtoOAApplicationAuthResUtils {
+export class ProtoOaApplicationAuthResUtils {
   static read(pbf: PBF, end?: number) {
-    return pbf.readFields(ProtoOAApplicationAuthResUtils._readField, {}, end);
+    return pbf.readFields(ProtoOaApplicationAuthResUtils._readField, {}, end);
   }
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAApplicationAuthRes,
+    obj?: ProtoOaApplicationAuthRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -423,24 +423,24 @@ export class ProtoOAApplicationAuthResUtils {
     if (tag === 1) obj.payloadType = pbf.readVarint();
   }
 
-  static write(obj: ProtoOAApplicationAuthRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaApplicationAuthRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
   }
 }
 
-// ProtoOAAccountAuthReq =======================================
+// ProtoOaAccountAuthReq =======================================
 
-export interface ProtoOAAccountAuthReq {
+export interface ProtoOaAccountAuthReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   accessToken: string;
 }
 
-export class ProtoOAAccountAuthReqUtils {
+export class ProtoOaAccountAuthReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAAccountAuthReqUtils._readField,
+      ProtoOaAccountAuthReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         accessToken: "",
@@ -451,7 +451,7 @@ export class ProtoOAAccountAuthReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAAccountAuthReq,
+    obj?: ProtoOaAccountAuthReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -462,7 +462,7 @@ export class ProtoOAAccountAuthReqUtils {
     if (tag === 3) obj.accessToken = pbf.readString();
   }
 
-  static write(obj: ProtoOAAccountAuthReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaAccountAuthReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -475,17 +475,17 @@ export class ProtoOAAccountAuthReqUtils {
   }
 }
 
-// ProtoOAAccountAuthRes =======================================
+// ProtoOaAccountAuthRes =======================================
 
-export interface ProtoOAAccountAuthRes {
+export interface ProtoOaAccountAuthRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOAAccountAuthResUtils {
+export class ProtoOaAccountAuthResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAAccountAuthResUtils._readField,
+      ProtoOaAccountAuthResUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -495,7 +495,7 @@ export class ProtoOAAccountAuthResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAAccountAuthRes,
+    obj?: ProtoOaAccountAuthRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -505,7 +505,7 @@ export class ProtoOAAccountAuthResUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAAccountAuthRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaAccountAuthRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -516,9 +516,9 @@ export class ProtoOAAccountAuthResUtils {
   }
 }
 
-// ProtoOAErrorRes =============================================
+// ProtoOaErrorRes =============================================
 
-export interface ProtoOAErrorRes {
+export interface ProtoOaErrorRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId?: number;
   errorCode: string;
@@ -527,10 +527,10 @@ export interface ProtoOAErrorRes {
   retryAfter?: number;
 }
 
-export class ProtoOAErrorResUtils {
+export class ProtoOaErrorResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAErrorResUtils._readField,
+      ProtoOaErrorResUtils._readField,
       {
         errorCode: "",
       },
@@ -538,7 +538,7 @@ export class ProtoOAErrorResUtils {
     );
   }
 
-  private static _readField(tag: number, obj?: ProtoOAErrorRes, pbf?: PBF) {
+  private static _readField(tag: number, obj?: ProtoOaErrorRes, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
@@ -550,7 +550,7 @@ export class ProtoOAErrorResUtils {
     if (tag === 6) obj.retryAfter = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAErrorRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaErrorRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -572,17 +572,17 @@ export class ProtoOAErrorResUtils {
   }
 }
 
-// ProtoOAClientDisconnectEvent ================================
+// ProtoOaClientDisconnectEvent ================================
 
-export interface ProtoOAClientDisconnectEvent {
+export interface ProtoOaClientDisconnectEvent {
   payloadType?: ProtoOAPayloadType;
   reason?: string;
 }
 
-export class ProtoOAClientDisconnectEventUtils {
+export class ProtoOaClientDisconnectEventUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAClientDisconnectEventUtils._readField,
+      ProtoOaClientDisconnectEventUtils._readField,
       {},
       end
     );
@@ -590,7 +590,7 @@ export class ProtoOAClientDisconnectEventUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAClientDisconnectEvent,
+    obj?: ProtoOaClientDisconnectEvent,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -600,7 +600,7 @@ export class ProtoOAClientDisconnectEventUtils {
     if (tag === 2) obj.reason = pbf.readString();
   }
 
-  static write(obj: ProtoOAClientDisconnectEvent, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaClientDisconnectEvent, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (obj.reason !== undefined && obj.reason !== null)
@@ -608,18 +608,18 @@ export class ProtoOAClientDisconnectEventUtils {
   }
 }
 
-// ProtoOAAccountsTokenInvalidatedEvent ========================
+// ProtoOaAccountsTokenInvalidatedEvent ========================
 
-export interface ProtoOAAccountsTokenInvalidatedEvent {
+export interface ProtoOaAccountsTokenInvalidatedEvent {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountIds: number[];
   reason?: string;
 }
 
-export class ProtoOAAccountsTokenInvalidatedEventUtils {
+export class ProtoOaAccountsTokenInvalidatedEventUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAAccountsTokenInvalidatedEventUtils._readField,
+      ProtoOaAccountsTokenInvalidatedEventUtils._readField,
       {
         ctidTraderAccountIds: [],
       },
@@ -629,7 +629,7 @@ export class ProtoOAAccountsTokenInvalidatedEventUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAAccountsTokenInvalidatedEvent,
+    obj?: ProtoOaAccountsTokenInvalidatedEvent,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -641,7 +641,7 @@ export class ProtoOAAccountsTokenInvalidatedEventUtils {
   }
 
   static write(
-    obj: ProtoOAAccountsTokenInvalidatedEvent,
+    obj: ProtoOaAccountsTokenInvalidatedEvent,
     pbf: PBF = new PBF()
   ) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
@@ -658,41 +658,41 @@ export class ProtoOAAccountsTokenInvalidatedEventUtils {
   }
 }
 
-// ProtoOAVersionReq ===========================================
+// ProtoOaVersionReq ===========================================
 
-export interface ProtoOAVersionReq {
+export interface ProtoOaVersionReq {
   payloadType?: ProtoOAPayloadType;
 }
 
-export class ProtoOAVersionReqUtils {
+export class ProtoOaVersionReqUtils {
   static read(pbf: PBF, end?: number) {
-    return pbf.readFields(ProtoOAVersionReqUtils._readField, {}, end);
+    return pbf.readFields(ProtoOaVersionReqUtils._readField, {}, end);
   }
 
-  private static _readField(tag: number, obj?: ProtoOAVersionReq, pbf?: PBF) {
+  private static _readField(tag: number, obj?: ProtoOaVersionReq, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
     if (tag === 1) obj.payloadType = pbf.readVarint();
   }
 
-  static write(obj: ProtoOAVersionReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaVersionReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
   }
 }
 
-// ProtoOAVersionRes ===========================================
+// ProtoOaVersionRes ===========================================
 
-export interface ProtoOAVersionRes {
+export interface ProtoOaVersionRes {
   payloadType?: ProtoOAPayloadType;
   version: string;
 }
 
-export class ProtoOAVersionResUtils {
+export class ProtoOaVersionResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAVersionResUtils._readField,
+      ProtoOaVersionResUtils._readField,
       {
         version: "",
       },
@@ -700,7 +700,7 @@ export class ProtoOAVersionResUtils {
     );
   }
 
-  private static _readField(tag: number, obj?: ProtoOAVersionRes, pbf?: PBF) {
+  private static _readField(tag: number, obj?: ProtoOaVersionRes, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
@@ -708,7 +708,7 @@ export class ProtoOAVersionResUtils {
     if (tag === 2) obj.version = pbf.readString();
   }
 
-  static write(obj: ProtoOAVersionRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaVersionRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (obj.version !== undefined && obj.version !== null)
@@ -716,9 +716,9 @@ export class ProtoOAVersionResUtils {
   }
 }
 
-// ProtoOANewOrderReq ==========================================
+// ProtoOaNewOrderReq ==========================================
 
-export interface ProtoOANewOrderReq {
+export interface ProtoOaNewOrderReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   symbolId: number;
@@ -744,10 +744,10 @@ export interface ProtoOANewOrderReq {
   stopTriggerMethod?: ProtoOAOrderTriggerMethod;
 }
 
-export class ProtoOANewOrderReqUtils {
+export class ProtoOaNewOrderReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOANewOrderReqUtils._readField,
+      ProtoOaNewOrderReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         symbolId: 0,
@@ -759,7 +759,7 @@ export class ProtoOANewOrderReqUtils {
     );
   }
 
-  private static _readField(tag: number, obj?: ProtoOANewOrderReq, pbf?: PBF) {
+  private static _readField(tag: number, obj?: ProtoOaNewOrderReq, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
@@ -788,7 +788,7 @@ export class ProtoOANewOrderReqUtils {
     if (tag === 23) obj.stopTriggerMethod = pbf.readVarint();
   }
 
-  static write(obj: ProtoOANewOrderReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaNewOrderReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -844,9 +844,9 @@ export class ProtoOANewOrderReqUtils {
   }
 }
 
-// ProtoOAExecutionEvent =======================================
+// ProtoOaExecutionEvent =======================================
 
-export interface ProtoOAExecutionEvent {
+export interface ProtoOaExecutionEvent {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   executionType: ProtoOAExecutionType;
@@ -859,10 +859,10 @@ export interface ProtoOAExecutionEvent {
   isServerEvent?: boolean;
 }
 
-export class ProtoOAExecutionEventUtils {
+export class ProtoOaExecutionEventUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAExecutionEventUtils._readField,
+      ProtoOaExecutionEventUtils._readField,
       {
         ctidTraderAccountId: 0,
         executionType: ProtoOAExecutionType.ORDER_ACCEPTED,
@@ -873,7 +873,7 @@ export class ProtoOAExecutionEventUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAExecutionEvent,
+    obj?: ProtoOaExecutionEvent,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -902,7 +902,7 @@ export class ProtoOAExecutionEventUtils {
     if (tag === 10) obj.isServerEvent = pbf.readBoolean();
   }
 
-  static write(obj: ProtoOAExecutionEvent, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaExecutionEvent, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -940,18 +940,18 @@ export class ProtoOAExecutionEventUtils {
   }
 }
 
-// ProtoOACancelOrderReq =======================================
+// ProtoOaCancelOrderReq =======================================
 
-export interface ProtoOACancelOrderReq {
+export interface ProtoOaCancelOrderReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   orderId: number;
 }
 
-export class ProtoOACancelOrderReqUtils {
+export class ProtoOaCancelOrderReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOACancelOrderReqUtils._readField,
+      ProtoOaCancelOrderReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         orderId: 0,
@@ -962,7 +962,7 @@ export class ProtoOACancelOrderReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOACancelOrderReq,
+    obj?: ProtoOaCancelOrderReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -973,7 +973,7 @@ export class ProtoOACancelOrderReqUtils {
     if (tag === 3) obj.orderId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOACancelOrderReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaCancelOrderReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -986,9 +986,9 @@ export class ProtoOACancelOrderReqUtils {
   }
 }
 
-// ProtoOAAmendOrderReq ========================================
+// ProtoOaAmendOrderReq ========================================
 
-export interface ProtoOAAmendOrderReq {
+export interface ProtoOaAmendOrderReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   orderId: number;
@@ -1006,10 +1006,10 @@ export interface ProtoOAAmendOrderReq {
   stopTriggerMethod?: ProtoOAOrderTriggerMethod;
 }
 
-export class ProtoOAAmendOrderReqUtils {
+export class ProtoOaAmendOrderReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAAmendOrderReqUtils._readField,
+      ProtoOaAmendOrderReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         orderId: 0,
@@ -1020,7 +1020,7 @@ export class ProtoOAAmendOrderReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAAmendOrderReq,
+    obj?: ProtoOaAmendOrderReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -1043,7 +1043,7 @@ export class ProtoOAAmendOrderReqUtils {
     if (tag === 15) obj.stopTriggerMethod = pbf.readVarint();
   }
 
-  static write(obj: ProtoOAAmendOrderReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaAmendOrderReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1083,9 +1083,9 @@ export class ProtoOAAmendOrderReqUtils {
   }
 }
 
-// ProtoOAAmendPositionSLTPReq =================================
+// ProtoOaAmendPositionSltpReq =================================
 
-export interface ProtoOAAmendPositionSLTPReq {
+export interface ProtoOaAmendPositionSltpReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   positionId: number;
@@ -1096,10 +1096,10 @@ export interface ProtoOAAmendPositionSLTPReq {
   stopLossTriggerMethod?: ProtoOAOrderTriggerMethod;
 }
 
-export class ProtoOAAmendPositionSLTPReqUtils {
+export class ProtoOaAmendPositionSltpReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAAmendPositionSLTPReqUtils._readField,
+      ProtoOaAmendPositionSltpReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         positionId: 0,
@@ -1110,7 +1110,7 @@ export class ProtoOAAmendPositionSLTPReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAAmendPositionSLTPReq,
+    obj?: ProtoOaAmendPositionSltpReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -1126,7 +1126,7 @@ export class ProtoOAAmendPositionSLTPReqUtils {
     if (tag === 9) obj.stopLossTriggerMethod = pbf.readVarint();
   }
 
-  static write(obj: ProtoOAAmendPositionSLTPReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaAmendPositionSltpReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1152,19 +1152,19 @@ export class ProtoOAAmendPositionSLTPReqUtils {
   }
 }
 
-// ProtoOAClosePositionReq =====================================
+// ProtoOaClosePositionReq =====================================
 
-export interface ProtoOAClosePositionReq {
+export interface ProtoOaClosePositionReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   positionId: number;
   volume: number;
 }
 
-export class ProtoOAClosePositionReqUtils {
+export class ProtoOaClosePositionReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAClosePositionReqUtils._readField,
+      ProtoOaClosePositionReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         positionId: 0,
@@ -1176,7 +1176,7 @@ export class ProtoOAClosePositionReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAClosePositionReq,
+    obj?: ProtoOaClosePositionReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -1188,7 +1188,7 @@ export class ProtoOAClosePositionReqUtils {
     if (tag === 4) obj.volume = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAClosePositionReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaClosePositionReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1203,9 +1203,9 @@ export class ProtoOAClosePositionReqUtils {
   }
 }
 
-// ProtoOATrailingSLChangedEvent ===============================
+// ProtoOaTrailingSlChangedEvent ===============================
 
-export interface ProtoOATrailingSLChangedEvent {
+export interface ProtoOaTrailingSlChangedEvent {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   positionId: number;
@@ -1214,10 +1214,10 @@ export interface ProtoOATrailingSLChangedEvent {
   utcLastUpdateTimestamp: number;
 }
 
-export class ProtoOATrailingSLChangedEventUtils {
+export class ProtoOaTrailingSlChangedEventUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOATrailingSLChangedEventUtils._readField,
+      ProtoOaTrailingSlChangedEventUtils._readField,
       {
         ctidTraderAccountId: 0,
         positionId: 0,
@@ -1231,7 +1231,7 @@ export class ProtoOATrailingSLChangedEventUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOATrailingSLChangedEvent,
+    obj?: ProtoOaTrailingSlChangedEvent,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -1245,7 +1245,7 @@ export class ProtoOATrailingSLChangedEventUtils {
     if (tag === 6) obj.utcLastUpdateTimestamp = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOATrailingSLChangedEvent, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaTrailingSlChangedEvent, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1267,17 +1267,17 @@ export class ProtoOATrailingSLChangedEventUtils {
   }
 }
 
-// ProtoOAAssetListReq =========================================
+// ProtoOaAssetListReq =========================================
 
-export interface ProtoOAAssetListReq {
+export interface ProtoOaAssetListReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOAAssetListReqUtils {
+export class ProtoOaAssetListReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAAssetListReqUtils._readField,
+      ProtoOaAssetListReqUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -1285,7 +1285,7 @@ export class ProtoOAAssetListReqUtils {
     );
   }
 
-  private static _readField(tag: number, obj?: ProtoOAAssetListReq, pbf?: PBF) {
+  private static _readField(tag: number, obj?: ProtoOaAssetListReq, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
@@ -1293,7 +1293,7 @@ export class ProtoOAAssetListReqUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAAssetListReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaAssetListReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1304,18 +1304,18 @@ export class ProtoOAAssetListReqUtils {
   }
 }
 
-// ProtoOAAssetListRes =========================================
+// ProtoOaAssetListRes =========================================
 
-export interface ProtoOAAssetListRes {
+export interface ProtoOaAssetListRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   asset: ProtoOAAsset[];
 }
 
-export class ProtoOAAssetListResUtils {
+export class ProtoOaAssetListResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAAssetListResUtils._readField,
+      ProtoOaAssetListResUtils._readField,
       {
         ctidTraderAccountId: 0,
         asset: [],
@@ -1324,7 +1324,7 @@ export class ProtoOAAssetListResUtils {
     );
   }
 
-  private static _readField(tag: number, obj?: ProtoOAAssetListRes, pbf?: PBF) {
+  private static _readField(tag: number, obj?: ProtoOaAssetListRes, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
@@ -1334,7 +1334,7 @@ export class ProtoOAAssetListResUtils {
       obj.asset.push(ProtoOAAssetUtils.read(pbf, pbf.readVarint() + pbf.pos));
   }
 
-  static write(obj: ProtoOAAssetListRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaAssetListRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1349,18 +1349,18 @@ export class ProtoOAAssetListResUtils {
   }
 }
 
-// ProtoOASymbolsListReq =======================================
+// ProtoOaSymbolsListReq =======================================
 
-export interface ProtoOASymbolsListReq {
+export interface ProtoOaSymbolsListReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   includeArchivedSymbols?: boolean;
 }
 
-export class ProtoOASymbolsListReqUtils {
+export class ProtoOaSymbolsListReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOASymbolsListReqUtils._readField,
+      ProtoOaSymbolsListReqUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -1370,7 +1370,7 @@ export class ProtoOASymbolsListReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOASymbolsListReq,
+    obj?: ProtoOaSymbolsListReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -1381,7 +1381,7 @@ export class ProtoOASymbolsListReqUtils {
     if (tag === 3) obj.includeArchivedSymbols = pbf.readBoolean();
   }
 
-  static write(obj: ProtoOASymbolsListReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaSymbolsListReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1397,19 +1397,19 @@ export class ProtoOASymbolsListReqUtils {
   }
 }
 
-// ProtoOASymbolsListRes =======================================
+// ProtoOaSymbolsListRes =======================================
 
-export interface ProtoOASymbolsListRes {
+export interface ProtoOaSymbolsListRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   symbol: ProtoOALightSymbol[];
   archivedSymbol: ProtoOAArchivedSymbol[];
 }
 
-export class ProtoOASymbolsListResUtils {
+export class ProtoOaSymbolsListResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOASymbolsListResUtils._readField,
+      ProtoOaSymbolsListResUtils._readField,
       {
         ctidTraderAccountId: 0,
         symbol: [],
@@ -1421,7 +1421,7 @@ export class ProtoOASymbolsListResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOASymbolsListRes,
+    obj?: ProtoOaSymbolsListRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -1439,7 +1439,7 @@ export class ProtoOASymbolsListResUtils {
       );
   }
 
-  static write(obj: ProtoOASymbolsListRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaSymbolsListRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1458,18 +1458,18 @@ export class ProtoOASymbolsListResUtils {
   }
 }
 
-// ProtoOASymbolByIdReq ========================================
+// ProtoOaSymbolByIdReq ========================================
 
-export interface ProtoOASymbolByIdReq {
+export interface ProtoOaSymbolByIdReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   symbolId: number[];
 }
 
-export class ProtoOASymbolByIdReqUtils {
+export class ProtoOaSymbolByIdReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOASymbolByIdReqUtils._readField,
+      ProtoOaSymbolByIdReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         symbolId: [],
@@ -1480,7 +1480,7 @@ export class ProtoOASymbolByIdReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOASymbolByIdReq,
+    obj?: ProtoOaSymbolByIdReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -1491,7 +1491,7 @@ export class ProtoOASymbolByIdReqUtils {
     if (tag === 3) obj.symbolId.push(pbf.readVarint64());
   }
 
-  static write(obj: ProtoOASymbolByIdReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaSymbolByIdReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1504,19 +1504,19 @@ export class ProtoOASymbolByIdReqUtils {
   }
 }
 
-// ProtoOASymbolByIdRes ========================================
+// ProtoOaSymbolByIdRes ========================================
 
-export interface ProtoOASymbolByIdRes {
+export interface ProtoOaSymbolByIdRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   symbol: ProtoOASymbol[];
   archivedSymbol: ProtoOAArchivedSymbol[];
 }
 
-export class ProtoOASymbolByIdResUtils {
+export class ProtoOaSymbolByIdResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOASymbolByIdResUtils._readField,
+      ProtoOaSymbolByIdResUtils._readField,
       {
         ctidTraderAccountId: 0,
         symbol: [],
@@ -1528,7 +1528,7 @@ export class ProtoOASymbolByIdResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOASymbolByIdRes,
+    obj?: ProtoOaSymbolByIdRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -1544,7 +1544,7 @@ export class ProtoOASymbolByIdResUtils {
       );
   }
 
-  static write(obj: ProtoOASymbolByIdRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaSymbolByIdRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1563,19 +1563,19 @@ export class ProtoOASymbolByIdResUtils {
   }
 }
 
-// ProtoOASymbolsForConversionReq ==============================
+// ProtoOaSymbolsForConversionReq ==============================
 
-export interface ProtoOASymbolsForConversionReq {
+export interface ProtoOaSymbolsForConversionReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   firstAssetId: number;
   lastAssetId: number;
 }
 
-export class ProtoOASymbolsForConversionReqUtils {
+export class ProtoOaSymbolsForConversionReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOASymbolsForConversionReqUtils._readField,
+      ProtoOaSymbolsForConversionReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         firstAssetId: 0,
@@ -1587,7 +1587,7 @@ export class ProtoOASymbolsForConversionReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOASymbolsForConversionReq,
+    obj?: ProtoOaSymbolsForConversionReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -1599,7 +1599,7 @@ export class ProtoOASymbolsForConversionReqUtils {
     if (tag === 4) obj.lastAssetId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOASymbolsForConversionReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaSymbolsForConversionReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1614,18 +1614,18 @@ export class ProtoOASymbolsForConversionReqUtils {
   }
 }
 
-// ProtoOASymbolsForConversionRes ==============================
+// ProtoOaSymbolsForConversionRes ==============================
 
-export interface ProtoOASymbolsForConversionRes {
+export interface ProtoOaSymbolsForConversionRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   symbol: ProtoOALightSymbol[];
 }
 
-export class ProtoOASymbolsForConversionResUtils {
+export class ProtoOaSymbolsForConversionResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOASymbolsForConversionResUtils._readField,
+      ProtoOaSymbolsForConversionResUtils._readField,
       {
         ctidTraderAccountId: 0,
         symbol: [],
@@ -1636,7 +1636,7 @@ export class ProtoOASymbolsForConversionResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOASymbolsForConversionRes,
+    obj?: ProtoOaSymbolsForConversionRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -1650,7 +1650,7 @@ export class ProtoOASymbolsForConversionResUtils {
       );
   }
 
-  static write(obj: ProtoOASymbolsForConversionRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaSymbolsForConversionRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1665,18 +1665,18 @@ export class ProtoOASymbolsForConversionResUtils {
   }
 }
 
-// ProtoOASymbolChangedEvent ===================================
+// ProtoOaSymbolChangedEvent ===================================
 
-export interface ProtoOASymbolChangedEvent {
+export interface ProtoOaSymbolChangedEvent {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   symbolId: number[];
 }
 
-export class ProtoOASymbolChangedEventUtils {
+export class ProtoOaSymbolChangedEventUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOASymbolChangedEventUtils._readField,
+      ProtoOaSymbolChangedEventUtils._readField,
       {
         ctidTraderAccountId: 0,
         symbolId: [],
@@ -1687,7 +1687,7 @@ export class ProtoOASymbolChangedEventUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOASymbolChangedEvent,
+    obj?: ProtoOaSymbolChangedEvent,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -1698,7 +1698,7 @@ export class ProtoOASymbolChangedEventUtils {
     if (tag === 3) obj.symbolId.push(pbf.readVarint64());
   }
 
-  static write(obj: ProtoOASymbolChangedEvent, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaSymbolChangedEvent, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1711,17 +1711,17 @@ export class ProtoOASymbolChangedEventUtils {
   }
 }
 
-// ProtoOAAssetClassListReq ====================================
+// ProtoOaAssetClassListReq ====================================
 
-export interface ProtoOAAssetClassListReq {
+export interface ProtoOaAssetClassListReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOAAssetClassListReqUtils {
+export class ProtoOaAssetClassListReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAAssetClassListReqUtils._readField,
+      ProtoOaAssetClassListReqUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -1731,7 +1731,7 @@ export class ProtoOAAssetClassListReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAAssetClassListReq,
+    obj?: ProtoOaAssetClassListReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -1741,7 +1741,7 @@ export class ProtoOAAssetClassListReqUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAAssetClassListReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaAssetClassListReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1752,18 +1752,18 @@ export class ProtoOAAssetClassListReqUtils {
   }
 }
 
-// ProtoOAAssetClassListRes ====================================
+// ProtoOaAssetClassListRes ====================================
 
-export interface ProtoOAAssetClassListRes {
+export interface ProtoOaAssetClassListRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   assetClass: ProtoOAAssetClass[];
 }
 
-export class ProtoOAAssetClassListResUtils {
+export class ProtoOaAssetClassListResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAAssetClassListResUtils._readField,
+      ProtoOaAssetClassListResUtils._readField,
       {
         ctidTraderAccountId: 0,
         assetClass: [],
@@ -1774,7 +1774,7 @@ export class ProtoOAAssetClassListResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAAssetClassListRes,
+    obj?: ProtoOaAssetClassListRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -1788,7 +1788,7 @@ export class ProtoOAAssetClassListResUtils {
       );
   }
 
-  static write(obj: ProtoOAAssetClassListRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaAssetClassListRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1803,17 +1803,17 @@ export class ProtoOAAssetClassListResUtils {
   }
 }
 
-// ProtoOATraderReq ============================================
+// ProtoOaTraderReq ============================================
 
-export interface ProtoOATraderReq {
+export interface ProtoOaTraderReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOATraderReqUtils {
+export class ProtoOaTraderReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOATraderReqUtils._readField,
+      ProtoOaTraderReqUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -1821,7 +1821,7 @@ export class ProtoOATraderReqUtils {
     );
   }
 
-  private static _readField(tag: number, obj?: ProtoOATraderReq, pbf?: PBF) {
+  private static _readField(tag: number, obj?: ProtoOaTraderReq, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
@@ -1829,7 +1829,7 @@ export class ProtoOATraderReqUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOATraderReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaTraderReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1840,18 +1840,18 @@ export class ProtoOATraderReqUtils {
   }
 }
 
-// ProtoOATraderRes ============================================
+// ProtoOaTraderRes ============================================
 
-export interface ProtoOATraderRes {
+export interface ProtoOaTraderRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   trader: ProtoOATrader;
 }
 
-export class ProtoOATraderResUtils {
+export class ProtoOaTraderResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOATraderResUtils._readField,
+      ProtoOaTraderResUtils._readField,
       {
         ctidTraderAccountId: 0,
         trader: { balance: 0, ctidTraderAccountId: 0, depositAssetId: 0 },
@@ -1860,7 +1860,7 @@ export class ProtoOATraderResUtils {
     );
   }
 
-  private static _readField(tag: number, obj?: ProtoOATraderRes, pbf?: PBF) {
+  private static _readField(tag: number, obj?: ProtoOaTraderRes, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
@@ -1870,7 +1870,7 @@ export class ProtoOATraderResUtils {
       obj.trader = ProtoOATraderUtils.read(pbf, pbf.readVarint() + pbf.pos);
   }
 
-  static write(obj: ProtoOATraderRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaTraderRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1883,18 +1883,18 @@ export class ProtoOATraderResUtils {
   }
 }
 
-// ProtoOATraderUpdatedEvent ===================================
+// ProtoOaTraderUpdateEvent ====================================
 
-export interface ProtoOATraderUpdatedEvent {
+export interface ProtoOaTraderUpdateEvent {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   trader: ProtoOATrader;
 }
 
-export class ProtoOATraderUpdatedEventUtils {
+export class ProtoOaTraderUpdateEventUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOATraderUpdatedEventUtils._readField,
+      ProtoOaTraderUpdateEventUtils._readField,
       {
         ctidTraderAccountId: 0,
         trader: { balance: 0, ctidTraderAccountId: 0, depositAssetId: 0 },
@@ -1905,7 +1905,7 @@ export class ProtoOATraderUpdatedEventUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOATraderUpdatedEvent,
+    obj?: ProtoOaTraderUpdateEvent,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -1917,7 +1917,7 @@ export class ProtoOATraderUpdatedEventUtils {
       obj.trader = ProtoOATraderUtils.read(pbf, pbf.readVarint() + pbf.pos);
   }
 
-  static write(obj: ProtoOATraderUpdatedEvent, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaTraderUpdateEvent, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1930,18 +1930,18 @@ export class ProtoOATraderUpdatedEventUtils {
   }
 }
 
-// ProtoOAReconcileReq =========================================
+// ProtoOaReconcileReq =========================================
 
-export interface ProtoOAReconcileReq {
+export interface ProtoOaReconcileReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   returnProtectionOrders?: boolean;
 }
 
-export class ProtoOAReconcileReqUtils {
+export class ProtoOaReconcileReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAReconcileReqUtils._readField,
+      ProtoOaReconcileReqUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -1949,7 +1949,7 @@ export class ProtoOAReconcileReqUtils {
     );
   }
 
-  private static _readField(tag: number, obj?: ProtoOAReconcileReq, pbf?: PBF) {
+  private static _readField(tag: number, obj?: ProtoOaReconcileReq, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
@@ -1958,7 +1958,7 @@ export class ProtoOAReconcileReqUtils {
     if (tag === 3) obj.returnProtectionOrders = pbf.readBoolean();
   }
 
-  static write(obj: ProtoOAReconcileReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaReconcileReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -1974,19 +1974,19 @@ export class ProtoOAReconcileReqUtils {
   }
 }
 
-// ProtoOAReconcileRes =========================================
+// ProtoOaReconcileRes =========================================
 
-export interface ProtoOAReconcileRes {
+export interface ProtoOaReconcileRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   position: ProtoOAPosition[];
   order: ProtoOAOrder[];
 }
 
-export class ProtoOAReconcileResUtils {
+export class ProtoOaReconcileResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAReconcileResUtils._readField,
+      ProtoOaReconcileResUtils._readField,
       {
         ctidTraderAccountId: 0,
         position: [],
@@ -1996,7 +1996,7 @@ export class ProtoOAReconcileResUtils {
     );
   }
 
-  private static _readField(tag: number, obj?: ProtoOAReconcileRes, pbf?: PBF) {
+  private static _readField(tag: number, obj?: ProtoOaReconcileRes, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
@@ -2010,7 +2010,7 @@ export class ProtoOAReconcileResUtils {
       obj.order.push(ProtoOAOrderUtils.read(pbf, pbf.readVarint() + pbf.pos));
   }
 
-  static write(obj: ProtoOAReconcileRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaReconcileRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -2029,9 +2029,9 @@ export class ProtoOAReconcileResUtils {
   }
 }
 
-// ProtoOAOrderErrorEvent ======================================
+// ProtoOaOrderErrorEvent ======================================
 
-export interface ProtoOAOrderErrorEvent {
+export interface ProtoOaOrderErrorEvent {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   errorCode: string;
@@ -2040,10 +2040,10 @@ export interface ProtoOAOrderErrorEvent {
   description?: string;
 }
 
-export class ProtoOAOrderErrorEventUtils {
+export class ProtoOaOrderErrorEventUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAOrderErrorEventUtils._readField,
+      ProtoOaOrderErrorEventUtils._readField,
       {
         ctidTraderAccountId: 0,
         errorCode: "",
@@ -2054,7 +2054,7 @@ export class ProtoOAOrderErrorEventUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAOrderErrorEvent,
+    obj?: ProtoOaOrderErrorEvent,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -2068,7 +2068,7 @@ export class ProtoOAOrderErrorEventUtils {
     if (tag === 7) obj.description = pbf.readString();
   }
 
-  static write(obj: ProtoOAOrderErrorEvent, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaOrderErrorEvent, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -2087,9 +2087,9 @@ export class ProtoOAOrderErrorEventUtils {
   }
 }
 
-// ProtoOADealListReq ==========================================
+// ProtoOaDealListReq ==========================================
 
-export interface ProtoOADealListReq {
+export interface ProtoOaDealListReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   fromTimestamp?: number;
@@ -2097,10 +2097,10 @@ export interface ProtoOADealListReq {
   maxRows?: number;
 }
 
-export class ProtoOADealListReqUtils {
+export class ProtoOaDealListReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOADealListReqUtils._readField,
+      ProtoOaDealListReqUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -2108,7 +2108,7 @@ export class ProtoOADealListReqUtils {
     );
   }
 
-  private static _readField(tag: number, obj?: ProtoOADealListReq, pbf?: PBF) {
+  private static _readField(tag: number, obj?: ProtoOaDealListReq, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
@@ -2119,7 +2119,7 @@ export class ProtoOADealListReqUtils {
     if (tag === 5) obj.maxRows = pbf.readVarint();
   }
 
-  static write(obj: ProtoOADealListReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaDealListReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -2136,19 +2136,19 @@ export class ProtoOADealListReqUtils {
   }
 }
 
-// ProtoOADealListRes ==========================================
+// ProtoOaDealListRes ==========================================
 
-export interface ProtoOADealListRes {
+export interface ProtoOaDealListRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   deal: ProtoOADeal[];
   hasMore: boolean;
 }
 
-export class ProtoOADealListResUtils {
+export class ProtoOaDealListResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOADealListResUtils._readField,
+      ProtoOaDealListResUtils._readField,
       {
         ctidTraderAccountId: 0,
         deal: [],
@@ -2158,7 +2158,7 @@ export class ProtoOADealListResUtils {
     );
   }
 
-  private static _readField(tag: number, obj?: ProtoOADealListRes, pbf?: PBF) {
+  private static _readField(tag: number, obj?: ProtoOaDealListRes, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
@@ -2169,7 +2169,7 @@ export class ProtoOADealListResUtils {
     if (tag === 4) obj.hasMore = pbf.readBoolean();
   }
 
-  static write(obj: ProtoOADealListRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaDealListRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -2186,19 +2186,19 @@ export class ProtoOADealListResUtils {
   }
 }
 
-// ProtoOAOrderListReq =========================================
+// ProtoOaOrderListReq =========================================
 
-export interface ProtoOAOrderListReq {
+export interface ProtoOaOrderListReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   fromTimestamp?: number;
   toTimestamp?: number;
 }
 
-export class ProtoOAOrderListReqUtils {
+export class ProtoOaOrderListReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAOrderListReqUtils._readField,
+      ProtoOaOrderListReqUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -2206,7 +2206,7 @@ export class ProtoOAOrderListReqUtils {
     );
   }
 
-  private static _readField(tag: number, obj?: ProtoOAOrderListReq, pbf?: PBF) {
+  private static _readField(tag: number, obj?: ProtoOaOrderListReq, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
@@ -2216,7 +2216,7 @@ export class ProtoOAOrderListReqUtils {
     if (tag === 4) obj.toTimestamp = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAOrderListReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaOrderListReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -2231,19 +2231,19 @@ export class ProtoOAOrderListReqUtils {
   }
 }
 
-// ProtoOAOrderListRes =========================================
+// ProtoOaOrderListRes =========================================
 
-export interface ProtoOAOrderListRes {
+export interface ProtoOaOrderListRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   order: ProtoOAOrder[];
   hasMore: boolean;
 }
 
-export class ProtoOAOrderListResUtils {
+export class ProtoOaOrderListResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAOrderListResUtils._readField,
+      ProtoOaOrderListResUtils._readField,
       {
         ctidTraderAccountId: 0,
         order: [],
@@ -2253,7 +2253,7 @@ export class ProtoOAOrderListResUtils {
     );
   }
 
-  private static _readField(tag: number, obj?: ProtoOAOrderListRes, pbf?: PBF) {
+  private static _readField(tag: number, obj?: ProtoOaOrderListRes, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
@@ -2264,7 +2264,7 @@ export class ProtoOAOrderListResUtils {
     if (tag === 4) obj.hasMore = pbf.readBoolean();
   }
 
-  static write(obj: ProtoOAOrderListRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaOrderListRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -2281,19 +2281,19 @@ export class ProtoOAOrderListResUtils {
   }
 }
 
-// ProtoOAExpectedMarginReq ====================================
+// ProtoOaExpectedMarginReq ====================================
 
-export interface ProtoOAExpectedMarginReq {
+export interface ProtoOaExpectedMarginReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   symbolId: number;
   volume: number[];
 }
 
-export class ProtoOAExpectedMarginReqUtils {
+export class ProtoOaExpectedMarginReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAExpectedMarginReqUtils._readField,
+      ProtoOaExpectedMarginReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         symbolId: 0,
@@ -2305,7 +2305,7 @@ export class ProtoOAExpectedMarginReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAExpectedMarginReq,
+    obj?: ProtoOaExpectedMarginReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -2317,7 +2317,7 @@ export class ProtoOAExpectedMarginReqUtils {
     if (tag === 4) obj.volume.push(pbf.readVarint64());
   }
 
-  static write(obj: ProtoOAExpectedMarginReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaExpectedMarginReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -2332,19 +2332,19 @@ export class ProtoOAExpectedMarginReqUtils {
   }
 }
 
-// ProtoOAExpectedMarginRes ====================================
+// ProtoOaExpectedMarginRes ====================================
 
-export interface ProtoOAExpectedMarginRes {
+export interface ProtoOaExpectedMarginRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   margin: ProtoOAExpectedMargin[];
   moneyDigits?: number;
 }
 
-export class ProtoOAExpectedMarginResUtils {
+export class ProtoOaExpectedMarginResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAExpectedMarginResUtils._readField,
+      ProtoOaExpectedMarginResUtils._readField,
       {
         ctidTraderAccountId: 0,
         margin: [],
@@ -2355,7 +2355,7 @@ export class ProtoOAExpectedMarginResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAExpectedMarginRes,
+    obj?: ProtoOaExpectedMarginRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -2370,7 +2370,7 @@ export class ProtoOAExpectedMarginResUtils {
     if (tag === 4) obj.moneyDigits = pbf.readVarint();
   }
 
-  static write(obj: ProtoOAExpectedMarginRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaExpectedMarginRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -2387,9 +2387,9 @@ export class ProtoOAExpectedMarginResUtils {
   }
 }
 
-// ProtoOAMarginChangedEvent ===================================
+// ProtoOaMarginChangedEvent ===================================
 
-export interface ProtoOAMarginChangedEvent {
+export interface ProtoOaMarginChangedEvent {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   positionId: number;
@@ -2397,10 +2397,10 @@ export interface ProtoOAMarginChangedEvent {
   moneyDigits?: number;
 }
 
-export class ProtoOAMarginChangedEventUtils {
+export class ProtoOaMarginChangedEventUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAMarginChangedEventUtils._readField,
+      ProtoOaMarginChangedEventUtils._readField,
       {
         ctidTraderAccountId: 0,
         positionId: 0,
@@ -2412,7 +2412,7 @@ export class ProtoOAMarginChangedEventUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAMarginChangedEvent,
+    obj?: ProtoOaMarginChangedEvent,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -2425,7 +2425,7 @@ export class ProtoOAMarginChangedEventUtils {
     if (tag === 5) obj.moneyDigits = pbf.readVarint();
   }
 
-  static write(obj: ProtoOAMarginChangedEvent, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaMarginChangedEvent, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -2442,19 +2442,19 @@ export class ProtoOAMarginChangedEventUtils {
   }
 }
 
-// ProtoOACashFlowHistoryListReq ===============================
+// ProtoOaCashFlowHistoryListReq ===============================
 
-export interface ProtoOACashFlowHistoryListReq {
+export interface ProtoOaCashFlowHistoryListReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   fromTimestamp: number;
   toTimestamp: number;
 }
 
-export class ProtoOACashFlowHistoryListReqUtils {
+export class ProtoOaCashFlowHistoryListReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOACashFlowHistoryListReqUtils._readField,
+      ProtoOaCashFlowHistoryListReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         fromTimestamp: 0,
@@ -2466,7 +2466,7 @@ export class ProtoOACashFlowHistoryListReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOACashFlowHistoryListReq,
+    obj?: ProtoOaCashFlowHistoryListReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -2478,7 +2478,7 @@ export class ProtoOACashFlowHistoryListReqUtils {
     if (tag === 4) obj.toTimestamp = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOACashFlowHistoryListReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaCashFlowHistoryListReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -2493,18 +2493,18 @@ export class ProtoOACashFlowHistoryListReqUtils {
   }
 }
 
-// ProtoOACashFlowHistoryListRes ===============================
+// ProtoOaCashFlowHistoryListRes ===============================
 
-export interface ProtoOACashFlowHistoryListRes {
+export interface ProtoOaCashFlowHistoryListRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   depositWithdraw: ProtoOADepositWithdraw[];
 }
 
-export class ProtoOACashFlowHistoryListResUtils {
+export class ProtoOaCashFlowHistoryListResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOACashFlowHistoryListResUtils._readField,
+      ProtoOaCashFlowHistoryListResUtils._readField,
       {
         ctidTraderAccountId: 0,
         depositWithdraw: [],
@@ -2515,7 +2515,7 @@ export class ProtoOACashFlowHistoryListResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOACashFlowHistoryListRes,
+    obj?: ProtoOaCashFlowHistoryListRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -2529,7 +2529,7 @@ export class ProtoOACashFlowHistoryListResUtils {
       );
   }
 
-  static write(obj: ProtoOACashFlowHistoryListRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaCashFlowHistoryListRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -2544,17 +2544,17 @@ export class ProtoOACashFlowHistoryListResUtils {
   }
 }
 
-// ProtoOAGetAccountListByAccessTokenReq =======================
+// ProtoOaGetAccountsByAccessTokenReq ==========================
 
-export interface ProtoOAGetAccountListByAccessTokenReq {
+export interface ProtoOaGetAccountsByAccessTokenReq {
   payloadType?: ProtoOAPayloadType;
   accessToken: string;
 }
 
-export class ProtoOAGetAccountListByAccessTokenReqUtils {
+export class ProtoOaGetAccountsByAccessTokenReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAGetAccountListByAccessTokenReqUtils._readField,
+      ProtoOaGetAccountsByAccessTokenReqUtils._readField,
       {
         accessToken: "",
       },
@@ -2564,7 +2564,7 @@ export class ProtoOAGetAccountListByAccessTokenReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAGetAccountListByAccessTokenReq,
+    obj?: ProtoOaGetAccountsByAccessTokenReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -2574,10 +2574,7 @@ export class ProtoOAGetAccountListByAccessTokenReqUtils {
     if (tag === 2) obj.accessToken = pbf.readString();
   }
 
-  static write(
-    obj: ProtoOAGetAccountListByAccessTokenReq,
-    pbf: PBF = new PBF()
-  ) {
+  static write(obj: ProtoOaGetAccountsByAccessTokenReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (obj.accessToken !== undefined && obj.accessToken !== null)
@@ -2585,19 +2582,19 @@ export class ProtoOAGetAccountListByAccessTokenReqUtils {
   }
 }
 
-// ProtoOAGetAccountListByAccessTokenRes =======================
+// ProtoOaGetAccountsByAccessTokenRes ==========================
 
-export interface ProtoOAGetAccountListByAccessTokenRes {
+export interface ProtoOaGetAccountsByAccessTokenRes {
   payloadType?: ProtoOAPayloadType;
   accessToken: string;
   permissionScope?: ProtoOAClientPermissionScope;
   ctidTraderAccount: ProtoOACtidTraderAccount[];
 }
 
-export class ProtoOAGetAccountListByAccessTokenResUtils {
+export class ProtoOaGetAccountsByAccessTokenResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAGetAccountListByAccessTokenResUtils._readField,
+      ProtoOaGetAccountsByAccessTokenResUtils._readField,
       {
         accessToken: "",
         ctidTraderAccount: [],
@@ -2608,7 +2605,7 @@ export class ProtoOAGetAccountListByAccessTokenResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAGetAccountListByAccessTokenRes,
+    obj?: ProtoOaGetAccountsByAccessTokenRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -2623,10 +2620,7 @@ export class ProtoOAGetAccountListByAccessTokenResUtils {
       );
   }
 
-  static write(
-    obj: ProtoOAGetAccountListByAccessTokenRes,
-    pbf: PBF = new PBF()
-  ) {
+  static write(obj: ProtoOaGetAccountsByAccessTokenRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (obj.accessToken !== undefined && obj.accessToken !== null)
@@ -2644,17 +2638,17 @@ export class ProtoOAGetAccountListByAccessTokenResUtils {
   }
 }
 
-// ProtoOARefreshTokenReq ======================================
+// ProtoOaRefreshTokenReq ======================================
 
-export interface ProtoOARefreshTokenReq {
+export interface ProtoOaRefreshTokenReq {
   payloadType?: ProtoOAPayloadType;
   refreshToken: string;
 }
 
-export class ProtoOARefreshTokenReqUtils {
+export class ProtoOaRefreshTokenReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOARefreshTokenReqUtils._readField,
+      ProtoOaRefreshTokenReqUtils._readField,
       {
         refreshToken: "",
       },
@@ -2664,7 +2658,7 @@ export class ProtoOARefreshTokenReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOARefreshTokenReq,
+    obj?: ProtoOaRefreshTokenReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -2674,7 +2668,7 @@ export class ProtoOARefreshTokenReqUtils {
     if (tag === 2) obj.refreshToken = pbf.readString();
   }
 
-  static write(obj: ProtoOARefreshTokenReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaRefreshTokenReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (obj.refreshToken !== undefined && obj.refreshToken !== null)
@@ -2682,9 +2676,9 @@ export class ProtoOARefreshTokenReqUtils {
   }
 }
 
-// ProtoOARefreshTokenRes ======================================
+// ProtoOaRefreshTokenRes ======================================
 
-export interface ProtoOARefreshTokenRes {
+export interface ProtoOaRefreshTokenRes {
   payloadType?: ProtoOAPayloadType;
   accessToken: string;
   tokenType: string;
@@ -2692,10 +2686,10 @@ export interface ProtoOARefreshTokenRes {
   refreshToken: string;
 }
 
-export class ProtoOARefreshTokenResUtils {
+export class ProtoOaRefreshTokenResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOARefreshTokenResUtils._readField,
+      ProtoOaRefreshTokenResUtils._readField,
       {
         accessToken: "",
         tokenType: "",
@@ -2708,7 +2702,7 @@ export class ProtoOARefreshTokenResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOARefreshTokenRes,
+    obj?: ProtoOaRefreshTokenRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -2721,7 +2715,7 @@ export class ProtoOARefreshTokenResUtils {
     if (tag === 5) obj.refreshToken = pbf.readString();
   }
 
-  static write(obj: ProtoOARefreshTokenRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaRefreshTokenRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (obj.accessToken !== undefined && obj.accessToken !== null)
@@ -2735,19 +2729,19 @@ export class ProtoOARefreshTokenResUtils {
   }
 }
 
-// ProtoOASubscribeSpotsReq ====================================
+// ProtoOaSubscribeSpotsReq ====================================
 
-export interface ProtoOASubscribeSpotsReq {
+export interface ProtoOaSubscribeSpotsReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   symbolId: number[];
   subscribeToSpotTimestamp?: boolean;
 }
 
-export class ProtoOASubscribeSpotsReqUtils {
+export class ProtoOaSubscribeSpotsReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOASubscribeSpotsReqUtils._readField,
+      ProtoOaSubscribeSpotsReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         symbolId: [],
@@ -2758,7 +2752,7 @@ export class ProtoOASubscribeSpotsReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOASubscribeSpotsReq,
+    obj?: ProtoOaSubscribeSpotsReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -2770,7 +2764,7 @@ export class ProtoOASubscribeSpotsReqUtils {
     if (tag === 4) obj.subscribeToSpotTimestamp = pbf.readBoolean();
   }
 
-  static write(obj: ProtoOASubscribeSpotsReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaSubscribeSpotsReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -2788,17 +2782,17 @@ export class ProtoOASubscribeSpotsReqUtils {
   }
 }
 
-// ProtoOASubscribeSpotsRes ====================================
+// ProtoOaSubscribeSpotsRes ====================================
 
-export interface ProtoOASubscribeSpotsRes {
+export interface ProtoOaSubscribeSpotsRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOASubscribeSpotsResUtils {
+export class ProtoOaSubscribeSpotsResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOASubscribeSpotsResUtils._readField,
+      ProtoOaSubscribeSpotsResUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -2808,7 +2802,7 @@ export class ProtoOASubscribeSpotsResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOASubscribeSpotsRes,
+    obj?: ProtoOaSubscribeSpotsRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -2818,7 +2812,7 @@ export class ProtoOASubscribeSpotsResUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOASubscribeSpotsRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaSubscribeSpotsRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -2829,18 +2823,18 @@ export class ProtoOASubscribeSpotsResUtils {
   }
 }
 
-// ProtoOAUnsubscribeSpotsReq ==================================
+// ProtoOaUnsubscribeSpotsReq ==================================
 
-export interface ProtoOAUnsubscribeSpotsReq {
+export interface ProtoOaUnsubscribeSpotsReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   symbolId: number[];
 }
 
-export class ProtoOAUnsubscribeSpotsReqUtils {
+export class ProtoOaUnsubscribeSpotsReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAUnsubscribeSpotsReqUtils._readField,
+      ProtoOaUnsubscribeSpotsReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         symbolId: [],
@@ -2851,7 +2845,7 @@ export class ProtoOAUnsubscribeSpotsReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAUnsubscribeSpotsReq,
+    obj?: ProtoOaUnsubscribeSpotsReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -2862,7 +2856,7 @@ export class ProtoOAUnsubscribeSpotsReqUtils {
     if (tag === 3) obj.symbolId.push(pbf.readVarint64());
   }
 
-  static write(obj: ProtoOAUnsubscribeSpotsReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaUnsubscribeSpotsReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -2875,17 +2869,17 @@ export class ProtoOAUnsubscribeSpotsReqUtils {
   }
 }
 
-// ProtoOAUnsubscribeSpotsRes ==================================
+// ProtoOaUnsubscribeSpotsRes ==================================
 
-export interface ProtoOAUnsubscribeSpotsRes {
+export interface ProtoOaUnsubscribeSpotsRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOAUnsubscribeSpotsResUtils {
+export class ProtoOaUnsubscribeSpotsResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAUnsubscribeSpotsResUtils._readField,
+      ProtoOaUnsubscribeSpotsResUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -2895,7 +2889,7 @@ export class ProtoOAUnsubscribeSpotsResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAUnsubscribeSpotsRes,
+    obj?: ProtoOaUnsubscribeSpotsRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -2905,7 +2899,7 @@ export class ProtoOAUnsubscribeSpotsResUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAUnsubscribeSpotsRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaUnsubscribeSpotsRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -2916,9 +2910,9 @@ export class ProtoOAUnsubscribeSpotsResUtils {
   }
 }
 
-// ProtoOASpotEvent ============================================
+// ProtoOaSpotEvent ============================================
 
-export interface ProtoOASpotEvent {
+export interface ProtoOaSpotEvent {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   symbolId: number;
@@ -2929,10 +2923,10 @@ export interface ProtoOASpotEvent {
   timestamp?: number;
 }
 
-export class ProtoOASpotEventUtils {
+export class ProtoOaSpotEventUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOASpotEventUtils._readField,
+      ProtoOaSpotEventUtils._readField,
       {
         ctidTraderAccountId: 0,
         symbolId: 0,
@@ -2942,7 +2936,7 @@ export class ProtoOASpotEventUtils {
     );
   }
 
-  private static _readField(tag: number, obj?: ProtoOASpotEvent, pbf?: PBF) {
+  private static _readField(tag: number, obj?: ProtoOaSpotEvent, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
@@ -2959,7 +2953,7 @@ export class ProtoOASpotEventUtils {
     if (tag === 8) obj.timestamp = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOASpotEvent, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaSpotEvent, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -2984,19 +2978,19 @@ export class ProtoOASpotEventUtils {
   }
 }
 
-// ProtoOASubscribeLiveTrendbarReq =============================
+// ProtoOaSubscribeLiveTrendbarReq =============================
 
-export interface ProtoOASubscribeLiveTrendbarReq {
+export interface ProtoOaSubscribeLiveTrendbarReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   period: ProtoOATrendbarPeriod;
   symbolId: number;
 }
 
-export class ProtoOASubscribeLiveTrendbarReqUtils {
+export class ProtoOaSubscribeLiveTrendbarReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOASubscribeLiveTrendbarReqUtils._readField,
+      ProtoOaSubscribeLiveTrendbarReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         period: ProtoOATrendbarPeriod.M1,
@@ -3008,7 +3002,7 @@ export class ProtoOASubscribeLiveTrendbarReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOASubscribeLiveTrendbarReq,
+    obj?: ProtoOaSubscribeLiveTrendbarReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3020,7 +3014,7 @@ export class ProtoOASubscribeLiveTrendbarReqUtils {
     if (tag === 4) obj.symbolId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOASubscribeLiveTrendbarReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaSubscribeLiveTrendbarReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3035,17 +3029,17 @@ export class ProtoOASubscribeLiveTrendbarReqUtils {
   }
 }
 
-// ProtoOASubscribeLiveTrendbarRes =============================
+// ProtoOaSubscribeLiveTrendbarRes =============================
 
-export interface ProtoOASubscribeLiveTrendbarRes {
+export interface ProtoOaSubscribeLiveTrendbarRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOASubscribeLiveTrendbarResUtils {
+export class ProtoOaSubscribeLiveTrendbarResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOASubscribeLiveTrendbarResUtils._readField,
+      ProtoOaSubscribeLiveTrendbarResUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -3055,7 +3049,7 @@ export class ProtoOASubscribeLiveTrendbarResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOASubscribeLiveTrendbarRes,
+    obj?: ProtoOaSubscribeLiveTrendbarRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3065,7 +3059,7 @@ export class ProtoOASubscribeLiveTrendbarResUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOASubscribeLiveTrendbarRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaSubscribeLiveTrendbarRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3076,19 +3070,19 @@ export class ProtoOASubscribeLiveTrendbarResUtils {
   }
 }
 
-// ProtoOAUnsubscribeLiveTrendbarReq ===========================
+// ProtoOaUnsubscribeLiveTrendbarReq ===========================
 
-export interface ProtoOAUnsubscribeLiveTrendbarReq {
+export interface ProtoOaUnsubscribeLiveTrendbarReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   period: ProtoOATrendbarPeriod;
   symbolId: number;
 }
 
-export class ProtoOAUnsubscribeLiveTrendbarReqUtils {
+export class ProtoOaUnsubscribeLiveTrendbarReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAUnsubscribeLiveTrendbarReqUtils._readField,
+      ProtoOaUnsubscribeLiveTrendbarReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         period: ProtoOATrendbarPeriod.M1,
@@ -3100,7 +3094,7 @@ export class ProtoOAUnsubscribeLiveTrendbarReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAUnsubscribeLiveTrendbarReq,
+    obj?: ProtoOaUnsubscribeLiveTrendbarReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3112,7 +3106,7 @@ export class ProtoOAUnsubscribeLiveTrendbarReqUtils {
     if (tag === 4) obj.symbolId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAUnsubscribeLiveTrendbarReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaUnsubscribeLiveTrendbarReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3127,17 +3121,17 @@ export class ProtoOAUnsubscribeLiveTrendbarReqUtils {
   }
 }
 
-// ProtoOAUnsubscribeLiveTrendbarRes ===========================
+// ProtoOaUnsubscribeLiveTrendbarRes ===========================
 
-export interface ProtoOAUnsubscribeLiveTrendbarRes {
+export interface ProtoOaUnsubscribeLiveTrendbarRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOAUnsubscribeLiveTrendbarResUtils {
+export class ProtoOaUnsubscribeLiveTrendbarResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAUnsubscribeLiveTrendbarResUtils._readField,
+      ProtoOaUnsubscribeLiveTrendbarResUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -3147,7 +3141,7 @@ export class ProtoOAUnsubscribeLiveTrendbarResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAUnsubscribeLiveTrendbarRes,
+    obj?: ProtoOaUnsubscribeLiveTrendbarRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3157,7 +3151,7 @@ export class ProtoOAUnsubscribeLiveTrendbarResUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAUnsubscribeLiveTrendbarRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaUnsubscribeLiveTrendbarRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3168,9 +3162,9 @@ export class ProtoOAUnsubscribeLiveTrendbarResUtils {
   }
 }
 
-// ProtoOAGetTrendbarsReq ======================================
+// ProtoOaGetTrendbarsReq ======================================
 
-export interface ProtoOAGetTrendbarsReq {
+export interface ProtoOaGetTrendbarsReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   fromTimestamp?: number;
@@ -3180,10 +3174,10 @@ export interface ProtoOAGetTrendbarsReq {
   count?: number;
 }
 
-export class ProtoOAGetTrendbarsReqUtils {
+export class ProtoOaGetTrendbarsReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAGetTrendbarsReqUtils._readField,
+      ProtoOaGetTrendbarsReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         period: ProtoOATrendbarPeriod.M1,
@@ -3195,7 +3189,7 @@ export class ProtoOAGetTrendbarsReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAGetTrendbarsReq,
+    obj?: ProtoOaGetTrendbarsReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3210,7 +3204,7 @@ export class ProtoOAGetTrendbarsReqUtils {
     if (tag === 7) obj.count = pbf.readVarint();
   }
 
-  static write(obj: ProtoOAGetTrendbarsReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaGetTrendbarsReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3231,9 +3225,9 @@ export class ProtoOAGetTrendbarsReqUtils {
   }
 }
 
-// ProtoOAGetTrendbarsRes ======================================
+// ProtoOaGetTrendbarsRes ======================================
 
-export interface ProtoOAGetTrendbarsRes {
+export interface ProtoOaGetTrendbarsRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   period: ProtoOATrendbarPeriod;
@@ -3243,10 +3237,10 @@ export interface ProtoOAGetTrendbarsRes {
   hasMore?: boolean;
 }
 
-export class ProtoOAGetTrendbarsResUtils {
+export class ProtoOaGetTrendbarsResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAGetTrendbarsResUtils._readField,
+      ProtoOaGetTrendbarsResUtils._readField,
       {
         ctidTraderAccountId: 0,
         period: ProtoOATrendbarPeriod.M1,
@@ -3258,7 +3252,7 @@ export class ProtoOAGetTrendbarsResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAGetTrendbarsRes,
+    obj?: ProtoOaGetTrendbarsRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3276,7 +3270,7 @@ export class ProtoOAGetTrendbarsResUtils {
     if (tag === 7) obj.hasMore = pbf.readBoolean();
   }
 
-  static write(obj: ProtoOAGetTrendbarsRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaGetTrendbarsRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3299,9 +3293,9 @@ export class ProtoOAGetTrendbarsResUtils {
   }
 }
 
-// ProtoOAGetTickDataReq =======================================
+// ProtoOaGetTickdataReq =======================================
 
-export interface ProtoOAGetTickDataReq {
+export interface ProtoOaGetTickdataReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   symbolId: number;
@@ -3310,10 +3304,10 @@ export interface ProtoOAGetTickDataReq {
   toTimestamp?: number;
 }
 
-export class ProtoOAGetTickDataReqUtils {
+export class ProtoOaGetTickdataReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAGetTickDataReqUtils._readField,
+      ProtoOaGetTickdataReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         symbolId: 0,
@@ -3325,7 +3319,7 @@ export class ProtoOAGetTickDataReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAGetTickDataReq,
+    obj?: ProtoOaGetTickdataReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3339,7 +3333,7 @@ export class ProtoOAGetTickDataReqUtils {
     if (tag === 6) obj.toTimestamp = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAGetTickDataReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaGetTickdataReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3358,19 +3352,19 @@ export class ProtoOAGetTickDataReqUtils {
   }
 }
 
-// ProtoOAGetTickDataRes =======================================
+// ProtoOaGetTickdataRes =======================================
 
-export interface ProtoOAGetTickDataRes {
+export interface ProtoOaGetTickdataRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   tickData: ProtoOATickData[];
   hasMore: boolean;
 }
 
-export class ProtoOAGetTickDataResUtils {
+export class ProtoOaGetTickdataResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAGetTickDataResUtils._readField,
+      ProtoOaGetTickdataResUtils._readField,
       {
         ctidTraderAccountId: 0,
         tickData: [],
@@ -3382,7 +3376,7 @@ export class ProtoOAGetTickDataResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAGetTickDataRes,
+    obj?: ProtoOaGetTickdataRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3397,7 +3391,7 @@ export class ProtoOAGetTickDataResUtils {
     if (tag === 4) obj.hasMore = pbf.readBoolean();
   }
 
-  static write(obj: ProtoOAGetTickDataRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaGetTickdataRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3414,17 +3408,17 @@ export class ProtoOAGetTickDataResUtils {
   }
 }
 
-// ProtoOAGetCtidProfileByTokenReq =============================
+// ProtoOaGetCtidProfileByTokenReq =============================
 
-export interface ProtoOAGetCtidProfileByTokenReq {
+export interface ProtoOaGetCtidProfileByTokenReq {
   payloadType?: ProtoOAPayloadType;
   accessToken: string;
 }
 
-export class ProtoOAGetCtidProfileByTokenReqUtils {
+export class ProtoOaGetCtidProfileByTokenReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAGetCtidProfileByTokenReqUtils._readField,
+      ProtoOaGetCtidProfileByTokenReqUtils._readField,
       {
         accessToken: "",
       },
@@ -3434,7 +3428,7 @@ export class ProtoOAGetCtidProfileByTokenReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAGetCtidProfileByTokenReq,
+    obj?: ProtoOaGetCtidProfileByTokenReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3444,7 +3438,7 @@ export class ProtoOAGetCtidProfileByTokenReqUtils {
     if (tag === 2) obj.accessToken = pbf.readString();
   }
 
-  static write(obj: ProtoOAGetCtidProfileByTokenReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaGetCtidProfileByTokenReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (obj.accessToken !== undefined && obj.accessToken !== null)
@@ -3452,17 +3446,17 @@ export class ProtoOAGetCtidProfileByTokenReqUtils {
   }
 }
 
-// ProtoOAGetCtidProfileByTokenRes =============================
+// ProtoOaGetCtidProfileByTokenRes =============================
 
-export interface ProtoOAGetCtidProfileByTokenRes {
+export interface ProtoOaGetCtidProfileByTokenRes {
   payloadType?: ProtoOAPayloadType;
   profile: ProtoOACtidProfile;
 }
 
-export class ProtoOAGetCtidProfileByTokenResUtils {
+export class ProtoOaGetCtidProfileByTokenResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAGetCtidProfileByTokenResUtils._readField,
+      ProtoOaGetCtidProfileByTokenResUtils._readField,
       {
         profile: { userId: 0 },
       },
@@ -3472,7 +3466,7 @@ export class ProtoOAGetCtidProfileByTokenResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAGetCtidProfileByTokenRes,
+    obj?: ProtoOaGetCtidProfileByTokenRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3486,7 +3480,7 @@ export class ProtoOAGetCtidProfileByTokenResUtils {
       );
   }
 
-  static write(obj: ProtoOAGetCtidProfileByTokenRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaGetCtidProfileByTokenRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (obj.profile !== undefined && obj.profile !== null)
@@ -3494,9 +3488,9 @@ export class ProtoOAGetCtidProfileByTokenResUtils {
   }
 }
 
-// ProtoOADepthEvent ===========================================
+// ProtoOaDepthEvent ===========================================
 
-export interface ProtoOADepthEvent {
+export interface ProtoOaDepthEvent {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   symbolId: number;
@@ -3504,10 +3498,10 @@ export interface ProtoOADepthEvent {
   deletedQuotes: number[];
 }
 
-export class ProtoOADepthEventUtils {
+export class ProtoOaDepthEventUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOADepthEventUtils._readField,
+      ProtoOaDepthEventUtils._readField,
       {
         ctidTraderAccountId: 0,
         symbolId: 0,
@@ -3518,7 +3512,7 @@ export class ProtoOADepthEventUtils {
     );
   }
 
-  private static _readField(tag: number, obj?: ProtoOADepthEvent, pbf?: PBF) {
+  private static _readField(tag: number, obj?: ProtoOaDepthEvent, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
@@ -3532,7 +3526,7 @@ export class ProtoOADepthEventUtils {
     if (tag === 5) pbf.readPackedVarint(obj.deletedQuotes);
   }
 
-  static write(obj: ProtoOADepthEvent, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaDepthEvent, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3551,18 +3545,18 @@ export class ProtoOADepthEventUtils {
   }
 }
 
-// ProtoOASubscribeDepthQuotesReq ==============================
+// ProtoOaSubscribeDepthQuotesReq ==============================
 
-export interface ProtoOASubscribeDepthQuotesReq {
+export interface ProtoOaSubscribeDepthQuotesReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   symbolId: number[];
 }
 
-export class ProtoOASubscribeDepthQuotesReqUtils {
+export class ProtoOaSubscribeDepthQuotesReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOASubscribeDepthQuotesReqUtils._readField,
+      ProtoOaSubscribeDepthQuotesReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         symbolId: [],
@@ -3573,7 +3567,7 @@ export class ProtoOASubscribeDepthQuotesReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOASubscribeDepthQuotesReq,
+    obj?: ProtoOaSubscribeDepthQuotesReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3584,7 +3578,7 @@ export class ProtoOASubscribeDepthQuotesReqUtils {
     if (tag === 3) obj.symbolId.push(pbf.readVarint64());
   }
 
-  static write(obj: ProtoOASubscribeDepthQuotesReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaSubscribeDepthQuotesReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3597,17 +3591,17 @@ export class ProtoOASubscribeDepthQuotesReqUtils {
   }
 }
 
-// ProtoOASubscribeDepthQuotesRes ==============================
+// ProtoOaSubscribeDepthQuotesRes ==============================
 
-export interface ProtoOASubscribeDepthQuotesRes {
+export interface ProtoOaSubscribeDepthQuotesRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOASubscribeDepthQuotesResUtils {
+export class ProtoOaSubscribeDepthQuotesResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOASubscribeDepthQuotesResUtils._readField,
+      ProtoOaSubscribeDepthQuotesResUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -3617,7 +3611,7 @@ export class ProtoOASubscribeDepthQuotesResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOASubscribeDepthQuotesRes,
+    obj?: ProtoOaSubscribeDepthQuotesRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3627,7 +3621,7 @@ export class ProtoOASubscribeDepthQuotesResUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOASubscribeDepthQuotesRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaSubscribeDepthQuotesRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3638,18 +3632,18 @@ export class ProtoOASubscribeDepthQuotesResUtils {
   }
 }
 
-// ProtoOAUnsubscribeDepthQuotesReq ============================
+// ProtoOaUnsubscribeDepthQuotesReq ============================
 
-export interface ProtoOAUnsubscribeDepthQuotesReq {
+export interface ProtoOaUnsubscribeDepthQuotesReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   symbolId: number[];
 }
 
-export class ProtoOAUnsubscribeDepthQuotesReqUtils {
+export class ProtoOaUnsubscribeDepthQuotesReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAUnsubscribeDepthQuotesReqUtils._readField,
+      ProtoOaUnsubscribeDepthQuotesReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         symbolId: [],
@@ -3660,7 +3654,7 @@ export class ProtoOAUnsubscribeDepthQuotesReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAUnsubscribeDepthQuotesReq,
+    obj?: ProtoOaUnsubscribeDepthQuotesReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3671,7 +3665,7 @@ export class ProtoOAUnsubscribeDepthQuotesReqUtils {
     if (tag === 3) obj.symbolId.push(pbf.readVarint64());
   }
 
-  static write(obj: ProtoOAUnsubscribeDepthQuotesReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaUnsubscribeDepthQuotesReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3684,17 +3678,17 @@ export class ProtoOAUnsubscribeDepthQuotesReqUtils {
   }
 }
 
-// ProtoOAUnsubscribeDepthQuotesRes ============================
+// ProtoOaUnsubscribeDepthQuotesRes ============================
 
-export interface ProtoOAUnsubscribeDepthQuotesRes {
+export interface ProtoOaUnsubscribeDepthQuotesRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOAUnsubscribeDepthQuotesResUtils {
+export class ProtoOaUnsubscribeDepthQuotesResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAUnsubscribeDepthQuotesResUtils._readField,
+      ProtoOaUnsubscribeDepthQuotesResUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -3704,7 +3698,7 @@ export class ProtoOAUnsubscribeDepthQuotesResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAUnsubscribeDepthQuotesRes,
+    obj?: ProtoOaUnsubscribeDepthQuotesRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3714,7 +3708,7 @@ export class ProtoOAUnsubscribeDepthQuotesResUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAUnsubscribeDepthQuotesRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaUnsubscribeDepthQuotesRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3725,17 +3719,17 @@ export class ProtoOAUnsubscribeDepthQuotesResUtils {
   }
 }
 
-// ProtoOASymbolCategoryListReq ================================
+// ProtoOaSymbolCategoryReq ====================================
 
-export interface ProtoOASymbolCategoryListReq {
+export interface ProtoOaSymbolCategoryReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOASymbolCategoryListReqUtils {
+export class ProtoOaSymbolCategoryReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOASymbolCategoryListReqUtils._readField,
+      ProtoOaSymbolCategoryReqUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -3745,7 +3739,7 @@ export class ProtoOASymbolCategoryListReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOASymbolCategoryListReq,
+    obj?: ProtoOaSymbolCategoryReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3755,7 +3749,7 @@ export class ProtoOASymbolCategoryListReqUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOASymbolCategoryListReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaSymbolCategoryReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3766,18 +3760,18 @@ export class ProtoOASymbolCategoryListReqUtils {
   }
 }
 
-// ProtoOASymbolCategoryListRes ================================
+// ProtoOaSymbolCategoryRes ====================================
 
-export interface ProtoOASymbolCategoryListRes {
+export interface ProtoOaSymbolCategoryRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   symbolCategory: ProtoOASymbolCategory[];
 }
 
-export class ProtoOASymbolCategoryListResUtils {
+export class ProtoOaSymbolCategoryResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOASymbolCategoryListResUtils._readField,
+      ProtoOaSymbolCategoryResUtils._readField,
       {
         ctidTraderAccountId: 0,
         symbolCategory: [],
@@ -3788,7 +3782,7 @@ export class ProtoOASymbolCategoryListResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOASymbolCategoryListRes,
+    obj?: ProtoOaSymbolCategoryRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3802,7 +3796,7 @@ export class ProtoOASymbolCategoryListResUtils {
       );
   }
 
-  static write(obj: ProtoOASymbolCategoryListRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaSymbolCategoryRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3817,17 +3811,17 @@ export class ProtoOASymbolCategoryListResUtils {
   }
 }
 
-// ProtoOAAccountLogoutReq =====================================
+// ProtoOaAccountLogoutReq =====================================
 
-export interface ProtoOAAccountLogoutReq {
+export interface ProtoOaAccountLogoutReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOAAccountLogoutReqUtils {
+export class ProtoOaAccountLogoutReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAAccountLogoutReqUtils._readField,
+      ProtoOaAccountLogoutReqUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -3837,7 +3831,7 @@ export class ProtoOAAccountLogoutReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAAccountLogoutReq,
+    obj?: ProtoOaAccountLogoutReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3847,7 +3841,7 @@ export class ProtoOAAccountLogoutReqUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAAccountLogoutReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaAccountLogoutReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3858,17 +3852,17 @@ export class ProtoOAAccountLogoutReqUtils {
   }
 }
 
-// ProtoOAAccountLogoutRes =====================================
+// ProtoOaAccountLogoutRes =====================================
 
-export interface ProtoOAAccountLogoutRes {
+export interface ProtoOaAccountLogoutRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOAAccountLogoutResUtils {
+export class ProtoOaAccountLogoutResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAAccountLogoutResUtils._readField,
+      ProtoOaAccountLogoutResUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -3878,7 +3872,7 @@ export class ProtoOAAccountLogoutResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAAccountLogoutRes,
+    obj?: ProtoOaAccountLogoutRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3888,7 +3882,7 @@ export class ProtoOAAccountLogoutResUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAAccountLogoutRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaAccountLogoutRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3899,17 +3893,17 @@ export class ProtoOAAccountLogoutResUtils {
   }
 }
 
-// ProtoOAAccountDisconnectEvent ===============================
+// ProtoOaAccountDisconnectEvent ===============================
 
-export interface ProtoOAAccountDisconnectEvent {
+export interface ProtoOaAccountDisconnectEvent {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOAAccountDisconnectEventUtils {
+export class ProtoOaAccountDisconnectEventUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAAccountDisconnectEventUtils._readField,
+      ProtoOaAccountDisconnectEventUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -3919,7 +3913,7 @@ export class ProtoOAAccountDisconnectEventUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAAccountDisconnectEvent,
+    obj?: ProtoOaAccountDisconnectEvent,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3929,7 +3923,7 @@ export class ProtoOAAccountDisconnectEventUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAAccountDisconnectEvent, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaAccountDisconnectEvent, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3940,17 +3934,17 @@ export class ProtoOAAccountDisconnectEventUtils {
   }
 }
 
-// ProtoOAMarginCallListReq ====================================
+// ProtoOaMarginCallListReq ====================================
 
-export interface ProtoOAMarginCallListReq {
+export interface ProtoOaMarginCallListReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOAMarginCallListReqUtils {
+export class ProtoOaMarginCallListReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAMarginCallListReqUtils._readField,
+      ProtoOaMarginCallListReqUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -3960,7 +3954,7 @@ export class ProtoOAMarginCallListReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAMarginCallListReq,
+    obj?: ProtoOaMarginCallListReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -3970,7 +3964,7 @@ export class ProtoOAMarginCallListReqUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAMarginCallListReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaMarginCallListReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -3981,17 +3975,17 @@ export class ProtoOAMarginCallListReqUtils {
   }
 }
 
-// ProtoOAMarginCallListRes ====================================
+// ProtoOaMarginCallListRes ====================================
 
-export interface ProtoOAMarginCallListRes {
+export interface ProtoOaMarginCallListRes {
   payloadType?: ProtoOAPayloadType;
   marginCall: ProtoOAMarginCall[];
 }
 
-export class ProtoOAMarginCallListResUtils {
+export class ProtoOaMarginCallListResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAMarginCallListResUtils._readField,
+      ProtoOaMarginCallListResUtils._readField,
       {
         marginCall: [],
       },
@@ -4001,7 +3995,7 @@ export class ProtoOAMarginCallListResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAMarginCallListRes,
+    obj?: ProtoOaMarginCallListRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4014,7 +4008,7 @@ export class ProtoOAMarginCallListResUtils {
       );
   }
 
-  static write(obj: ProtoOAMarginCallListRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaMarginCallListRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (obj.marginCall !== undefined && obj.marginCall !== null)
@@ -4024,18 +4018,18 @@ export class ProtoOAMarginCallListResUtils {
   }
 }
 
-// ProtoOAMarginCallUpdateReq ==================================
+// ProtoOaMarginCallUpdateReq ==================================
 
-export interface ProtoOAMarginCallUpdateReq {
+export interface ProtoOaMarginCallUpdateReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   marginCall: ProtoOAMarginCall;
 }
 
-export class ProtoOAMarginCallUpdateReqUtils {
+export class ProtoOaMarginCallUpdateReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAMarginCallUpdateReqUtils._readField,
+      ProtoOaMarginCallUpdateReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         marginCall: {
@@ -4049,7 +4043,7 @@ export class ProtoOAMarginCallUpdateReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAMarginCallUpdateReq,
+    obj?: ProtoOaMarginCallUpdateReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4064,7 +4058,7 @@ export class ProtoOAMarginCallUpdateReqUtils {
       );
   }
 
-  static write(obj: ProtoOAMarginCallUpdateReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaMarginCallUpdateReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4077,20 +4071,20 @@ export class ProtoOAMarginCallUpdateReqUtils {
   }
 }
 
-// ProtoOAMarginCallUpdateRes ==================================
+// ProtoOaMarginCallUpdateRes ==================================
 
-export interface ProtoOAMarginCallUpdateRes {
+export interface ProtoOaMarginCallUpdateRes {
   payloadType?: ProtoOAPayloadType;
 }
 
-export class ProtoOAMarginCallUpdateResUtils {
+export class ProtoOaMarginCallUpdateResUtils {
   static read(pbf: PBF, end?: number) {
-    return pbf.readFields(ProtoOAMarginCallUpdateResUtils._readField, {}, end);
+    return pbf.readFields(ProtoOaMarginCallUpdateResUtils._readField, {}, end);
   }
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAMarginCallUpdateRes,
+    obj?: ProtoOaMarginCallUpdateRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4099,24 +4093,24 @@ export class ProtoOAMarginCallUpdateResUtils {
     if (tag === 1) obj.payloadType = pbf.readVarint();
   }
 
-  static write(obj: ProtoOAMarginCallUpdateRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaMarginCallUpdateRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
   }
 }
 
-// ProtoOAMarginCallUpdateEvent ================================
+// ProtoOaMarginCallUpdateEvent ================================
 
-export interface ProtoOAMarginCallUpdateEvent {
+export interface ProtoOaMarginCallUpdateEvent {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   marginCall: ProtoOAMarginCall;
 }
 
-export class ProtoOAMarginCallUpdateEventUtils {
+export class ProtoOaMarginCallUpdateEventUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAMarginCallUpdateEventUtils._readField,
+      ProtoOaMarginCallUpdateEventUtils._readField,
       {
         ctidTraderAccountId: 0,
         marginCall: {
@@ -4130,7 +4124,7 @@ export class ProtoOAMarginCallUpdateEventUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAMarginCallUpdateEvent,
+    obj?: ProtoOaMarginCallUpdateEvent,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4145,7 +4139,7 @@ export class ProtoOAMarginCallUpdateEventUtils {
       );
   }
 
-  static write(obj: ProtoOAMarginCallUpdateEvent, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaMarginCallUpdateEvent, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4158,18 +4152,18 @@ export class ProtoOAMarginCallUpdateEventUtils {
   }
 }
 
-// ProtoOAMarginCallTriggerEvent ===============================
+// ProtoOaMarginCallTriggerEvent ===============================
 
-export interface ProtoOAMarginCallTriggerEvent {
+export interface ProtoOaMarginCallTriggerEvent {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   marginCall: ProtoOAMarginCall;
 }
 
-export class ProtoOAMarginCallTriggerEventUtils {
+export class ProtoOaMarginCallTriggerEventUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAMarginCallTriggerEventUtils._readField,
+      ProtoOaMarginCallTriggerEventUtils._readField,
       {
         ctidTraderAccountId: 0,
         marginCall: {
@@ -4183,7 +4177,7 @@ export class ProtoOAMarginCallTriggerEventUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAMarginCallTriggerEvent,
+    obj?: ProtoOaMarginCallTriggerEvent,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4198,7 +4192,7 @@ export class ProtoOAMarginCallTriggerEventUtils {
       );
   }
 
-  static write(obj: ProtoOAMarginCallTriggerEvent, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaMarginCallTriggerEvent, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4211,18 +4205,18 @@ export class ProtoOAMarginCallTriggerEventUtils {
   }
 }
 
-// ProtoOAGetDynamicLeverageByIDReq ============================
+// ProtoOaGetDynamicLeverageReq ================================
 
-export interface ProtoOAGetDynamicLeverageByIDReq {
+export interface ProtoOaGetDynamicLeverageReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   leverageId: number;
 }
 
-export class ProtoOAGetDynamicLeverageByIDReqUtils {
+export class ProtoOaGetDynamicLeverageReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAGetDynamicLeverageByIDReqUtils._readField,
+      ProtoOaGetDynamicLeverageReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         leverageId: 0,
@@ -4233,7 +4227,7 @@ export class ProtoOAGetDynamicLeverageByIDReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAGetDynamicLeverageByIDReq,
+    obj?: ProtoOaGetDynamicLeverageReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4244,7 +4238,7 @@ export class ProtoOAGetDynamicLeverageByIDReqUtils {
     if (tag === 3) obj.leverageId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAGetDynamicLeverageByIDReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaGetDynamicLeverageReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4257,18 +4251,18 @@ export class ProtoOAGetDynamicLeverageByIDReqUtils {
   }
 }
 
-// ProtoOAGetDynamicLeverageByIDRes ============================
+// ProtoOaGetDynamicLeverageRes ================================
 
-export interface ProtoOAGetDynamicLeverageByIDRes {
+export interface ProtoOaGetDynamicLeverageRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   leverage: ProtoOADynamicLeverage;
 }
 
-export class ProtoOAGetDynamicLeverageByIDResUtils {
+export class ProtoOaGetDynamicLeverageResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAGetDynamicLeverageByIDResUtils._readField,
+      ProtoOaGetDynamicLeverageResUtils._readField,
       {
         ctidTraderAccountId: 0,
         leverage: { leverageId: 0, tiers: [] },
@@ -4279,7 +4273,7 @@ export class ProtoOAGetDynamicLeverageByIDResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAGetDynamicLeverageByIDRes,
+    obj?: ProtoOaGetDynamicLeverageRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4294,7 +4288,7 @@ export class ProtoOAGetDynamicLeverageByIDResUtils {
       );
   }
 
-  static write(obj: ProtoOAGetDynamicLeverageByIDRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaGetDynamicLeverageRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4307,9 +4301,9 @@ export class ProtoOAGetDynamicLeverageByIDResUtils {
   }
 }
 
-// ProtoOADealListByPositionIdReq ==============================
+// ProtoOaDealListByPositionIdReq ==============================
 
-export interface ProtoOADealListByPositionIdReq {
+export interface ProtoOaDealListByPositionIdReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   positionId: number;
@@ -4317,10 +4311,10 @@ export interface ProtoOADealListByPositionIdReq {
   toTimestamp?: number;
 }
 
-export class ProtoOADealListByPositionIdReqUtils {
+export class ProtoOaDealListByPositionIdReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOADealListByPositionIdReqUtils._readField,
+      ProtoOaDealListByPositionIdReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         positionId: 0,
@@ -4331,7 +4325,7 @@ export class ProtoOADealListByPositionIdReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOADealListByPositionIdReq,
+    obj?: ProtoOaDealListByPositionIdReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4344,7 +4338,7 @@ export class ProtoOADealListByPositionIdReqUtils {
     if (tag === 5) obj.toTimestamp = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOADealListByPositionIdReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaDealListByPositionIdReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4361,19 +4355,19 @@ export class ProtoOADealListByPositionIdReqUtils {
   }
 }
 
-// ProtoOADealListByPositionIdRes ==============================
+// ProtoOaDealListByPositionIdRes ==============================
 
-export interface ProtoOADealListByPositionIdRes {
+export interface ProtoOaDealListByPositionIdRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   deal: ProtoOADeal[];
   hasMore: boolean;
 }
 
-export class ProtoOADealListByPositionIdResUtils {
+export class ProtoOaDealListByPositionIdResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOADealListByPositionIdResUtils._readField,
+      ProtoOaDealListByPositionIdResUtils._readField,
       {
         ctidTraderAccountId: 0,
         deal: [],
@@ -4385,7 +4379,7 @@ export class ProtoOADealListByPositionIdResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOADealListByPositionIdRes,
+    obj?: ProtoOaDealListByPositionIdRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4398,7 +4392,7 @@ export class ProtoOADealListByPositionIdResUtils {
     if (tag === 4) obj.hasMore = pbf.readBoolean();
   }
 
-  static write(obj: ProtoOADealListByPositionIdRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaDealListByPositionIdRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4415,18 +4409,18 @@ export class ProtoOADealListByPositionIdResUtils {
   }
 }
 
-// ProtoOAOrderDetailsReq ======================================
+// ProtoOaOrderDetailsReq ======================================
 
-export interface ProtoOAOrderDetailsReq {
+export interface ProtoOaOrderDetailsReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   orderId: number;
 }
 
-export class ProtoOAOrderDetailsReqUtils {
+export class ProtoOaOrderDetailsReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAOrderDetailsReqUtils._readField,
+      ProtoOaOrderDetailsReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         orderId: 0,
@@ -4437,7 +4431,7 @@ export class ProtoOAOrderDetailsReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAOrderDetailsReq,
+    obj?: ProtoOaOrderDetailsReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4448,7 +4442,7 @@ export class ProtoOAOrderDetailsReqUtils {
     if (tag === 3) obj.orderId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAOrderDetailsReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaOrderDetailsReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4461,19 +4455,19 @@ export class ProtoOAOrderDetailsReqUtils {
   }
 }
 
-// ProtoOAOrderDetailsRes ======================================
+// ProtoOaOrderDetailsRes ======================================
 
-export interface ProtoOAOrderDetailsRes {
+export interface ProtoOaOrderDetailsRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   order: ProtoOAOrder;
   deal: ProtoOADeal[];
 }
 
-export class ProtoOAOrderDetailsResUtils {
+export class ProtoOaOrderDetailsResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAOrderDetailsResUtils._readField,
+      ProtoOaOrderDetailsResUtils._readField,
       {
         ctidTraderAccountId: 0,
         order: {
@@ -4494,7 +4488,7 @@ export class ProtoOAOrderDetailsResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAOrderDetailsRes,
+    obj?: ProtoOaOrderDetailsRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4508,7 +4502,7 @@ export class ProtoOAOrderDetailsResUtils {
       obj.deal.push(ProtoOADealUtils.read(pbf, pbf.readVarint() + pbf.pos));
   }
 
-  static write(obj: ProtoOAOrderDetailsRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaOrderDetailsRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4525,9 +4519,9 @@ export class ProtoOAOrderDetailsResUtils {
   }
 }
 
-// ProtoOAOrderListByPositionIdReq =============================
+// ProtoOaOrderListByPositionIdReq =============================
 
-export interface ProtoOAOrderListByPositionIdReq {
+export interface ProtoOaOrderListByPositionIdReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   positionId: number;
@@ -4535,10 +4529,10 @@ export interface ProtoOAOrderListByPositionIdReq {
   toTimestamp?: number;
 }
 
-export class ProtoOAOrderListByPositionIdReqUtils {
+export class ProtoOaOrderListByPositionIdReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAOrderListByPositionIdReqUtils._readField,
+      ProtoOaOrderListByPositionIdReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         positionId: 0,
@@ -4549,7 +4543,7 @@ export class ProtoOAOrderListByPositionIdReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAOrderListByPositionIdReq,
+    obj?: ProtoOaOrderListByPositionIdReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4562,7 +4556,7 @@ export class ProtoOAOrderListByPositionIdReqUtils {
     if (tag === 5) obj.toTimestamp = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAOrderListByPositionIdReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaOrderListByPositionIdReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4579,19 +4573,19 @@ export class ProtoOAOrderListByPositionIdReqUtils {
   }
 }
 
-// ProtoOAOrderListByPositionIdRes =============================
+// ProtoOaOrderListByPositionIdRes =============================
 
-export interface ProtoOAOrderListByPositionIdRes {
+export interface ProtoOaOrderListByPositionIdRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   order: ProtoOAOrder[];
   hasMore: boolean;
 }
 
-export class ProtoOAOrderListByPositionIdResUtils {
+export class ProtoOaOrderListByPositionIdResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAOrderListByPositionIdResUtils._readField,
+      ProtoOaOrderListByPositionIdResUtils._readField,
       {
         ctidTraderAccountId: 0,
         order: [],
@@ -4603,7 +4597,7 @@ export class ProtoOAOrderListByPositionIdResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAOrderListByPositionIdRes,
+    obj?: ProtoOaOrderListByPositionIdRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4616,7 +4610,7 @@ export class ProtoOAOrderListByPositionIdResUtils {
     if (tag === 4) obj.hasMore = pbf.readBoolean();
   }
 
-  static write(obj: ProtoOAOrderListByPositionIdRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaOrderListByPositionIdRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4633,18 +4627,18 @@ export class ProtoOAOrderListByPositionIdResUtils {
   }
 }
 
-// ProtoOADealOffsetListReq ====================================
+// ProtoOaDealOffsetListReq ====================================
 
-export interface ProtoOADealOffsetListReq {
+export interface ProtoOaDealOffsetListReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   dealId: number;
 }
 
-export class ProtoOADealOffsetListReqUtils {
+export class ProtoOaDealOffsetListReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOADealOffsetListReqUtils._readField,
+      ProtoOaDealOffsetListReqUtils._readField,
       {
         ctidTraderAccountId: 0,
         dealId: 0,
@@ -4655,7 +4649,7 @@ export class ProtoOADealOffsetListReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOADealOffsetListReq,
+    obj?: ProtoOaDealOffsetListReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4666,7 +4660,7 @@ export class ProtoOADealOffsetListReqUtils {
     if (tag === 3) obj.dealId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOADealOffsetListReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaDealOffsetListReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4679,19 +4673,19 @@ export class ProtoOADealOffsetListReqUtils {
   }
 }
 
-// ProtoOADealOffsetListRes ====================================
+// ProtoOaDealOffsetListRes ====================================
 
-export interface ProtoOADealOffsetListRes {
+export interface ProtoOaDealOffsetListRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   offsetBy: ProtoOADealOffset[];
   offsetting: ProtoOADealOffset[];
 }
 
-export class ProtoOADealOffsetListResUtils {
+export class ProtoOaDealOffsetListResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOADealOffsetListResUtils._readField,
+      ProtoOaDealOffsetListResUtils._readField,
       {
         ctidTraderAccountId: 0,
         offsetBy: [],
@@ -4703,7 +4697,7 @@ export class ProtoOADealOffsetListResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOADealOffsetListRes,
+    obj?: ProtoOaDealOffsetListRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4721,7 +4715,7 @@ export class ProtoOADealOffsetListResUtils {
       );
   }
 
-  static write(obj: ProtoOADealOffsetListRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaDealOffsetListRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4740,17 +4734,17 @@ export class ProtoOADealOffsetListResUtils {
   }
 }
 
-// ProtoOAGetPositionUnrealizedPnLReq ==========================
+// ProtoOaGetPositionUnrealizedPnlReq ==========================
 
-export interface ProtoOAGetPositionUnrealizedPnLReq {
+export interface ProtoOaGetPositionUnrealizedPnlReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOAGetPositionUnrealizedPnLReqUtils {
+export class ProtoOaGetPositionUnrealizedPnlReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAGetPositionUnrealizedPnLReqUtils._readField,
+      ProtoOaGetPositionUnrealizedPnlReqUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -4760,7 +4754,7 @@ export class ProtoOAGetPositionUnrealizedPnLReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAGetPositionUnrealizedPnLReq,
+    obj?: ProtoOaGetPositionUnrealizedPnlReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4770,7 +4764,7 @@ export class ProtoOAGetPositionUnrealizedPnLReqUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAGetPositionUnrealizedPnLReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaGetPositionUnrealizedPnlReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4781,19 +4775,19 @@ export class ProtoOAGetPositionUnrealizedPnLReqUtils {
   }
 }
 
-// ProtoOAGetPositionUnrealizedPnLRes ==========================
+// ProtoOaGetPositionUnrealizedPnlRes ==========================
 
-export interface ProtoOAGetPositionUnrealizedPnLRes {
+export interface ProtoOaGetPositionUnrealizedPnlRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   positionUnrealizedPnL: ProtoOAPositionUnrealizedPnL[];
   moneyDigits: number;
 }
 
-export class ProtoOAGetPositionUnrealizedPnLResUtils {
+export class ProtoOaGetPositionUnrealizedPnlResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAGetPositionUnrealizedPnLResUtils._readField,
+      ProtoOaGetPositionUnrealizedPnlResUtils._readField,
       {
         ctidTraderAccountId: 0,
         positionUnrealizedPnL: [],
@@ -4805,7 +4799,7 @@ export class ProtoOAGetPositionUnrealizedPnLResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAGetPositionUnrealizedPnLRes,
+    obj?: ProtoOaGetPositionUnrealizedPnlRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4820,7 +4814,7 @@ export class ProtoOAGetPositionUnrealizedPnLResUtils {
     if (tag === 4) obj.moneyDigits = pbf.readVarint();
   }
 
-  static write(obj: ProtoOAGetPositionUnrealizedPnLRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaGetPositionUnrealizedPnlRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4844,9 +4838,9 @@ export class ProtoOAGetPositionUnrealizedPnLResUtils {
   }
 }
 
-// ProtoOAv1PnLChangeEvent =====================================
+// ProtoOaV1PnlChangeEvent =====================================
 
-export interface ProtoOAv1PnLChangeEvent {
+export interface ProtoOaV1PnlChangeEvent {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
   grossUnrealizedPnL: number;
@@ -4854,10 +4848,10 @@ export interface ProtoOAv1PnLChangeEvent {
   moneyDigits: number;
 }
 
-export class ProtoOAv1PnLChangeEventUtils {
+export class ProtoOaV1PnlChangeEventUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAv1PnLChangeEventUtils._readField,
+      ProtoOaV1PnlChangeEventUtils._readField,
       {
         ctidTraderAccountId: 0,
         grossUnrealizedPnL: 0,
@@ -4870,7 +4864,7 @@ export class ProtoOAv1PnLChangeEventUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAv1PnLChangeEvent,
+    obj?: ProtoOaV1PnlChangeEvent,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4883,7 +4877,7 @@ export class ProtoOAv1PnLChangeEventUtils {
     if (tag === 5) obj.moneyDigits = pbf.readVarint();
   }
 
-  static write(obj: ProtoOAv1PnLChangeEvent, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaV1PnlChangeEvent, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4900,17 +4894,17 @@ export class ProtoOAv1PnLChangeEventUtils {
   }
 }
 
-// ProtoOAv1PnLChangeSubscribeReq ==============================
+// ProtoOaV1PnlChangeSubscribeReq ==============================
 
-export interface ProtoOAv1PnLChangeSubscribeReq {
+export interface ProtoOaV1PnlChangeSubscribeReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOAv1PnLChangeSubscribeReqUtils {
+export class ProtoOaV1PnlChangeSubscribeReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAv1PnLChangeSubscribeReqUtils._readField,
+      ProtoOaV1PnlChangeSubscribeReqUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -4920,7 +4914,7 @@ export class ProtoOAv1PnLChangeSubscribeReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAv1PnLChangeSubscribeReq,
+    obj?: ProtoOaV1PnlChangeSubscribeReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4930,7 +4924,7 @@ export class ProtoOAv1PnLChangeSubscribeReqUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAv1PnLChangeSubscribeReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaV1PnlChangeSubscribeReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4941,17 +4935,17 @@ export class ProtoOAv1PnLChangeSubscribeReqUtils {
   }
 }
 
-// ProtoOAv1PnLChangeSubscribeRes ==============================
+// ProtoOaV1PnlChangeSubscribeRes ==============================
 
-export interface ProtoOAv1PnLChangeSubscribeRes {
+export interface ProtoOaV1PnlChangeSubscribeRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOAv1PnLChangeSubscribeResUtils {
+export class ProtoOaV1PnlChangeSubscribeResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAv1PnLChangeSubscribeResUtils._readField,
+      ProtoOaV1PnlChangeSubscribeResUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -4961,7 +4955,7 @@ export class ProtoOAv1PnLChangeSubscribeResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAv1PnLChangeSubscribeRes,
+    obj?: ProtoOaV1PnlChangeSubscribeRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -4971,7 +4965,7 @@ export class ProtoOAv1PnLChangeSubscribeResUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAv1PnLChangeSubscribeRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaV1PnlChangeSubscribeRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -4982,17 +4976,17 @@ export class ProtoOAv1PnLChangeSubscribeResUtils {
   }
 }
 
-// ProtoOAv1PnLChangeUnSubscribeReq ============================
+// ProtoOaV1PnlChangeUnSubscribeReq ============================
 
-export interface ProtoOAv1PnLChangeUnSubscribeReq {
+export interface ProtoOaV1PnlChangeUnSubscribeReq {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOAv1PnLChangeUnSubscribeReqUtils {
+export class ProtoOaV1PnlChangeUnSubscribeReqUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAv1PnLChangeUnSubscribeReqUtils._readField,
+      ProtoOaV1PnlChangeUnSubscribeReqUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -5002,7 +4996,7 @@ export class ProtoOAv1PnLChangeUnSubscribeReqUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAv1PnLChangeUnSubscribeReq,
+    obj?: ProtoOaV1PnlChangeUnSubscribeReq,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -5012,7 +5006,7 @@ export class ProtoOAv1PnLChangeUnSubscribeReqUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAv1PnLChangeUnSubscribeReq, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaV1PnlChangeUnSubscribeReq, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (
@@ -5023,17 +5017,17 @@ export class ProtoOAv1PnLChangeUnSubscribeReqUtils {
   }
 }
 
-// ProtoOAv1PnLChangeUnSubscribeRes ============================
+// ProtoOaV1PnlChangeUnSubscribeRes ============================
 
-export interface ProtoOAv1PnLChangeUnSubscribeRes {
+export interface ProtoOaV1PnlChangeUnSubscribeRes {
   payloadType?: ProtoOAPayloadType;
   ctidTraderAccountId: number;
 }
 
-export class ProtoOAv1PnLChangeUnSubscribeResUtils {
+export class ProtoOaV1PnlChangeUnSubscribeResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoOAv1PnLChangeUnSubscribeResUtils._readField,
+      ProtoOaV1PnlChangeUnSubscribeResUtils._readField,
       {
         ctidTraderAccountId: 0,
       },
@@ -5043,7 +5037,7 @@ export class ProtoOAv1PnLChangeUnSubscribeResUtils {
 
   private static _readField(
     tag: number,
-    obj?: ProtoOAv1PnLChangeUnSubscribeRes,
+    obj?: ProtoOaV1PnlChangeUnSubscribeRes,
     pbf?: PBF
   ) {
     if (!obj || !pbf) {
@@ -5053,7 +5047,7 @@ export class ProtoOAv1PnLChangeUnSubscribeResUtils {
     if (tag === 2) obj.ctidTraderAccountId = pbf.readVarint64();
   }
 
-  static write(obj: ProtoOAv1PnLChangeUnSubscribeRes, pbf: PBF = new PBF()) {
+  static write(obj: ProtoOaV1PnlChangeUnSubscribeRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (

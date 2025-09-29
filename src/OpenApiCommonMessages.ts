@@ -57,19 +57,19 @@ export class ProtoMessageUtils {
   }
 }
 
-// ProtoErrorRes ===============================================
+// ErrorRes ====================================================
 
-export interface ProtoErrorRes {
+export interface ErrorRes {
   payloadType?: ProtoPayloadType;
   errorCode: string;
   description?: string;
   maintenanceEndTimestamp?: number;
 }
 
-export class ProtoErrorResUtils {
+export class ErrorResUtils {
   static read(pbf: PBF, end?: number) {
     return pbf.readFields(
-      ProtoErrorResUtils._readField,
+      ErrorResUtils._readField,
       {
         errorCode: "",
       },
@@ -77,7 +77,7 @@ export class ProtoErrorResUtils {
     );
   }
 
-  private static _readField(tag: number, obj?: ProtoErrorRes, pbf?: PBF) {
+  private static _readField(tag: number, obj?: ErrorRes, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
@@ -87,7 +87,7 @@ export class ProtoErrorResUtils {
     if (tag === 4) obj.maintenanceEndTimestamp = pbf.readVarint64();
   }
 
-  static write(obj: ProtoErrorRes, pbf: PBF = new PBF()) {
+  static write(obj: ErrorRes, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
     if (obj.errorCode !== undefined && obj.errorCode !== null)
@@ -102,25 +102,25 @@ export class ProtoErrorResUtils {
   }
 }
 
-// ProtoHeartbeatEvent =========================================
+// HeartbeatEvent ==============================================
 
-export interface ProtoHeartbeatEvent {
+export interface HeartbeatEvent {
   payloadType?: ProtoPayloadType;
 }
 
-export class ProtoHeartbeatEventUtils {
+export class HeartbeatEventUtils {
   static read(pbf: PBF, end?: number) {
-    return pbf.readFields(ProtoHeartbeatEventUtils._readField, {}, end);
+    return pbf.readFields(HeartbeatEventUtils._readField, {}, end);
   }
 
-  private static _readField(tag: number, obj?: ProtoHeartbeatEvent, pbf?: PBF) {
+  private static _readField(tag: number, obj?: HeartbeatEvent, pbf?: PBF) {
     if (!obj || !pbf) {
       return;
     }
     if (tag === 1) obj.payloadType = pbf.readVarint();
   }
 
-  static write(obj: ProtoHeartbeatEvent, pbf: PBF = new PBF()) {
+  static write(obj: HeartbeatEvent, pbf: PBF = new PBF()) {
     if (obj.payloadType !== undefined && obj.payloadType !== null)
       pbf.writeVarintField(1, obj.payloadType);
   }

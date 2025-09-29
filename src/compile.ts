@@ -41,6 +41,16 @@ function toPascalCase(input: string): string {
     .join("");
 }
 
+function nameFromPayloadType(protoMessage: Message): string {
+  const payloadTypeField = protoMessage.fields.find(
+    (field) => field.name === "payloadType"
+  );
+  if (payloadTypeField && payloadTypeField.options["default"]) {
+    return toPascalCase(payloadTypeField.options["default"]);
+  }
+  return protoMessage.name;
+}
+
 function compile(schema: Schema): string {
   const lines: string[] = ['import PBF from "pbf";', ""];
   schema.enums.map((entry) => entry.name).forEach((a) => enums.add(a));
@@ -69,7 +79,9 @@ function compileEnum(protoEnum: Enum, context: Context): string {
 function compileMessage(protoMessage: Message): ReadonlyArray<string> {
   const lines: string[] = [];
   lines.push(
-    `// ${toPascalCase(protoMessage.name)} ${"=".repeat(60 - toPascalCase(protoMessage.name).length)}`,
+    `// ${nameFromPayloadType(protoMessage)} ${"=".repeat(
+      60 - nameFromPayloadType(protoMessage).length
+    )}`,
     ""
   );
   lines.push(...compileMessageInterface(protoMessage));
@@ -79,7 +91,7 @@ function compileMessage(protoMessage: Message): ReadonlyArray<string> {
 
 function compileMessageInterface(protoMessage: Message): ReadonlyArray<string> {
   const lines: string[] = [];
-  lines.push(`export interface ${toPascalCase(protoMessage.name)} {`);
+  lines.push(`export interface ${nameFromPayloadType(protoMessage)} {`);
   protoMessage.fields.forEach((field) =>
     lines.push(
       `  ${field.name}${field.required || field.repeated ? "" : "?"}: ${mapType(
@@ -93,7 +105,7 @@ function compileMessageInterface(protoMessage: Message): ReadonlyArray<string> {
 
 function compileMessageClass(protoMessage: Message): ReadonlyArray<string> {
   const lines: string[] = [];
-  lines.push(`export class ${toPascalCase(protoMessage.name)}Utils {`);
+  lines.push(`export class ${nameFromPayloadType(protoMessage)}Utils {`);
   lines.push(...compileReadMethod(protoMessage));
   lines.push(...compileWriteMethod(protoMessage));
   lines.push("}", "");
@@ -104,7 +116,10 @@ function compileReadMethod(protoMessage: Message): ReadonlyArray<string> {
   const lines: string[] = [];
   lines.push("  static read(pbf: PBF, end?: number) {");
   lines.push("    return pbf.readFields(");
-  lines.push(`      ${toPascalCase(protoMessage.name)}Utils._readField,`, "      {");
+  lines.push(
+    `      ${nameFromPayloadType(protoMessage)}Utils._readField,`,
+    "      {"
+  );
   protoMessage.fields
     .filter((field) => field.required || field.repeated)
     .forEach((field) =>
@@ -114,7 +129,9 @@ function compileReadMethod(protoMessage: Message): ReadonlyArray<string> {
   lines.push("  }", "");
 
   lines.push(
-    `private static _readField(tag: number, obj?: ${toPascalCase(protoMessage.name)}, pbf?: PBF) {`
+    `private static _readField(tag: number, obj?: ${nameFromPayloadType(
+      protoMessage
+    )}, pbf?: PBF) {`
   );
   lines.push("if(!obj || !pbf) {");
   lines.push("return;");
@@ -128,7 +145,11 @@ function compileReadMethod(protoMessage: Message): ReadonlyArray<string> {
 
 function compileWriteMethod(protoMessage: Message): ReadonlyArray<string> {
   const lines: string[] = [];
-  lines.push(`static write(obj: ${toPascalCase(protoMessage.name)}, pbf: PBF = new PBF()) {`);
+  lines.push(
+    `static write(obj: ${nameFromPayloadType(
+      protoMessage
+    )}, pbf: PBF = new PBF()) {`
+  );
   protoMessage.fields.forEach((field) =>
     lines.push(
       `if (obj.${field.name} !== undefined && obj.${
