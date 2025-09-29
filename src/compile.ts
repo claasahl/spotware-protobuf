@@ -58,7 +58,7 @@ function compileEnum(protoEnum: Enum, context: Context): string {
   return lines.join(EOL);
 }
 
-function compileMessage(protoMessage: Message): string[] {
+function compileMessage(protoMessage: Message): ReadonlyArray<string> {
   const lines: string[] = [];
   lines.push(
     `// ${protoMessage.name} ${"=".repeat(60 - protoMessage.name.length)}`,
@@ -69,7 +69,7 @@ function compileMessage(protoMessage: Message): string[] {
   return lines;
 }
 
-function compileMessageInterface(protoMessage: Message): string[] {
+function compileMessageInterface(protoMessage: Message): ReadonlyArray<string> {
   const lines: string[] = [];
   lines.push(`export interface ${protoMessage.name} {`);
   protoMessage.fields.forEach((field) =>
@@ -83,7 +83,7 @@ function compileMessageInterface(protoMessage: Message): string[] {
   return lines;
 }
 
-function compileMessageClass(protoMessage: Message): string[] {
+function compileMessageClass(protoMessage: Message): ReadonlyArray<string> {
   const lines: string[] = [];
   lines.push(`export class ${protoMessage.name}Utils {`);
   lines.push(...compileReadMethod(protoMessage));
@@ -92,7 +92,7 @@ function compileMessageClass(protoMessage: Message): string[] {
   return lines;
 }
 
-function compileReadMethod(protoMessage: Message): string[] {
+function compileReadMethod(protoMessage: Message): ReadonlyArray<string> {
   const lines: string[] = [];
   lines.push("  static read(pbf: PBF, end?: number) {");
   lines.push("    return pbf.readFields(");
@@ -118,7 +118,7 @@ function compileReadMethod(protoMessage: Message): string[] {
   return lines;
 }
 
-function compileWriteMethod(protoMessage: Message): string[] {
+function compileWriteMethod(protoMessage: Message): ReadonlyArray<string> {
   const lines: string[] = [];
   lines.push(`static write(obj: ${protoMessage.name}, pbf: PBF = new PBF()) {`);
   protoMessage.fields.forEach((field) =>
