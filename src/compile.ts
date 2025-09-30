@@ -1,9 +1,13 @@
-import { Schema, Message, Field, Enum } from "protocol-buffers-schema/types";
+import type {
+  Schema,
+  Message,
+  Field,
+  Enum,
+} from "protocol-buffers-schema/types";
 import { EOL } from "os";
 import fs from "fs";
 import path from "path";
 import resolve from "resolve-protobuf-schema";
-import semver from "semver";
 
 // see compileRaw in compile.js
 // https://github.com/mapbox/pbf/blob/master/compile.js#L16
@@ -18,35 +22,7 @@ import semver from "semver";
 // --single-file --multi-files???
 
 const enums: Set<string> = new Set();
-
-const dir = "./protobuf";
-const versions = fs.readdirSync(dir);
-if (versions.length !== 1) {
-  throw new Error(
-    `Could not find latest 'Beta'/'Current' version. ${versions.length} matching.`
-  );
-}
-const protoDir = path.join(dir, versions[0]);
-
-const pkg = JSON.parse(fs.readFileSync("./package.json").toString());
-const newVersion = semver.coerce(versions[0].split(" ")[0]);
-const oldVersion = semver.coerce(pkg.version);
-if (!newVersion || !oldVersion) {
-  throw new Error(
-    `encountered invalid version number (old: ${pkg.version}; new: ${
-      versions[0].split(" ")[0]
-    })`
-  );
-} else if (semver.gte(newVersion, oldVersion)) {
-  pkg.version = newVersion.raw;
-} else {
-  throw new Error(
-    `lastest 'Beta' version has a lower major version number (old: ${
-      pkg.version
-    }; new: ${versions[0].split(" ")[0]})`
-  );
-}
-fs.writeFileSync("./package.json", JSON.stringify(pkg, null, 2));
+const protoDir = "./protobuf";
 
 fs.writeFileSync(
   "./src/OpenApiCommonMessages.ts",
@@ -56,6 +32,24 @@ fs.writeFileSync(
   "./src/OpenApiMessages.ts",
   compile(resolve.sync(path.join(protoDir, "OpenApiMessages.proto")))
 );
+
+function toPascalCase(input: string): string {
+  return input
+    .toLowerCase()
+    .split("_")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join("");
+}
+
+function nameFromPayloadType(protoMessage: Message): string {
+  const payloadTypeField = protoMessage.fields.find(
+    (field) => field.name === "payloadType"
+  );
+  if (payloadTypeField && payloadTypeField.options["default"]) {
+    return toPascalCase(payloadTypeField.options["default"]);
+  }
+  return protoMessage.name;
+}
 
 function compile(schema: Schema): string {
   const lines: string[] = ['import PBF from "pbf";', ""];
@@ -82,10 +76,12 @@ function compileEnum(protoEnum: Enum, context: Context): string {
   return lines.join(EOL);
 }
 
-function compileMessage(protoMessage: Message): string[] {
+function compileMessage(protoMessage: Message): ReadonlyArray<string> {
   const lines: string[] = [];
   lines.push(
-    `// ${protoMessage.name} ${"=".repeat(60 - protoMessage.name.length)}`,
+    `// ${nameFromPayloadType(protoMessage)} ${"=".repeat(
+      60 - nameFromPayloadType(protoMessage).length
+    )}`,
     ""
   );
   lines.push(...compileMessageInterface(protoMessage));
@@ -93,9 +89,9 @@ function compileMessage(protoMessage: Message): string[] {
   return lines;
 }
 
-function compileMessageInterface(protoMessage: Message): string[] {
+function compileMessageInterface(protoMessage: Message): ReadonlyArray<string> {
   const lines: string[] = [];
-  lines.push(`export interface ${protoMessage.name} {`);
+  lines.push(`export interface ${nameFromPayloadType(protoMessage)} {`);
   protoMessage.fields.forEach((field) =>
     lines.push(
       `  ${field.name}${field.required || field.repeated ? "" : "?"}: ${mapType(
@@ -107,20 +103,23 @@ function compileMessageInterface(protoMessage: Message): string[] {
   return lines;
 }
 
-function compileMessageClass(protoMessage: Message): string[] {
+function compileMessageClass(protoMessage: Message): ReadonlyArray<string> {
   const lines: string[] = [];
-  lines.push(`export class ${protoMessage.name}Utils {`);
+  lines.push(`export class ${nameFromPayloadType(protoMessage)}Utils {`);
   lines.push(...compileReadMethod(protoMessage));
   lines.push(...compileWriteMethod(protoMessage));
   lines.push("}", "");
   return lines;
 }
 
-function compileReadMethod(protoMessage: Message): string[] {
+function compileReadMethod(protoMessage: Message): ReadonlyArray<string> {
   const lines: string[] = [];
   lines.push("  static read(pbf: PBF, end?: number) {");
   lines.push("    return pbf.readFields(");
-  lines.push(`      ${protoMessage.name}Utils._readField,`, "      {");
+  lines.push(
+    `      ${nameFromPayloadType(protoMessage)}Utils._readField,`,
+    "      {"
+  );
   protoMessage.fields
     .filter((field) => field.required || field.repeated)
     .forEach((field) =>
@@ -130,7 +129,9 @@ function compileReadMethod(protoMessage: Message): string[] {
   lines.push("  }", "");
 
   lines.push(
-    `private static _readField(tag: number, obj?: ${protoMessage.name}, pbf?: PBF) {`
+    `private static _readField(tag: number, obj?: ${nameFromPayloadType(
+      protoMessage
+    )}, pbf?: PBF) {`
   );
   lines.push("if(!obj || !pbf) {");
   lines.push("return;");
@@ -142,9 +143,13 @@ function compileReadMethod(protoMessage: Message): string[] {
   return lines;
 }
 
-function compileWriteMethod(protoMessage: Message): string[] {
+function compileWriteMethod(protoMessage: Message): ReadonlyArray<string> {
   const lines: string[] = [];
-  lines.push(`static write(obj: ${protoMessage.name}, pbf: PBF = new PBF()) {`);
+  lines.push(
+    `static write(obj: ${nameFromPayloadType(
+      protoMessage
+    )}, pbf: PBF = new PBF()) {`
+  );
   protoMessage.fields.forEach((field) =>
     lines.push(
       `if (obj.${field.name} !== undefined && obj.${
@@ -327,6 +332,15 @@ function defaultValue(field: Field): string {
       return "ProtoOANotificationType.MARGIN_LEVEL_THRESHOLD_1";
     case "ProtoOAMarginCall":
       return "{marginCallType: ProtoOANotificationType.MARGIN_LEVEL_THRESHOLD_1, marginLevelThreshold: 0}";
+    case "ProtoOADynamicLeverage":
+      return "{leverageId: 0, tiers: []}";
+    case "ProtoOAOrder":
+      return `{
+        orderId: 0,
+        tradeData: {symbolId: 0, volume: 0, tradeSide: ProtoOATradeSide.BUY},
+        orderType: ProtoOAOrderType.MARKET,
+        orderStatus: ProtoOAOrderStatus.ORDER_STATUS_ACCEPTED,
+      }`;
     default:
       return `no default value for '${field.type}'`;
   }
