@@ -65,10 +65,12 @@ interface Context {
   type: "global" | "nested";
 }
 function compileEnum(protoEnum: Enum, context: Context): string {
+  const name =
+    protoEnum.name === "ProtoOAPayloadType"
+      ? "ProtoOaPayloadType"
+      : protoEnum.name;
   const lines: string[] = [];
-  lines.push(
-    `${context.type === "global" && "export"} enum ${protoEnum.name} {`
-  );
+  lines.push(`${context.type === "global" && "export"} enum ${name} {`);
   Object.entries(protoEnum.values).forEach(([name, data]) => {
     lines.push(`  ${name} = ${data.value},`);
   });
@@ -183,6 +185,8 @@ function mapType(field: Field): string {
       return field.repeated ? "number[]" : "number";
     case "bytes":
       return "Uint8Array";
+    case "ProtoOAPayloadType":
+      return "ProtoOaPayloadType";
     default:
       return field.repeated ? `${field.type}[]` : field.type;
     //throw new Error("Unexpected type: " + type);
