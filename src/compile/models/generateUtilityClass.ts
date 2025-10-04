@@ -8,23 +8,12 @@ function generateUniqueImports(
 ): ReadonlyArray<string> {
   const typesRequiringImport = message.fields
     // only consider types that are not basic types
-    .map((field) =>
-      toPbfReadMethod(field, schema, "pbf") ? undefined : field.type,
-    )
-    .filter((type): type is string => !!type)
-    .map((type) => `import {${type}Utils} from "./${type}Utils.js";`);
-  return Array.from(new Set(typesRequiringImport));
-}
-
-function importPayloadType(message: Message): string | undefined {
-  const field = message.fields
-    .filter((f) => f.name === "payloadType")
-    .filter((f) =>
-      ["ProtoOAPayloadType", "ProtoPayloadType"].includes(f.type),
-    )[0];
-  if (!field) return;
-
-  return `import { ${field.type} } from "../enums/${field.type}.js";`;
+    .filter((field) => !toPbfReadMethod(field, schema, ""))
+    .map(({ type }) => `import {${type}Utils} from "./${type}Utils.js";`);
+  const enumsRequiringImport = message.fields
+    .filter(({ type }) => schema.enums.find((e) => e.name === type))
+    .map(({ type }) => `import {${type}} from "../enums/${type}.js";`);
+  return Array.from(new Set(typesRequiringImport.concat(enumsRequiringImport)));
 }
 
 function generateDefaultValue(field: Field, schema: Schema): string {
@@ -66,7 +55,6 @@ export function generateUtilityClass(message: Message, schema: Schema): string {
 
   ${generateUniqueImports(message, schema).join("\n")}
   import { ${baseName} } from "../interfaces/${baseName}.js";
-  ${importPayloadType(message) ?? ""}
   
   export class ${baseName}Utils {
     static default(partialMessage?: Partial<${baseName}>): ${baseName} {

@@ -30,8 +30,10 @@ function isEnum(type: string, schema: Schema): boolean {
 }
 
 export function defaultValue(field: Field, schema: Schema): string | undefined {
-  if (isEnum(field.type, schema) && field.options.default !== undefined) {
-    return `${field.type}.${field.options.default}`;
+  if (isEnum(field.type, schema)) {
+    return field.options.default !== undefined
+      ? `${field.type}.${field.options.default}`
+      : `Object.values(${field.type})[0] as ${field.type}`;
   }
   if (field.options.default !== undefined) {
     return field.options.default;
