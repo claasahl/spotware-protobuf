@@ -182,13 +182,13 @@ function mapType(field: Field): string {
     case "fixed64":
     case "sfixed32":
     case "sfixed64":
-      return field.repeated ? "number[]" : "number";
+      return field.repeated ? "ReadonlyArray<number>" : "number";
     case "bytes":
       return "Uint8Array";
     case "ProtoOAPayloadType":
       return "ProtoOaPayloadType";
     default:
-      return field.repeated ? `${field.type}[]` : field.type;
+      return field.repeated ? `ReadonlyArray<${field.type}>` : field.type;
     //throw new Error("Unexpected type: " + type);
   }
 }
@@ -213,7 +213,7 @@ function mapWriteMethod(field: Field): string {
     case "int32":
     case "int64":
       if (field.options.packed) {
-        return `pbf.writePackedVarint(${field.tag}, obj.${field.name})`;
+        return `pbf.writePackedVarint(${field.tag}, [...obj.${field.name}])`;
       }
       return field.repeated
         ? `obj.${field.name}.forEach(${field.name} =>pbf.writeVarintField(${field.tag}, ${field.name}))`
@@ -257,10 +257,10 @@ function mapReadMethod(field: Field): string {
     case "uint64":
     case "int64":
       if (field.options.packed) {
-        return `pbf.readPackedVarint(obj.${field.name})`;
+        return `pbf.readPackedVarint([...obj.${field.name}])`;
       }
       return field.repeated
-        ? `obj.${field.name}.push(pbf.readVarint64())`
+        ? `obj.${field.name} = [...obj.${field.name}, pbf.readVarint64()]`
         : `obj.${field.name} = pbf.readVarint64()`;
     case "sint32":
     case "sint64":
@@ -275,7 +275,7 @@ function mapReadMethod(field: Field): string {
       return `obj.${field.name} = pbf.readBoolean()`;
     default:
       return field.repeated
-        ? `obj.${field.name}.push(${field.type}Utils.read(pbf, pbf.readVarint() + pbf.pos))`
+        ? `obj.${field.name} = [...obj.${field.name}, ${field.type}Utils.read(pbf, pbf.readVarint() + pbf.pos)]`
         : `obj.${field.name} = ${field.type}Utils.read(pbf, pbf.readVarint() + pbf.pos)`;
     //return "pbf.readVarint()";
     //return `no mapping for '${type}'`
