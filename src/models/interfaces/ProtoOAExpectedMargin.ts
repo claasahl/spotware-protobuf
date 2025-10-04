@@ -1,6 +1,4 @@
-import type { ProtoMessage } from "./ProtoMessage.ts";
-
-export interface ProtoOAExpectedMargin extends ProtoMessage {
+export interface ProtoOAExpectedMargin {
   volume: number;
   buyMargin: number;
   sellMargin: number;

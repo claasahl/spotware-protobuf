@@ -1,6 +1,4 @@
-import type { ProtoMessage } from "./ProtoMessage.ts";
-
-export interface ProtoOAClosePositionDetail extends ProtoMessage {
+export interface ProtoOAClosePositionDetail {
   entryPrice: number;
   grossProfit: number;
   swap: number;

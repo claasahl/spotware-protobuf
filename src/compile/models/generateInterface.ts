@@ -26,7 +26,7 @@ function generateTypeScriptType(field: Field): string {
 }
 
 function generateTypeScriptField(field: Field): string {
-  if (field.name === "payloadType" && field.options.default) {
+  if (field.name === "payloadType" && field.options.default !== undefined) {
     return `${field.name}: ${field.type}.${field.options.default};`;
   }
   const type = generateTypeScriptType(field);
@@ -36,7 +36,10 @@ function generateTypeScriptField(field: Field): string {
 export function generateInterface(message: Message, schema: Schema): string {
   const fields = message.fields.map(generateTypeScriptField);
   const isProtoMessage = message.name === "ProtoMessage";
-  if (isProtoMessage) {
+  const hasPayloadTypeField = message.fields.some(
+    (f) => f.name === "payloadType",
+  );
+  if (isProtoMessage || !hasPayloadTypeField) {
     return `${generateUniqueImports(message, schema).join("\n")}
 
   export interface ${message.name} {

@@ -6,9 +6,8 @@ import type { ProtoOAMinCommissionType } from "../enums/ProtoOAMinCommissionType
 import type { ProtoOATradingMode } from "../enums/ProtoOATradingMode.ts";
 import type { ProtoOASwapCalculationType } from "../enums/ProtoOASwapCalculationType.ts";
 import type { ProtoOAHoliday } from "./ProtoOAHoliday.ts";
-import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOASymbol extends ProtoMessage {
+export interface ProtoOASymbol {
   symbolId: number;
   digits: number;
   pipPosition: number;

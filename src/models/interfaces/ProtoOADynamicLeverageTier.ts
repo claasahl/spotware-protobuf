@@ -1,6 +1,4 @@
-import type { ProtoMessage } from "./ProtoMessage.ts";
-
-export interface ProtoOADynamicLeverageTier extends ProtoMessage {
+export interface ProtoOADynamicLeverageTier {
   volume: number;
   leverage: number;
 }

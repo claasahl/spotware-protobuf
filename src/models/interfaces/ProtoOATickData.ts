@@ -1,6 +1,4 @@
-import type { ProtoMessage } from "./ProtoMessage.ts";
-
-export interface ProtoOATickData extends ProtoMessage {
+export interface ProtoOATickData {
   timestamp: number;
   tick: number;
 }

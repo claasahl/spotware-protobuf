@@ -1,6 +1,4 @@
-import type { ProtoMessage } from "./ProtoMessage.ts";
-
-export interface ProtoOALightSymbol extends ProtoMessage {
+export interface ProtoOALightSymbol {
   symbolId: number;
   symbolName?: string;
   enabled?: boolean;

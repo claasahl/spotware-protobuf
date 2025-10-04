@@ -1,6 +1,4 @@
-import type { ProtoMessage } from "./ProtoMessage.ts";
-
-export interface ProtoOADealOffset extends ProtoMessage {
+export interface ProtoOADealOffset {
   dealId: number;
   volume: number;
   executionTimestamp?: number;

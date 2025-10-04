@@ -1,6 +1,4 @@
-import type { ProtoMessage } from "./ProtoMessage.ts";
-
-export interface ProtoOAArchivedSymbol extends ProtoMessage {
+export interface ProtoOAArchivedSymbol {
   symbolId: number;
   name: string;
   utcLastUpdateTimestamp: number;

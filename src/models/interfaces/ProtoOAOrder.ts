@@ -3,9 +3,8 @@ import type { ProtoOAOrderType } from "../enums/ProtoOAOrderType.ts";
 import type { ProtoOAOrderStatus } from "../enums/ProtoOAOrderStatus.ts";
 import type { ProtoOATimeInForce } from "../enums/ProtoOATimeInForce.ts";
 import type { ProtoOAOrderTriggerMethod } from "../enums/ProtoOAOrderTriggerMethod.ts";
-import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOAOrder extends ProtoMessage {
+export interface ProtoOAOrder {
   orderId: number;
   tradeData: ProtoOATradeData;
   orderType: ProtoOAOrderType;
