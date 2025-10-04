@@ -4,6 +4,7 @@
   "description": "This package bundles .proto files for 'Spotware Open API V2', including their respective JS/TS classes.",
   "main": "build/index.js",
   "scripts": {
+    "format": "prettier --write .",
     "import": "bash ./scripts/import.sh",
     "compile": "ts-node src/compile.ts",
     "postcompile": "npx prettier --write ./src/**",
@@ -41,6 +42,7 @@
     "@types/protocol-buffers-schema": "^3.4.0",
     "@types/resolve-protobuf-schema": "^2.1.0",
     "create-typescript-project-dependencies": "^14.0.6",
+    "prettier": "^3.6.2",
     "typescript": "^5.9.2"
   },
   "dependencies": {
