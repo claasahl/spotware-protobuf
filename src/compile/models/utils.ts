@@ -61,47 +61,6 @@ export function defaultValue(field: Field, schema: Schema): string | undefined {
       return '""';
     case "bool":
       return "false";
-    // case "ProtoOAOrderType":
-    //   return "ProtoOAOrderType.MARKET";
-    // case "ProtoOATradeSide":
-    //   return "ProtoOATradeSide.BUY";
-    // case "ProtoOAExecutionType":
-    //   return "ProtoOAExecutionType.ORDER_ACCEPTED";
-    // case "ProtoOATrader":
-    //   return "{balance: 0, ctidTraderAccountId: 0, depositAssetId: 0}";
-    // case "ProtoOATrendbarPeriod":
-    //   return "ProtoOATrendbarPeriod.M1";
-    // case "ProtoOAQuoteType":
-    //   return "ProtoOAQuoteType.BID";
-    // case "ProtoOACtidProfile":
-    //   return "{userId: 0}";
-    // case "ProtoOATradeData":
-    //   return "{symbolId: 0, volume: 0, tradeSide: ProtoOATradeSide.BUY}";
-    // case "ProtoOAPositionStatus":
-    //   return "ProtoOAPositionStatus.POSITION_STATUS_OPEN";
-    // case "ProtoOAOrderStatus":
-    //   return "ProtoOAOrderStatus.ORDER_STATUS_ACCEPTED";
-    // case "ProtoOAChangeBonusType":
-    //   return "ProtoOAChangeBonusType.BONUS_DEPOSIT";
-    // case "ProtoOAChangeBalanceType":
-    //   return "ProtoOAChangeBalanceType.BALANCE_DEPOSIT";
-    // case "ProtoOADealStatus":
-    //   return "ProtoOADealStatus.FILLED";
-    // case "ProtoOANotificationType":
-    //   return "ProtoOANotificationType.MARGIN_LEVEL_THRESHOLD_1";
-    // case "ProtoOAMarginCall":
-    //   return "{marginCallType: ProtoOANotificationType.MARGIN_LEVEL_THRESHOLD_1, marginLevelThreshold: 0}";
-    // case "ProtoOADynamicLeverage":
-    //   return "{leverageId: 0, tiers: []}";
-    // case "ProtoOAOrder":
-    //   return `{
-    //     orderId: 0,
-    //     tradeData: {symbolId: 0, volume: 0, tradeSide: ProtoOATradeSide.BUY},
-    //     orderType: ProtoOAOrderType.MARKET,
-    //     orderStatus: ProtoOAOrderStatus.ORDER_STATUS_ACCEPTED,
-    //   }`;
-    // default:
-    //   return `no default value for '${field.type}'`;
   }
 }
 
