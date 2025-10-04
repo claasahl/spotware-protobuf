@@ -1,0 +1,5 @@
+export enum ProtoOANotificationType {
+  MARGIN_LEVEL_THRESHOLD_1 = 61,
+  MARGIN_LEVEL_THRESHOLD_2 = 62,
+  MARGIN_LEVEL_THRESHOLD_3 = 63,
+}
