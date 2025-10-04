@@ -1,8 +1,8 @@
 import type { ProtoOAPayloadType } from "../enums/ProtoOAPayloadType.ts";
 import type { ProtoOATrendbar } from "./ProtoOATrendbar.ts";
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOASpotEvent extends BaseMessage {
+export interface ProtoOASpotEvent extends ProtoMessage {
   payloadType: ProtoOAPayloadType.PROTO_OA_SPOT_EVENT;
   ctidTraderAccountId: number;
   symbolId: number;

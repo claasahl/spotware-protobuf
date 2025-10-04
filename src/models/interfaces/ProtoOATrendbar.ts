@@ -1,7 +1,7 @@
 import type { ProtoOATrendbarPeriod } from "../enums/ProtoOATrendbarPeriod.ts";
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOATrendbar extends BaseMessage {
+export interface ProtoOATrendbar extends ProtoMessage {
   volume: number;
   period?: ProtoOATrendbarPeriod;
   low?: number;

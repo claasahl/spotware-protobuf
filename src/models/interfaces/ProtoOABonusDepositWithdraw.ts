@@ -1,7 +1,7 @@
 import type { ProtoOAChangeBonusType } from "../enums/ProtoOAChangeBonusType.ts";
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOABonusDepositWithdraw extends BaseMessage {
+export interface ProtoOABonusDepositWithdraw extends ProtoMessage {
   operationType: ProtoOAChangeBonusType;
   bonusHistoryId: number;
   managerBonus: number;

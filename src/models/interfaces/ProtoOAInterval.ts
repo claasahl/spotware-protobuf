@@ -1,6 +1,6 @@
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOAInterval extends BaseMessage {
+export interface ProtoOAInterval extends ProtoMessage {
   startSecond: number;
   endSecond: number;
 }

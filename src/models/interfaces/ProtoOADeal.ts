@@ -1,9 +1,9 @@
 import type { ProtoOATradeSide } from "../enums/ProtoOATradeSide.ts";
 import type { ProtoOADealStatus } from "../enums/ProtoOADealStatus.ts";
 import type { ProtoOAClosePositionDetail } from "./ProtoOAClosePositionDetail.ts";
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOADeal extends BaseMessage {
+export interface ProtoOADeal extends ProtoMessage {
   dealId: number;
   orderId: number;
   positionId: number;

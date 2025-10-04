@@ -1,6 +1,6 @@
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOASymbolCategory extends BaseMessage {
+export interface ProtoOASymbolCategory extends ProtoMessage {
   id: number;
   assetClassId: number;
   name: string;

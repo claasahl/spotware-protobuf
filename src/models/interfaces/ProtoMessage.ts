@@ -1,6 +1,4 @@
-import type { BaseMessage } from "./BaseMessage.ts";
-
-export interface ProtoMessage extends BaseMessage {
+export interface ProtoMessage {
   payloadType: number;
   payload?: Uint8Array;
   clientMsgId?: string;

@@ -1,9 +1,9 @@
 import type { ProtoOATradeData } from "./ProtoOATradeData.ts";
 import type { ProtoOAPositionStatus } from "../enums/ProtoOAPositionStatus.ts";
 import type { ProtoOAOrderTriggerMethod } from "../enums/ProtoOAOrderTriggerMethod.ts";
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOAPosition extends BaseMessage {
+export interface ProtoOAPosition extends ProtoMessage {
   positionId: number;
   tradeData: ProtoOATradeData;
   positionStatus: ProtoOAPositionStatus;

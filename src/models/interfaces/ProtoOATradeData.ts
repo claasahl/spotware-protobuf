@@ -1,7 +1,7 @@
 import type { ProtoOATradeSide } from "../enums/ProtoOATradeSide.ts";
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOATradeData extends BaseMessage {
+export interface ProtoOATradeData extends ProtoMessage {
   symbolId: number;
   volume: number;
   tradeSide: ProtoOATradeSide;

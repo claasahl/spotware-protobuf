@@ -5,9 +5,9 @@ import type { ProtoOAOrder } from "./ProtoOAOrder.ts";
 import type { ProtoOADeal } from "./ProtoOADeal.ts";
 import type { ProtoOABonusDepositWithdraw } from "./ProtoOABonusDepositWithdraw.ts";
 import type { ProtoOADepositWithdraw } from "./ProtoOADepositWithdraw.ts";
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOAExecutionEvent extends BaseMessage {
+export interface ProtoOAExecutionEvent extends ProtoMessage {
   payloadType: ProtoOAPayloadType.PROTO_OA_EXECUTION_EVENT;
   ctidTraderAccountId: number;
   executionType: ProtoOAExecutionType;

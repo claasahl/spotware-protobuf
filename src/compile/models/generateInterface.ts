@@ -35,10 +35,18 @@ function generateTypeScriptField(field: Field): string {
 
 export function generateInterface(message: Message, schema: Schema): string {
   const fields = message.fields.map(generateTypeScriptField);
-  return `${generateUniqueImports(message, schema).join("\n")}
-  import type { BaseMessage } from "./BaseMessage.ts";
+  const isProtoMessage = message.name === "ProtoMessage";
+  if (isProtoMessage) {
+    return `${generateUniqueImports(message, schema).join("\n")}
 
-  export interface ${message.name} extends BaseMessage {
+  export interface ${message.name} {
+    ${fields.join("\n")}
+  }`;
+  }
+  return `${generateUniqueImports(message, schema).join("\n")}
+  import type { ProtoMessage } from "./ProtoMessage.ts";
+
+  export interface ${message.name} extends ProtoMessage {
     ${fields.join("\n")}
   }`;
 }

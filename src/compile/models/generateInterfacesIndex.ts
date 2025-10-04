@@ -8,8 +8,7 @@ export function generateInterfacesIndex(schema: Schema): string {
     return `import { ${message.name}} from "./${message.name}.js";`;
   });
   const messages = schema.messages.map((m) => m.name);
-  return `export * from "./BaseMessage.js";
-  ${exports.join("\n")}
+  return `${exports.join("\n")}
   
   ${imports.join("\n")}
 

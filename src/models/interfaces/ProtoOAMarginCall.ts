@@ -1,7 +1,7 @@
 import type { ProtoOANotificationType } from "../enums/ProtoOANotificationType.ts";
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOAMarginCall extends BaseMessage {
+export interface ProtoOAMarginCall extends ProtoMessage {
   marginCallType: ProtoOANotificationType;
   marginLevelThreshold: number;
   utcLastUpdateTimestamp?: number;

@@ -1,6 +1,6 @@
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOAAssetClass extends BaseMessage {
+export interface ProtoOAAssetClass extends ProtoMessage {
   id?: number;
   name?: string;
   sortingNumber?: number;

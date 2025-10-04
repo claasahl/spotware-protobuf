@@ -1,4 +1,3 @@
-export * from "./BaseMessage.js";
 export * from "./ProtoOAApplicationAuthReq.js";
 export * from "./ProtoOAApplicationAuthRes.js";
 export * from "./ProtoOAAccountAuthReq.js";

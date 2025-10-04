@@ -1,5 +1,5 @@
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOACtidProfile extends BaseMessage {
+export interface ProtoOACtidProfile extends ProtoMessage {
   userId: number;
 }

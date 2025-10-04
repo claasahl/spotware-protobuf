@@ -1,6 +1,6 @@
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOADepthQuote extends BaseMessage {
+export interface ProtoOADepthQuote extends ProtoMessage {
   id: number;
   size: number;
   bid?: number;

@@ -1,7 +1,7 @@
 import type { ProtoOAChangeBalanceType } from "../enums/ProtoOAChangeBalanceType.ts";
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOADepositWithdraw extends BaseMessage {
+export interface ProtoOADepositWithdraw extends ProtoMessage {
   operationType: ProtoOAChangeBalanceType;
   balanceHistoryId: number;
   balance: number;

@@ -1,6 +1,6 @@
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOATickData extends BaseMessage {
+export interface ProtoOATickData extends ProtoMessage {
   timestamp: number;
   tick: number;
 }

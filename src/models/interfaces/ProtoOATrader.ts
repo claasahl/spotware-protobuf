@@ -3,9 +3,9 @@ import type { ProtoOATotalMarginCalculationType } from "../enums/ProtoOATotalMar
 import type { ProtoOAAccountType } from "../enums/ProtoOAAccountType.ts";
 import type { ProtoOALimitedRiskMarginCalculationStrategy } from "../enums/ProtoOALimitedRiskMarginCalculationStrategy.ts";
 import type { ProtoOAStopOutStrategy } from "../enums/ProtoOAStopOutStrategy.ts";
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOATrader extends BaseMessage {
+export interface ProtoOATrader extends ProtoMessage {
   ctidTraderAccountId: number;
   balance: number;
   balanceVersion?: number;

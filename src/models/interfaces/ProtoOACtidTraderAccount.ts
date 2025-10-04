@@ -1,6 +1,6 @@
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOACtidTraderAccount extends BaseMessage {
+export interface ProtoOACtidTraderAccount extends ProtoMessage {
   ctidTraderAccountId: number;
   isLive?: boolean;
   traderLogin?: number;

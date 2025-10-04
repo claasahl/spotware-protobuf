@@ -3,9 +3,9 @@ import type { ProtoOAOrderType } from "../enums/ProtoOAOrderType.ts";
 import type { ProtoOATradeSide } from "../enums/ProtoOATradeSide.ts";
 import type { ProtoOATimeInForce } from "../enums/ProtoOATimeInForce.ts";
 import type { ProtoOAOrderTriggerMethod } from "../enums/ProtoOAOrderTriggerMethod.ts";
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOANewOrderReq extends BaseMessage {
+export interface ProtoOANewOrderReq extends ProtoMessage {
   payloadType: ProtoOAPayloadType.PROTO_OA_NEW_ORDER_REQ;
   ctidTraderAccountId: number;
   symbolId: number;

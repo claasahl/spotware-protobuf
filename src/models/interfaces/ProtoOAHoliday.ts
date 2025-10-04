@@ -1,6 +1,6 @@
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOAHoliday extends BaseMessage {
+export interface ProtoOAHoliday extends ProtoMessage {
   holidayId: number;
   name: string;
   description?: string;

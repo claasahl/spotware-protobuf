@@ -1,7 +1,7 @@
 import type { ProtoPayloadType } from "../enums/ProtoPayloadType.ts";
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoErrorRes extends BaseMessage {
+export interface ProtoErrorRes extends ProtoMessage {
   payloadType: ProtoPayloadType.ERROR_RES;
   errorCode: string;
   description?: string;

@@ -1,6 +1,6 @@
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOAPositionUnrealizedPnL extends BaseMessage {
+export interface ProtoOAPositionUnrealizedPnL extends ProtoMessage {
   positionId: number;
   grossUnrealizedPnL: number;
   netUnrealizedPnL: number;

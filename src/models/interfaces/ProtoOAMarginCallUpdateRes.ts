@@ -1,6 +1,6 @@
 import type { ProtoOAPayloadType } from "../enums/ProtoOAPayloadType.ts";
-import type { BaseMessage } from "./BaseMessage.ts";
+import type { ProtoMessage } from "./ProtoMessage.ts";
 
-export interface ProtoOAMarginCallUpdateRes extends BaseMessage {
+export interface ProtoOAMarginCallUpdateRes extends ProtoMessage {
   payloadType: ProtoOAPayloadType.PROTO_OA_MARGIN_CALL_UPDATE_RES;
 }
