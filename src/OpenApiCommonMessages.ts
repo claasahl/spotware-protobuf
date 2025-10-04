@@ -34,7 +34,7 @@ export class ProtoMessageUtils {
       {
         payloadType: 0,
       },
-      end
+      end,
     );
   }
 
@@ -73,7 +73,7 @@ export class ErrorResUtils {
       {
         errorCode: "",
       },
-      end
+      end,
     );
   }
 
