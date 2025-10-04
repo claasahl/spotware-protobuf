@@ -1,2 +1,1 @@
-export * from "./OpenApiCommonMessages";
-export * from "./OpenApiMessages";
+export * from "./models";
