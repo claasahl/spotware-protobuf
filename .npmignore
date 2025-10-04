@@ -1,5 +1,5 @@
 .github/
 scripts/
-src/compile.ts
+src/compile/
 tsconfig.json
-build/compile.*
+build/compile/
