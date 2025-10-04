@@ -90,7 +90,7 @@ export function toPbfReadMethod(
     case "int64":
       if (field.options.packed) {
         // FIXME
-        return `${prefix}.readPackedVarint([...message.${field.name}])`;
+        return `${prefix}.readPackedVarint([...message.${field.name} ?? []])`;
       }
       return `${prefix}.readVarint64()`;
     case "sint32":

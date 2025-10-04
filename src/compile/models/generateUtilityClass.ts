@@ -28,7 +28,7 @@ function generateReadFieldLine(
 ): string {
   const customReadMethod = `${field.type}Utils.read(${prefix}, ${prefix}.readVarint() + ${prefix}.pos)`;
   const readMethod = toPbfReadMethod(field, schema, prefix) || customReadMethod;
-  if (field.repeated)
+  if (field.repeated && !field.options.packed)
     return `if (tag === ${field.tag}) message.${field.name} = [...(message.${field.name} ?? []), ${readMethod}];`;
   return `if (tag === ${field.tag}) message.${field.name} = ${readMethod};`;
 }
@@ -41,7 +41,7 @@ function generateWriteFieldLine(
   const customWriteMethod = `${field.type}Utils.write(${field.name}, ${prefix})`;
   const writeMethod =
     toPbfWriteMethod(field, schema, prefix) || customWriteMethod;
-  if (field.repeated)
+  if (field.repeated && !field.options.packed)
     return `if (${field.name} !== undefined && ${field.name} !== null) ${field.name}.forEach(${field.name} => ${writeMethod});`;
   return `if (${field.name} !== undefined && ${field.name} !== null) ${writeMethod};`;
 }
