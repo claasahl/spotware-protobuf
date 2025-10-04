@@ -6,6 +6,7 @@ function generateUniqueImports(
   schema: Schema,
 ): ReadonlyArray<string> {
   const typesRequiringImport = message.fields
+    // only consider types that are not basic types
     .map(({ type }) => (toTypeScriptType(type) ? undefined : type))
     .filter((type): type is string => !!type)
     .map((type) => {
@@ -34,9 +35,8 @@ function generateTypeScriptField(field: Field): string {
 }
 
 export function generateInterface(message: Message, schema: Schema): string {
-  const uniqueImports = generateUniqueImports(message, schema);
   const fields = message.fields.map(generateTypeScriptField);
-  return `${uniqueImports.join("\n")}
+  return `${generateUniqueImports(message, schema).join("\n")}
   import type { BaseMessage } from "./BaseProtoPayloadType.ts";
 
   export interface ${message.name} extends BaseMessage {
