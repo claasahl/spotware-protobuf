@@ -7,9 +7,8 @@ function generateUniqueImports(
 ): ReadonlyArray<string> {
   const typesRequiringImport = message.fields
     // only consider types that are not basic types
-    .map(({ type }) => (toTypeScriptType(type) ? undefined : type))
-    .filter((type): type is string => !!type)
-    .map((type) => {
+    .filter(({ type }) => !toTypeScriptType(type))
+    .map(({ type }) => {
       if (schema.enums.find((e) => e.name === type)) {
         return `import type {${type}} from "../enums/${type}.ts";`;
       }
