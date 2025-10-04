@@ -6,8 +6,8 @@
   "scripts": {
     "format": "prettier --write .",
     "import": "bash ./scripts/import.sh",
-    "compile": "ts-node src/compile.ts",
-    "postcompile": "npx prettier --write ./src/**",
+    "compile": "ts-node src/compile/index.ts",
+    "postcompile": "npm run format",
     "precommit": "pretty-quick --staged",
     "prepare": "npm run build",
     "prebuild": "npm run import",
