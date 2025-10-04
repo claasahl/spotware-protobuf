@@ -49,7 +49,7 @@ function generateWriteFieldLine(
   schema: Schema,
   prefix: string,
 ): string {
-  const customWriteMethod = `${field.type}Utils.write(${prefix}, ${field.name})`;
+  const customWriteMethod = `${field.type}Utils.write(${field.name}, ${prefix})`;
   const writeMethod =
     toPbfWriteMethod(field, schema, prefix) || customWriteMethod;
   if (field.repeated)
