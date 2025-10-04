@@ -37,7 +37,7 @@ function generateTypeScriptField(field: Field): string {
 export function generateInterface(message: Message, schema: Schema): string {
   const fields = message.fields.map(generateTypeScriptField);
   return `${generateUniqueImports(message, schema).join("\n")}
-  import type { BaseMessage } from "./BaseProtoPayloadType.ts";
+  import type { BaseMessage } from "./BaseMessage.ts";
 
   export interface ${message.name} extends BaseMessage {
     ${fields.join("\n")}
