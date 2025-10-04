@@ -131,9 +131,7 @@ export function toPbfReadMethod(
         // FIXME
         return `${prefix}.readPackedVarint([...message.${field.name}])`;
       }
-      return field.repeated // FIXME
-        ? `[...message.${field.name}, ${prefix}.readVarint64()]`
-        : `${prefix}.readVarint64()`;
+      return `${prefix}.readVarint64()`;
     case "sint32":
     case "sint64":
       return `${prefix}.readSVarint()`;
@@ -154,40 +152,38 @@ export function toPbfWriteMethod(
   prefix: string,
 ): string | undefined {
   if (isEnum(field.type, schema)) {
-    return `${prefix}.writeVarintField(${field.tag}, message.${field.name})`;
+    return `${prefix}.writeVarintField(${field.tag}, ${field.name})`;
   }
   switch (field.type) {
     case "bytes":
-      return `${prefix}.writeBytesField(${field.tag}, message.${field.name})`;
+      return `${prefix}.writeBytesField(${field.tag}, ${field.name})`;
     case "fixed32":
-      return `${prefix}.writeFixed32Field(${field.tag}, message.${field.name})`;
+      return `${prefix}.writeFixed32Field(${field.tag}, ${field.name})`;
     case "sfixed32":
-      return `${prefix}.writeSFixed32Field(${field.tag}, message.${field.name})`;
+      return `${prefix}.writeSFixed32Field(${field.tag}, ${field.name})`;
     case "fixed64":
-      return `${prefix}.writeFixed64Field(${field.tag}, message.${field.name})`;
+      return `${prefix}.writeFixed64Field(${field.tag}, ${field.name})`;
     case "sfixed64":
-      return `${prefix}.writeSFixed64Field(${field.tag}, message.${field.name})`;
+      return `${prefix}.writeSFixed64Field(${field.tag}, ${field.name})`;
     case "uint32":
     case "uint64":
     case "int32":
     case "int64":
       if (field.options.packed) {
         // FIXME
-        return `${prefix}.writePackedVarint(${field.tag}, [...message.${field.name}])`;
+        return `${prefix}.writePackedVarint(${field.tag}, [...${field.name}])`;
       }
-      return field.repeated // FIXME
-        ? `message.${field.name}.forEach(${field.name} => ${prefix}.writeVarintField(${field.tag}, ${field.name}))`
-        : `${prefix}.writeVarintField(${field.tag}, message.${field.name})`;
+      return `${prefix}.writeVarintField(${field.tag}, ${field.name})`;
     case "sint32":
     case "sint64":
-      return `${prefix}.writeSVarintField(${field.tag}, message.${field.name})`;
+      return `${prefix}.writeSVarintField(${field.tag}, ${field.name})`;
     case "string":
-      return `${prefix}.writeStringField(${field.tag}, message.${field.name})`;
+      return `${prefix}.writeStringField(${field.tag}, ${field.name})`;
     case "float":
-      return `${prefix}.writeFloatField(${field.tag}, message.${field.name})`;
+      return `${prefix}.writeFloatField(${field.tag}, ${field.name})`;
     case "double":
-      return `${prefix}.writeDoubleField(${field.tag}, message.${field.name})`;
+      return `${prefix}.writeDoubleField(${field.tag}, ${field.name})`;
     case "bool":
-      return `${prefix}.writeBooleanField(${field.tag}, message.${field.name})`;
+      return `${prefix}.writeBooleanField(${field.tag}, ${field.name})`;
   }
 }

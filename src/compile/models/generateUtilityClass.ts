@@ -39,6 +39,8 @@ function generateReadFieldLine(
 ): string {
   const customReadMethod = `${field.type}Utils.read(${prefix}, ${prefix}.readVarint() + ${prefix}.pos)`;
   const readMethod = toPbfReadMethod(field, schema, prefix) || customReadMethod;
+  if (field.repeated)
+    return `if (tag === ${field.tag}) message.${field.name} = [...(message.${field.name} ?? []), ${readMethod}];`;
   return `if (tag === ${field.tag}) message.${field.name} = ${readMethod};`;
 }
 
@@ -47,10 +49,12 @@ function generateWriteFieldLine(
   schema: Schema,
   prefix: string,
 ): string {
-  const customWriteMethod = `${field.type}Utils.write(${prefix}, message.${field.name})`;
+  const customWriteMethod = `${field.type}Utils.write(${prefix}, ${field.name})`;
   const writeMethod =
     toPbfWriteMethod(field, schema, prefix) || customWriteMethod;
-  return `if (message.${field.name} !== undefined && message.${field.name} !== null) ${writeMethod};`;
+  if (field.repeated)
+    return `if (${field.name} !== undefined && ${field.name} !== null) ${field.name}.forEach(${field.name} => ${writeMethod});`;
+  return `if (${field.name} !== undefined && ${field.name} !== null) ${writeMethod};`;
 }
 
 export function generateUtilityClass(message: Message, schema: Schema): string {
@@ -86,6 +90,7 @@ export function generateUtilityClass(message: Message, schema: Schema): string {
     }
       
     static write(message: ${baseName}, pbf: Pbf): void {
+      const {${message.fields.map((field) => field.name).join(", ")}} = message;
       ${message.fields.map((field) => generateWriteFieldLine(field, schema, "pbf")).join("\n")}
     }
   }`;
