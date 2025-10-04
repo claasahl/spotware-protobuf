@@ -17,7 +17,11 @@ function generateUniqueImports(
 }
 
 function importPayloadType(message: Message): string | undefined {
-  const field = message.fields.find((f) => f.name === "payloadType");
+  const field = message.fields
+    .filter((f) => f.name === "payloadType")
+    .filter((f) =>
+      ["ProtoOAPayloadType", "ProtoPayloadType"].includes(f.type),
+    )[0];
   if (!field) return;
 
   return `import { ${field.type} } from "../enums/${field.type}.js";`;
@@ -51,6 +55,9 @@ function generateWriteFieldLine(
 
 export function generateUtilityClass(message: Message, schema: Schema): string {
   const baseName = message.name;
+  const defaultValues = message.fields
+    .filter((field) => field.required || field.name === "payloadType")
+    .map((field) => generateDefaultValue(field, schema));
   return `import Pbf from "pbf";
 
   ${generateUniqueImports(message, schema).join("\n")}
@@ -60,10 +67,8 @@ export function generateUtilityClass(message: Message, schema: Schema): string {
   export class ${baseName}Utils {
     static default(partialMessage?: Partial<${baseName}>): ${baseName} {
       return {
-        ${message.fields
-          .filter((field) => field.required || field.name === "payloadType")
-          .map((field) => generateDefaultValue(field, schema))
-          .join(",\n")},
+        ${defaultValues.join(",\n")}
+        ${defaultValues.length > 0 ? "," : ""}
         ...partialMessage,
       };
     }
