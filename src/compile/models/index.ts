@@ -3,6 +3,7 @@ import { Schema } from "protocol-buffers-schema/types";
 
 import { generateEnum } from "./generateEnum";
 import { generateInterface } from "./generateInterface";
+import { generateUtilityClass } from "./generateUtilityClass";
 
 export async function generateModels(schema: Schema) {
   // generate enums
@@ -17,5 +18,12 @@ export async function generateModels(schema: Schema) {
   for (const message of schema.messages) {
     const content = generateInterface(message, schema);
     await writeFile(`./src/models/interfaces/${message.name}.ts`, content);
+  }
+
+  // generate utility classes
+  await mkdir("./src/models/utils", { recursive: true });
+  for (const message of schema.messages) {
+    const content = generateUtilityClass(message, schema);
+    await writeFile(`./src/models/utils/${message.name}Utils.ts`, content);
   }
 }
